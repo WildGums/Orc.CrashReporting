@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Orc.CrashReporting</id>
+    <version>[VERSION]</version>
+    <title>Orc.CrashReporting</title>
+    <authors>OrchestraDevs</authors>
+    <owners>OrchestraDevs</owners>
+
+	<description>
+	  This library automatically sends crash reports so they can be analyzed later to improve the software.
+	</description>
+	<summary>
+	</summary>
+
+	<tags>orc support package</tags>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright Wild Gums 2010 - 2015</copyright>
+
+	<language>en-US</language>
+	<projectUrl>https://github.com/WildGums/Orc.CrashReporting</projectUrl>
+	<!--<licenseUrl>http://catel.codeplex.com/license</licenseUrl>-->
+	<!--<iconUrl>http://www.catenalogic.com/catel.png</iconUrl>-->
+    
+    <dependencies>
+      <dependency id="Catel.Core" version="[replaced]" />
+    </dependencies>
+  </metadata>
+</package>
