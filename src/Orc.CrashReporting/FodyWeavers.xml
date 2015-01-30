@@ -2,4 +2,9 @@
 <Weavers>
   <ModuleInit/>
   <Catel/>
+  <Costura>
+    <IncludeAssemblies>
+      Orc.SystemInfo
+    </IncludeAssemblies>
+  </Costura>
 </Weavers>
