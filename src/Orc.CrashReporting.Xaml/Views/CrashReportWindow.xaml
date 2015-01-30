@@ -1,0 +1,37 @@
+﻿<catel:DataWindow x:Class="Orc.CrashReporting.Xaml.Views.CrashReportWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:views="clr-namespace:Orc.CrashReporting.Views"
+                  xmlns:toolkit="clr-namespace:Orc.Toolkit;assembly=Orc.Toolkit"
+                  mc:Ignorable="d"
+                  d:DesignHeight="300"
+                  d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <views:CrashDetailsNavigatorView Grid.Column="0"/>
+            <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            <views:CrashDetailsView/>
+        </Grid>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+            <toolkit:DropDownButton Header="Send report">
+                <views:CrashReportProvidersView/>
+            </toolkit:DropDownButton>
+            <Button Content="Close" />
+        </StackPanel>
+    </Grid>
+</catel:DataWindow>

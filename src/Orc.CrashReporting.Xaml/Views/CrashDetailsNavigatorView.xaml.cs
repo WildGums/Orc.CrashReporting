@@ -1,21 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindowView.xaml.cs" company="Wild Gums">
+// <copyright file="CrashDetailsNavigatorView.xaml.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Example
+namespace Orc.CrashReporting.Views
 {
-    using System.Windows;
-
     /// <summary>
-    /// Interaction logic for MainWindowView.xaml
+    /// Interaction logic for CrashDetailsNavigatorView.xaml
     /// </summary>
-    public partial class MainWindowView
+    public partial class CrashDetailsNavigatorView
     {
         #region Constructors
-        public MainWindowView()
+        public CrashDetailsNavigatorView()
         {
             InitializeComponent();
         }
