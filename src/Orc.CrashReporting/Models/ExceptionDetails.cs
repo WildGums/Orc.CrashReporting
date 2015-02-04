@@ -1,20 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportViewModel.cs" company="Wild Gums">
+// <copyright file="ExceptionDetails.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.CrashReporting.ViewModels
+namespace Orc.CrashReporting.Models
 {
-    using System;
-    using Catel.MVVM;
+    using Catel.Data;
+    using Services;
 
-    public class CrashReportViewModel : ViewModelBase
+    public class ExceptionDetails : CrashDetailsBase
     {
-        public CrashReportViewModel(Exception exception)
+        public ExceptionDetails(ICrashReporterManager crashReporterManager)
+            : base(CrashDetails.ExceptionDetails, crashReporterManager)
         {
-            
         }
     }
 }

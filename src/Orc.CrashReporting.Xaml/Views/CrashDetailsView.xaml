@@ -4,9 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:catel="http://catel.codeplex.com"
+             xmlns:templateSelectors="clr-namespace:Orc.CrashReporting.TemplateSelectors"
+             xmlns:views="clr-namespace:Orc.CrashReporting.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <catel:UserControl.Resources>
+        <DataTemplate x:Key="ExceptionTemplate">
+            <views:ExceptionView />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="SystemInfoTemplate">
+            <views:SystemInfoView />
+        </DataTemplate>
+
+        <DataTemplate x:Key="AttachmentsTemplate">
+            <views:AdditionalInfoView />
+        </DataTemplate>
+
+        <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" ExceptionTemplate="{StaticResource ExceptionTemplate}"
+                                                        SystemInfoTemplate="{StaticResource SystemInfoTemplate}" AdditionatInfoTemplate="{StaticResource AttachmentsTemplate}"/>
+    </catel:UserControl.Resources>
     <Grid>
-         <catel:TabControl></catel:TabControl>   
+        <catel:TabControl ItemsSource="{Binding CrashDetailsList}" ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"
+                          SelectedItem="{Binding SelectedCrashDetails}">
+            <catel:TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}"/>
+                </DataTemplate>
+            </catel:TabControl.ItemTemplate>
+        </catel:TabControl>   
     </Grid>
 </catel:UserControl>

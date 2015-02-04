@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <views:CrashDetailsNavigatorView Grid.Column="0"/>
             <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-            <views:CrashDetailsView/>
+            <views:CrashDetailsView Grid.Column="2" />
         </Grid>
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"

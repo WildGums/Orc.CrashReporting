@@ -1,12 +1,12 @@
 ﻿namespace Orc.CrashReporting.Views
 {
     /// <summary>
-    /// Interaction logic for AttachmentsView.xaml
+    /// Interaction logic for AdditionalInfoView.xaml
     /// </summary>
-    public partial class AttachmentsView
+    public partial class AdditionalInfoView
     {
         #region Constructors
-        public AttachmentsView()
+        public AdditionalInfoView()
         {
             InitializeComponent();
         }

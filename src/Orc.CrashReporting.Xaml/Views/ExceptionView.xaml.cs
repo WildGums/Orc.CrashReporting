@@ -1,20 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportViewModel.cs" company="Wild Gums">
+// <copyright file="ExceptionView.xaml.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.ViewModels
+namespace Orc.CrashReporting.Views
 {
-    using System;
-    using Catel.MVVM;
-
-    public class CrashReportViewModel : ViewModelBase
+    /// <summary>
+    /// Interaction logic for ExceptionView.xaml
+    /// </summary>
+    public partial class ExceptionView
     {
-        public CrashReportViewModel(Exception exception)
+        #region Constructors
+        public ExceptionView()
         {
-            
+            InitializeComponent();
         }
+        #endregion
     }
 }

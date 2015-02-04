@@ -9,7 +9,7 @@ namespace Orc.CrashReporting.ViewModels
 {
     using Catel.MVVM;
 
-    public class CrashReportProvidersViewModel : ViewModelBase
+    internal class CrashReportProvidersViewModel : ViewModelBase
     {
     }
 }

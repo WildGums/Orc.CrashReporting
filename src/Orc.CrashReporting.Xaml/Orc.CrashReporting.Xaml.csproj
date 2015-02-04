@@ -109,15 +109,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\AttachmentsViewModel.cs" />
+    <Compile Include="Services\ExceptionHandlerService.cs" />
+    <Compile Include="Services\Interfaces\IExceptionHandlerService.cs" />
+    <Compile Include="TemplateSelectors\CrashDetailsTemplateSelector.cs" />
+    <Compile Include="ViewModels\AdditionalInfoViewModel.cs" />
     <Compile Include="ViewModels\CrashDetailsViewModel.cs" />
     <Compile Include="ViewModels\CrashReportProvidersViewModel.cs" />
     <Compile Include="ViewModels\CrashReportViewModel.cs" />
     <Compile Include="ViewModels\CrashDetailsNavigatorViewModel.cs" />
-    <Compile Include="ViewModels\ExeptionViewModel.cs" />
+    <Compile Include="ViewModels\ExceptionViewModel.cs" />
     <Compile Include="ViewModels\SystemInfoViewModel.cs" />
-    <Compile Include="Views\AttachmentsView.xaml.cs">
-      <DependentUpon>AttachmentsView.xaml</DependentUpon>
+    <Compile Include="Views\AdditionalInfoView.xaml.cs">
+      <DependentUpon>AdditionalInfoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CrashDetailsView.xaml.cs">
       <DependentUpon>CrashDetailsView.xaml</DependentUpon>
@@ -131,8 +134,8 @@
     <Compile Include="Views\CrashDetailsNavigatorView.xaml.cs">
       <DependentUpon>CrashDetailsNavigatorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ExeptionView.xaml.cs">
-      <DependentUpon>ExeptionView.xaml</DependentUpon>
+    <Compile Include="Views\ExceptionView.xaml.cs">
+      <DependentUpon>ExceptionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SystemInfoView.xaml.cs">
       <DependentUpon>SystemInfoView.xaml</DependentUpon>
@@ -158,9 +161,11 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\AttachmentsView.xaml">
+    <Folder Include="ViewModels\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\AdditionalInfoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ExeptionView.xaml">
+    <Page Include="Views\ExceptionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
