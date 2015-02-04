@@ -25,13 +25,19 @@
                                                         SystemInfoTemplate="{StaticResource SystemInfoTemplate}" AdditionatInfoTemplate="{StaticResource AttachmentsTemplate}"/>
     </catel:UserControl.Resources>
     <Grid>
-        <catel:TabControl ItemsSource="{Binding CrashDetailsList}" ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"
-                          SelectedItem="{Binding SelectedCrashDetails}">
-            <catel:TabControl.ItemTemplate>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Name="listBox" ItemsSource="{Binding CrashDetailsList}" SelectedItem="{Binding SelectedCrashDetails}" Grid.Column="0">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
                 </DataTemplate>
-            </catel:TabControl.ItemTemplate>
-        </catel:TabControl>   
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+        <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"></ContentControl>
     </Grid>
 </catel:UserControl>

@@ -21,7 +21,6 @@ namespace Orc.CrashReporting.Models
 
         #region Properties
         public IList<ICrashDetails> CrashDetailsList { get; private set; }
-
         public ICrashDetails SelectedCrashDetails { get; set; }
         #endregion
     }

@@ -1,5 +1,7 @@
 ﻿namespace Orc.CrashReporting.Views
 {
+    using System.Windows.Controls;
+
     /// <summary>
     /// Interaction logic for CrashDetailsView.xaml
     /// </summary>
@@ -11,5 +13,6 @@
             InitializeComponent();
         }
         #endregion
+
     }
 }
