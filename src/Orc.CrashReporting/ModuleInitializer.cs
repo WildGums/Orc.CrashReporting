@@ -22,11 +22,9 @@ public static class ModuleInitializer
     {
         var serviceLocator = ServiceLocator.Default;
 
-        serviceLocator.RegisterType<ICrashReporterManager, CrashReporterManager>();
-
-        serviceLocator.RegisterTypeAndInstantiate<ExceptionDetails>();
-        serviceLocator.RegisterTypeAndInstantiate<SystemInfoDetails>();
-        serviceLocator.RegisterTypeAndInstantiate<AdditionalInfoDetails>();
+        serviceLocator.RegisterType<ICrashReportService, CrashReportService>();
+        serviceLocator.RegisterType<ICrashInfoProvider, CrashInfoProvider>();
+        serviceLocator.RegisterTypeAndInstantiate<CrashReporterInitializer>();
     }
     #endregion
 }

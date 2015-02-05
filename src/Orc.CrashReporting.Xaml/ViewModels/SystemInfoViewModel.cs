@@ -5,10 +5,19 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Orc.CrashReporting.ViewModels
 {
+    using Catel.Fody;
     using Catel.MVVM;
+    using Models;
 
     internal class SystemInfoViewModel : ViewModelBase
     {
-         
+        public SystemInfoViewModel(SystemInfo systemInfo)
+        {
+            SystemInfo = systemInfo;
+        }
+
+        [Model]
+        [Expose("Details")]
+        public SystemInfo SystemInfo { get; private set; }
     }
 }

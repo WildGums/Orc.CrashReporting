@@ -13,7 +13,7 @@ namespace Orc.CrashReporting.TemplateSelectors
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var crashDetails = item as ICrashDetails;
+            var crashDetails = item as ICrashInfo;
             if (crashDetails == null)
             {
                 return base.SelectTemplate(item, container);
@@ -21,13 +21,13 @@ namespace Orc.CrashReporting.TemplateSelectors
 
             switch (crashDetails.Title)
             {
-                case CrashDetails.ExceptionDetails:
+                case CrashDetails.ExceptionDetailsTitle:
                     return ExceptionTemplate;
                     break;
-                case CrashDetails.SystenInfoDetails:
+                case CrashDetails.SystemInfoTitle:
                     return SystemInfoTemplate;
                     break;
-                case CrashDetails.AdditionalInfoDetails:
+                case CrashDetails.AdditionalInfo:
                     return AdditionatInfoTemplate;
                     break;
             }

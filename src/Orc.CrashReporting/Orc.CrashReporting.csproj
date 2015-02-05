@@ -79,16 +79,19 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Models\AdditionalInfoDetails.cs" />
-    <Compile Include="Models\Base\CrashDetailsBase.cs" />
-    <Compile Include="Models\CrashReporter.cs" />
-    <Compile Include="Models\ExceptionDetails.cs" />
-    <Compile Include="Models\Interfaces\ICrashDetails.cs" />
-    <Compile Include="Models\SystemInfoDetails.cs" />
+    <Compile Include="Models\AdditionalInfoInfo.cs" />
+    <Compile Include="Models\Base\CrashInfoBase.cs" />
+    <Compile Include="Models\CrashReport.cs" />
+    <Compile Include="Models\ExceptionInfo.cs" />
+    <Compile Include="Models\Interfaces\ICrashInfo.cs" />
+    <Compile Include="Models\SystemInfo.cs" />
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CrashReporterManager.cs" />
-    <Compile Include="Services\Interfaces\ICrashReporterManager.cs" />
+    <Compile Include="Services\CrashInfoProvider.cs" />
+    <Compile Include="Services\CrashReportService.cs" />
+    <Compile Include="Services\CrashReporterInitializer.cs" />
+    <Compile Include="Services\Interfaces\ICrashInfoProvider.cs" />
+    <Compile Include="Services\Interfaces\ICrashReportService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

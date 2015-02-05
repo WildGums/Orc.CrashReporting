@@ -7,8 +7,8 @@ namespace Orc.CrashReporting
 {
     public static class CrashDetails
     {
-        public const string ExceptionDetails = "Exception details";
-        public const string SystenInfoDetails = "System Info";
-        public const string AdditionalInfoDetails = "Additional Info";
+        public const string ExceptionDetailsTitle = "Exception details";
+        public const string SystemInfoTitle = "System Info";
+        public const string AdditionalInfo = "Additional Info";
     }
 }

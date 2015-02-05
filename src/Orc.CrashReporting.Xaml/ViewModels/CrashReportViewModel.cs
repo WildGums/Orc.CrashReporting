@@ -7,14 +7,23 @@
 
 namespace Orc.CrashReporting.ViewModels
 {
-    using System;
+    using Catel.Fody;
     using Catel.MVVM;
+    using Models;
 
     public class CrashReportViewModel : ViewModelBase
     {
-        public CrashReportViewModel(Exception exception)
+        #region Constructors
+        public CrashReportViewModel(CrashReport crashReport)
         {
-            
+            CrashReport = crashReport;
         }
+        #endregion
+
+        #region Properties
+        [Model]
+        [Expose("Message")]
+        public CrashReport CrashReport { get; set; }
+        #endregion
     }
 }

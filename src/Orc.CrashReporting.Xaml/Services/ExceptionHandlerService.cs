@@ -9,25 +9,30 @@ namespace Orc.CrashReporting.Services
     using Catel;
     using Catel.IoC;
     using Catel.Services;
+    using Models;
     using ViewModels;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
         private readonly IUIVisualizerService _uiVisualizerService;
         private readonly ITypeFactory _typeFactory;
+        private readonly ICrashReportService _crashReportService;
 
-        public ExceptionHandlerService(IUIVisualizerService uiVisualizerService, ITypeFactory typeFactory)
+        public ExceptionHandlerService(IUIVisualizerService uiVisualizerService, ITypeFactory typeFactory, ICrashReportService crashReportService)
         {
             Argument.IsNotNull(() => uiVisualizerService);
             Argument.IsNotNull(() => typeFactory);
+            Argument.IsNotNull(() => crashReportService);
 
             _uiVisualizerService = uiVisualizerService;
             _typeFactory = typeFactory;
+            _crashReportService = crashReportService;
         }
 
         public void HandleException(Exception exception, ExceptionHandlingPolicy policy)
         {
-            var crashReporterVm = (CrashReportViewModel)_typeFactory.CreateInstanceWithParametersAndAutoCompletion(typeof (CrashReportViewModel), exception);
+            var crashReport = _crashReportService.CreateCrashReport(exception);
+            var crashReporterVm = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReportViewModel>(crashReport);
             _uiVisualizerService.ShowDialog(crashReporterVm);
         }
     }

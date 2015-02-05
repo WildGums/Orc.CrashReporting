@@ -1,18 +1,24 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExceptionDetails.cs" company="Wild Gums">
+// <copyright file="CrashInfoBase.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 namespace Orc.CrashReporting.Models
 {
+    using Catel;
     using Catel.Data;
     using Services;
 
-    public class ExceptionDetails : CrashDetailsBase
+    public abstract class CrashInfoBase : ModelBase, ICrashInfo
     {
-        public ExceptionDetails(ICrashReporterManager crashReporterManager)
-            : base(CrashDetails.ExceptionDetails, crashReporterManager)
-        {
+        public CrashInfoBase(string title, CrashReport crashReport)
+        {            
+            Argument.IsNotNullOrWhitespace(() => title);
+            Argument.IsNotNull(() => crashReport);
+
+            Title = title;
         }
+
+        public string Title { get; private set; }
     }
 }

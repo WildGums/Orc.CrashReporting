@@ -1,16 +1,17 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICrashDetails.cs" company="Wild Gums">
+// <copyright file="ICrashReportService.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting.Services
 {
-    public interface ICrashDetails
+    using System;
+    using Models;
+
+    public interface ICrashReportService
     {
-        #region Properties
-        string Title { get; }
-        #endregion
+        CrashReport CreateCrashReport(Exception exception);
     }
 }

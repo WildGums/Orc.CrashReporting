@@ -6,4 +6,5 @@
       Orc.SystemInfo
     </IncludeAssemblies>
   </Costura>
+  <LoadAssembliesOnStartup/>
 </Weavers>

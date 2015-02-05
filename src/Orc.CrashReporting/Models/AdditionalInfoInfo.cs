@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SystemInfoDetails.cs" company="Wild Gums">
+// <copyright file="AdditionalInfoInfo.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -7,10 +7,10 @@ namespace Orc.CrashReporting.Models
 {
     using Services;
 
-    public class SystemInfoDetails : CrashDetailsBase
+    public class AdditionalInfoInfo : CrashInfoBase
     {
-        public SystemInfoDetails(ICrashReporterManager crashReporterManager)
-            : base(CrashDetails.SystenInfoDetails, crashReporterManager)
+        public AdditionalInfoInfo(CrashReport crashReport)
+            : base(CrashDetails.AdditionalInfo, crashReport)
         {
         }
     }
