@@ -1,17 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AdditionalInfoInfo.cs" company="Wild Gums">
+// <copyright file="AdditionalInfo.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+
 namespace Orc.CrashReporting.Models
 {
-    using Services;
-
-    public class AdditionalInfoInfo : CrashInfoBase
+    public class AdditionalInfo : CrashInfoBase
     {
-        public AdditionalInfoInfo(CrashReport crashReport)
+        #region Constructors
+        public AdditionalInfo(CrashReport crashReport)
             : base(CrashDetails.AdditionalInfo, crashReport)
         {
         }
+        #endregion
     }
 }

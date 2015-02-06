@@ -33,7 +33,15 @@ namespace Orc.CrashReporting.Example.ViewModels
 
         private async void OnShowCrashReportExecute()
         {
-            _exceptionHandlerService.HandleException(new NotImplementedException("message"), new ExceptionHandlingPolicy());
+            try
+            {
+                throw new NotImplementedException("message");
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException("message2", exception);
+            }
+            
         }
         #endregion
     }

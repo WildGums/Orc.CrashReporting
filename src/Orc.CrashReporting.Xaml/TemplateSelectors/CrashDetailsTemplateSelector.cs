@@ -30,6 +30,9 @@ namespace Orc.CrashReporting.TemplateSelectors
                 case CrashDetails.AdditionalInfo:
                     return AdditionatInfoTemplate;
                     break;
+                case CrashDetails.LoadedModulesInfo:
+                    return LoadedModulesTemplate;
+                    break;
             }
 
             return base.SelectTemplate(item, container);
@@ -38,5 +41,6 @@ namespace Orc.CrashReporting.TemplateSelectors
         public DataTemplate ExceptionTemplate { get; set; }
         public DataTemplate SystemInfoTemplate { get; set; }
         public DataTemplate AdditionatInfoTemplate { get; set; }
+        public DataTemplate LoadedModulesTemplate { get; set; }
     }
 }

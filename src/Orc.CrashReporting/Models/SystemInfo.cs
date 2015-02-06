@@ -27,7 +27,7 @@ namespace Orc.CrashReporting.Models
 
             _systemInfoService = systemInfoService;
 
-            LoadSystemInfo();
+            Initialize();
         }
         #endregion        
 
@@ -36,7 +36,7 @@ namespace Orc.CrashReporting.Models
         #endregion
 
         #region Methods
-        private async void LoadSystemInfo()
+        private async void Initialize()
         {
             var systemInfo = await _systemInfoService.GetSystemInfo();
             var stringBuilder = new StringBuilder();

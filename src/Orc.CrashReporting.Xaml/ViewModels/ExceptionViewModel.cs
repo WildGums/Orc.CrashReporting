@@ -7,6 +7,7 @@
 
 namespace Orc.CrashReporting.ViewModels
 {
+    using Catel;
     using Catel.Fody;
     using Catel.MVVM;
     using Models;
@@ -15,7 +16,9 @@ namespace Orc.CrashReporting.ViewModels
     {
         public ExceptionViewModel(ExceptionInfo exceptionInfo)
         {
-            
+            Argument.IsNotNull(() => exceptionInfo);
+
+            ExceptionInfo = exceptionInfo;
         }
 
         [Model]

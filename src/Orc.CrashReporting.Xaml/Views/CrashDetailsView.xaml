@@ -21,8 +21,15 @@
             <views:AdditionalInfoView />
         </DataTemplate>
 
-        <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" ExceptionTemplate="{StaticResource ExceptionTemplate}"
-                                                        SystemInfoTemplate="{StaticResource SystemInfoTemplate}" AdditionatInfoTemplate="{StaticResource AttachmentsTemplate}"/>
+        <DataTemplate x:Key="LoadedModulesTemplate">
+            <views:LoadedModulesInfoView />
+        </DataTemplate>
+
+        <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" 
+                                                        ExceptionTemplate="{StaticResource ExceptionTemplate}"
+                                                        SystemInfoTemplate="{StaticResource SystemInfoTemplate}" 
+                                                        AdditionatInfoTemplate="{StaticResource AttachmentsTemplate}"
+                                                        LoadedModulesTemplate="{StaticResource LoadedModulesTemplate}"/>
     </catel:UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

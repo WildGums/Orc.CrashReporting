@@ -6,6 +6,7 @@
 
 
 using Catel.IoC;
+using Orc.CrashReporting;
 using Orc.CrashReporting.Models;
 using Orc.CrashReporting.Services;
 
