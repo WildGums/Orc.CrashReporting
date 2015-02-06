@@ -8,6 +8,7 @@
 namespace Orc.CrashReporting
 {
     using Catel;
+    using Catel.IoC;
     using Models;
     using Services;
 
@@ -15,19 +16,29 @@ namespace Orc.CrashReporting
     {
         #region Fields
         private readonly ICrashInfoProvider _crashInfoProvider;
+        private readonly IServiceLocator _serviceLocator;
         #endregion
 
         #region Constructors
-        public CrashReporterInitializer(ICrashInfoProvider crashInfoProvider)
+        public CrashReporterInitializer(ICrashInfoProvider crashInfoProvider, IServiceLocator serviceLocator)
         {
             Argument.IsNotNull(() => crashInfoProvider);
+            Argument.IsNotNull(() => serviceLocator);
 
             _crashInfoProvider = crashInfoProvider;
+            _serviceLocator = serviceLocator;
+
+            InitializeUnhandledCatcher();
             InitializeCrashInfoProvider();
         }
         #endregion
 
         #region Methods
+        private void InitializeUnhandledCatcher()
+        {
+            _serviceLocator.RegisterTypeAndInstantiate<UnhandledCatcher>();
+        }
+
         private void InitializeCrashInfoProvider()
         {
             _crashInfoProvider.RegisterCrashInfo<AdditionalInfo>();

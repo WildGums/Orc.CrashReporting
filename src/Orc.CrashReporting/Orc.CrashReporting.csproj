@@ -83,6 +83,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\SystemInfoExtensions.cs" />
+    <Compile Include="Helpers\UnhandledCatcher.cs" />
     <Compile Include="Models\AdditionalInfo.cs" />
     <Compile Include="Models\Base\CrashInfoBase.cs" />
     <Compile Include="Models\CrashReport.cs" />
