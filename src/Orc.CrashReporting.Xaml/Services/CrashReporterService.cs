@@ -1,39 +1,42 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExceptionHandlerService.cs" company="Wild Gums">
+// <copyright file="CrashReporterService.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+
 namespace Orc.CrashReporting.Services
 {
-    using System;
     using Catel;
     using Catel.IoC;
     using Catel.Services;
     using Models;
     using ViewModels;
 
-    public class ExceptionHandlerService : IExceptionHandlerService
+    internal class CrashReporterService : ICrashReporterService
     {
-        private readonly IUIVisualizerService _uiVisualizerService;
+        #region Fields
         private readonly ITypeFactory _typeFactory;
-        private readonly ICrashReportService _crashReportService;
+        private readonly IUIVisualizerService _uiVisualizerService;
+        #endregion
 
-        public ExceptionHandlerService(IUIVisualizerService uiVisualizerService, ITypeFactory typeFactory, ICrashReportService crashReportService)
+        #region Constructors
+        public CrashReporterService(IUIVisualizerService uiVisualizerService, ITypeFactory typeFactory)
         {
             Argument.IsNotNull(() => uiVisualizerService);
             Argument.IsNotNull(() => typeFactory);
-            Argument.IsNotNull(() => crashReportService);
 
             _uiVisualizerService = uiVisualizerService;
             _typeFactory = typeFactory;
-            _crashReportService = crashReportService;
         }
+        #endregion
 
-        public void HandleException(Exception exception, ExceptionHandlingPolicy policy)
+        #region Methods
+        public void ShowCrashReport(CrashReport crashReport)
         {
-            var crashReport = _crashReportService.CreateCrashReport(exception);
             var crashReporterVm = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReportViewModel>(crashReport);
             _uiVisualizerService.ShowDialog(crashReporterVm);
         }
+        #endregion
     }
 }

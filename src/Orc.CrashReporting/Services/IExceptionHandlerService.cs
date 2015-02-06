@@ -1,16 +1,7 @@
 ﻿namespace Orc.CrashReporting.Services
 {
     using System;
-
-    class ExceptionPolicy
-    {
-         
-    }
-
-    public class ExceptionHandlingPolicy
-    {
-         
-    }
+    using Models;
 
     public interface IExceptionHandlerService
     {

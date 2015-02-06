@@ -7,8 +7,7 @@
 
 namespace Orc.CrashReporting.Models
 {
-    using System;
-    using System.Diagnostics;
+    using Catel;
     using Extensions;
 
     public class ExceptionInfo : CrashInfoBase
@@ -17,6 +16,8 @@ namespace Orc.CrashReporting.Models
         public ExceptionInfo(CrashReport crashReport)
             : base(CrashDetails.ExceptionDetailsTitle, crashReport)
         {
+            Argument.IsNotNull(() => crashReport);
+
             FullExceptionText = crashReport.Exception.GetExceptionInfo();
         }
         #endregion

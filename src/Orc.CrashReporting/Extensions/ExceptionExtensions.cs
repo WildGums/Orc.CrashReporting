@@ -9,12 +9,15 @@ namespace Orc.CrashReporting.Extensions
 {
     using System;
     using System.Text;
+    using Catel;
 
     public static class ExceptionExtensions
     {
         #region Methods
         public static string GetExceptionInfo(this Exception exception)
         {
+            Argument.IsNotNull(() => exception);
+
             var exceptionInfo = new StringBuilder();
             exceptionInfo
                 .AppendLine("Exception classes:")
@@ -29,21 +32,30 @@ namespace Orc.CrashReporting.Extensions
 
         public static string GetExceptionCallStack(this Exception exception)
         {
+            Argument.IsNotNull(() => exception);
+
             return exception.GetExceptionStackedMessage(ex => ex.StackTrace, "--- Next Call Stack:");
         }
 
         public static string GetExceptionTypeStack(this Exception exception)
         {
+            Argument.IsNotNull(() => exception);
+
             return exception.GetExceptionStackedMessage(ex => " " + ex.GetType());
         }
 
         public static string GetExceptionMessageStack(this Exception exception)
         {
+            Argument.IsNotNull(() => exception);
+
             return exception.GetExceptionStackedMessage(ex => " " + ex.Message);
         }
 
         private static string GetExceptionStackedMessage(this Exception exception, Func<Exception, string> stackLevelToString, string subStackHeader = null)
         {
+            Argument.IsNotNull(() => exception);
+            Argument.IsNotNull(() => stackLevelToString);
+
             if (exception.InnerException == null)
             {
                 return stackLevelToString(exception);

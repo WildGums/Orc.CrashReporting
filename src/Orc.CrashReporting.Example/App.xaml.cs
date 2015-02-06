@@ -11,6 +11,7 @@ namespace Orc.CrashReporting.Example
     using System.Threading;
     using System.Windows.Threading;
     using Catel.IoC;
+    using Models;
     using Services;
 
     /// <summary>

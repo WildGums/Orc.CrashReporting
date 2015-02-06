@@ -14,7 +14,7 @@ public static class ModuleInitializer
     public static void Initialize()
     {
         var serviceLocator = ServiceLocator.Default;
-
-        serviceLocator.RegisterType<IExceptionHandlerService, ExceptionHandlerService>();
+        
+        serviceLocator.RegisterType<ICrashReporterService, CrashReporterService>();
     }
 }

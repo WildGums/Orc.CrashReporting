@@ -22,7 +22,6 @@ namespace Orc.CrashReporting.Models
         public SystemInfo(CrashReport crashReport, ISystemInfoService systemInfoService)
             : base(CrashDetails.SystemInfoTitle, crashReport)
         {
-            Argument.IsNotNull(() => crashReport);
             Argument.IsNotNull(() => systemInfoService);
 
             _systemInfoService = systemInfoService;

@@ -109,8 +109,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Services\ExceptionHandlerService.cs" />
-    <Compile Include="Services\Interfaces\IExceptionHandlerService.cs" />
+    <Compile Include="Services\CrashReporterService.cs" />
     <Compile Include="TemplateSelectors\CrashDetailsTemplateSelector.cs" />
     <Compile Include="ViewModels\AdditionalInfoViewModel.cs" />
     <Compile Include="ViewModels\CrashDetailsViewModel.cs" />
