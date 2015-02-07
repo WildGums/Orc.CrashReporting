@@ -12,7 +12,7 @@ namespace Orc.CrashReporting.ViewModels
     using Catel.MVVM;
     using Models;
 
-    internal class ExceptionViewModel : ViewModelBase, ICrashInfo
+    internal class ExceptionViewModel : ViewModelBase
     {
         public ExceptionViewModel(ExceptionInfo exceptionInfo)
         {

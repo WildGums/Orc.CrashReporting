@@ -8,25 +8,23 @@
 namespace Orc.CrashReporting
 {
     using System;
-    using System.Windows;
     using System.Windows.Threading;
     using Catel;
-    using Catel.IoC;
     using Models;
     using Services;
 
     public class UnhandledCatcher
     {
         #region Fields
-        private readonly IServiceLocator _serviceLocator;
+        private readonly IExceptionHandlerService _exceptionHandlerService;
         #endregion
 
         #region Constructors
-        public UnhandledCatcher(IServiceLocator serviceLocator)
+        public UnhandledCatcher(IExceptionHandlerService exceptionHandlerService)
         {
-            Argument.IsNotNull(() => serviceLocator);
+            Argument.IsNotNull(() => exceptionHandlerService);
 
-            _serviceLocator = serviceLocator;
+            _exceptionHandlerService = exceptionHandlerService;
 
             AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
             Dispatcher.CurrentDispatcher.UnhandledException += OnDispatcherUnhandledException;
@@ -38,9 +36,7 @@ namespace Orc.CrashReporting
         {
             var exception = e.Exception;
 
-            var exceptionHandlerService = _serviceLocator.ResolveType<IExceptionHandlerService>();
-
-            exceptionHandlerService.HandleException(exception, new ExceptionHandlingPolicy());
+            _exceptionHandlerService.HandleException(exception);
             e.Handled = true;
         }
 
@@ -52,9 +48,7 @@ namespace Orc.CrashReporting
                 return;
             }
 
-            var exceptionHandlerService = _serviceLocator.ResolveType<IExceptionHandlerService>();
-
-            exceptionHandlerService.HandleException(exception, new ExceptionHandlingPolicy());
+            _exceptionHandlerService.HandleException(exception);
         }
         #endregion
     }

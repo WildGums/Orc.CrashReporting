@@ -15,17 +15,17 @@ namespace Orc.CrashReporting
     internal class CrashReporterInitializer
     {
         #region Fields
-        private readonly ICrashInfoProvider _crashInfoProvider;
+        private readonly ICrashInfoService _crashInfoService;
         private readonly IServiceLocator _serviceLocator;
         #endregion
 
         #region Constructors
-        public CrashReporterInitializer(ICrashInfoProvider crashInfoProvider, IServiceLocator serviceLocator)
+        public CrashReporterInitializer(ICrashInfoService crashInfoService, IServiceLocator serviceLocator)
         {
-            Argument.IsNotNull(() => crashInfoProvider);
+            Argument.IsNotNull(() => crashInfoService);
             Argument.IsNotNull(() => serviceLocator);
 
-            _crashInfoProvider = crashInfoProvider;
+            _crashInfoService = crashInfoService;
             _serviceLocator = serviceLocator;
 
             InitializeUnhandledCatcher();
@@ -41,10 +41,10 @@ namespace Orc.CrashReporting
 
         private void InitializeCrashInfoProvider()
         {
-            _crashInfoProvider.RegisterCrashInfo<AdditionalInfo>();
-            _crashInfoProvider.RegisterCrashInfo<ExceptionInfo>();
-            _crashInfoProvider.RegisterCrashInfo<SystemInfo>();
-            _crashInfoProvider.RegisterCrashInfo<LoadedModulesInfo>();
+            _crashInfoService.AddCrashInfo<AdditionalInfo>();
+            _crashInfoService.AddCrashInfo<ExceptionInfo>();
+            _crashInfoService.AddCrashInfo<SystemInfo>();
+            _crashInfoService.AddCrashInfo<LoadedModulesInfo>();
         }
         #endregion
     }

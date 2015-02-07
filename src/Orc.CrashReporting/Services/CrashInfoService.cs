@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashInfoProvider.cs" company="Wild Gums">
+// <copyright file="crashInfoService.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace Orc.CrashReporting.Services
     using Catel.IoC;
     using Models;
 
-    public class CrashInfoProvider : ICrashInfoProvider
+    public class CrashInfoService : ICrashInfoService
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
@@ -21,7 +21,7 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Constructors
-        public CrashInfoProvider(ITypeFactory typeFactory)
+        public CrashInfoService(ITypeFactory typeFactory)
         {
             Argument.IsNotNull(() => typeFactory);
 
@@ -32,12 +32,13 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public void RegisterCrashInfo<T>() where T : ICrashInfo
+        public void AddCrashInfo<T>() where T : ICrashInfo
         {
+            // don't used Catel.Reflection.TypeCahe because need to keep order
             _types.Add(typeof (T));
         }
 
-        public IEnumerable<ICrashInfo> ResolveAllCrashInfos(CrashReport crashReport)
+        public IEnumerable<ICrashInfo> GetAllCrashInfos(CrashReport crashReport)
         {
             Argument.IsNotNull(() => crashReport);
 

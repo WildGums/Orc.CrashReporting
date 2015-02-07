@@ -1,19 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICrashInfo.cs" company="Wild Gums">
+// <copyright file="IExceptionHandlerService.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting.Services
 {
-    using Orc.SupportPackage;
+    using System;
 
-    public interface ICrashInfo
+    public interface IExceptionHandlerService
     {
-        void ProvideSupportPackageData(ISupportPackageContext supportPackageContext);
-        #region Properties
-        string Title { get; }
+        #region Methods
+        void HandleException(Exception exception);
         #endregion
     }
 }

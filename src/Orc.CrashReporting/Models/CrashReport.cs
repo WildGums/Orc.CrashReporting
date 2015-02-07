@@ -16,14 +16,14 @@ namespace Orc.CrashReporting.Models
     public class CrashReport : ModelBase
     {
         #region Constructors
-        public CrashReport(Exception exception, ICrashInfoProvider crashInfoProvider)
+        public CrashReport(Exception exception, ICrashInfoService crashInfoService)
         {
             Argument.IsNotNull(() => exception);
-            Argument.IsNotNull(() => crashInfoProvider);
+            Argument.IsNotNull(() => crashInfoService);
 
             Exception = exception;
 
-            var infos = crashInfoProvider.ResolveAllCrashInfos(this);
+            var infos = crashInfoService.GetAllCrashInfos(this);
             CrashDetails = new List<ICrashInfo>(infos);
         }
         #endregion
@@ -36,6 +36,7 @@ namespace Orc.CrashReporting.Models
         {
             get { return Exception.Message; }
         }
+
         #endregion
     }
 }

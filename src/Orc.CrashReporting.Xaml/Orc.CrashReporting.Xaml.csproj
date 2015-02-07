@@ -37,11 +37,11 @@
   <ItemGroup>
     <Reference Include="Catel.Core, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Catel.Core.4.1.0-unstable0066\lib\net40\Catel.Core.dll</HintPath>
+      <HintPath>..\..\lib\Catel.Core.4.1.0-unstable0077\lib\net40\Catel.Core.dll</HintPath>
     </Reference>
     <Reference Include="Catel.Extensions.Controls, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Catel.Extensions.Controls.4.1.0-unstable0066\lib\net40\Catel.Extensions.Controls.dll</HintPath>
+      <HintPath>..\..\lib\Catel.Extensions.Controls.4.1.0-unstable0077\lib\net40\Catel.Extensions.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Catel.Fody.Attributes, Version=2.5.0.0, Culture=neutral, PublicKeyToken=1c8163524cbe02e6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -49,7 +49,7 @@
     </Reference>
     <Reference Include="Catel.MVVM, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Catel.MVVM.4.1.0-unstable0066\lib\net40\Catel.MVVM.dll</HintPath>
+      <HintPath>..\..\lib\Catel.MVVM.4.1.0-unstable0077\lib\net40\Catel.MVVM.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -62,6 +62,12 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Orc.SupportPackage">
+      <HintPath>..\..\lib\Orc.SupportPackage.0.2.0-unstable0022\lib\net40\Orc.SupportPackage.dll</HintPath>
+    </Reference>
+    <Reference Include="Orc.SupportPackage.Xaml">
+      <HintPath>..\..\lib\Orc.SupportPackage.Xaml.0.2.0-unstable0022\lib\net40\Orc.SupportPackage.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Orc.Toolkit, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,7 +86,7 @@
       <HintPath>..\..\lib\Microsoft.Bcl.1.1.9\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\lib\Catel.MVVM.4.1.0-unstable0066\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\lib\Catel.MVVM.4.1.0-unstable0077\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,7 +119,7 @@
     <Compile Include="TemplateSelectors\CrashDetailsTemplateSelector.cs" />
     <Compile Include="ViewModels\AdditionalInfoViewModel.cs" />
     <Compile Include="ViewModels\CrashDetailsViewModel.cs" />
-    <Compile Include="ViewModels\CrashReportProvidersViewModel.cs" />
+    <Compile Include="ViewModels\CrashReportLoggersViewModel.cs" />
     <Compile Include="ViewModels\CrashReportViewModel.cs" />
     <Compile Include="ViewModels\ExceptionViewModel.cs" />
     <Compile Include="ViewModels\LoadedModulesInfoViewModel.cs" />
@@ -124,8 +130,8 @@
     <Compile Include="Views\CrashDetailsView.xaml.cs">
       <DependentUpon>CrashDetailsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CrashReportProvidersView.xaml.cs">
-      <DependentUpon>CrashReportProvidersView.xaml</DependentUpon>
+    <Compile Include="Views\CrashReportLoggersView.xaml.cs">
+      <DependentUpon>CrashReportLoggersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CrashReportWindow.xaml.cs">
       <DependentUpon>CrashReportWindow.xaml</DependentUpon>
@@ -170,7 +176,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CrashReportProvidersView.xaml">
+    <Page Include="Views\CrashReportLoggersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

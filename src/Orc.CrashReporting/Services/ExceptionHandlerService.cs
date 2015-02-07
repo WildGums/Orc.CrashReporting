@@ -9,30 +9,50 @@ namespace Orc.CrashReporting.Services
 {
     using System;
     using Catel;
-    using Models;
+    using Catel.IoC;
+    using SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
         #region Fields
-        private readonly ICrashReporterService _crashReporterService;
+        private ICrashReporterService _crashReporterService;
         private readonly ICrashReportFactory _crashReportFactory;
+        private readonly IServiceLocator _serviceLocator;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(ICrashReporterService crashReporterService, ICrashReportFactory crashReportFactory)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ICrashReportFactory crashReportFactory)
         {
+            Argument.IsNotNull(() => serviceLocator);
             Argument.IsNotNull(() => crashReportFactory);
 
-            _crashReporterService = crashReporterService;
+            _serviceLocator = serviceLocator;
             _crashReportFactory = crashReportFactory;
         }
         #endregion
 
-        #region Methods
-        public void HandleException(Exception exception, ExceptionHandlingPolicy policy)
+        #region Properties
+        private ICrashReporterService CrashReporterService
         {
+            get
+            {
+                if (_crashReporterService == null)
+                {
+                    // can't be injected, because the inplementation could be registered later
+                    _crashReporterService = _serviceLocator.ResolveType<ICrashReporterService>();
+                }
+
+                return _crashReporterService;
+            }
+        }
+        #endregion
+
+        #region Methods
+        public void HandleException(Exception exception)
+        {
+
             var crashReport = _crashReportFactory.CreateCrashReport(exception);
-            _crashReporterService.ShowCrashReport(crashReport);
+            CrashReporterService.ShowCrashReport(crashReport);
         }
         #endregion
     }

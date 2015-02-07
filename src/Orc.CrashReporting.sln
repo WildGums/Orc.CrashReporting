@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{C430
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Example", "Orc.CrashReporting.Example\Orc.CrashReporting.Example.csproj", "{212E015B-F824-4D5C-BEED-9119E7025590}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Loggers.Email", "Orc.CrashReporting.Loggers.Email\Orc.CrashReporting.Loggers.Email.csproj", "{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{212E015B-F824-4D5C-BEED-9119E7025590}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{212E015B-F824-4D5C-BEED-9119E7025590}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{212E015B-F824-4D5C-BEED-9119E7025590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{832C935D-D23A-4C38-9B52-CAC0F508F875} = {E426EAD0-F378-4A3D-9BCD-E42CED54EEC7}
 		{C430ED8B-6687-44A6-B89F-9C3C129A205F} = {E426EAD0-F378-4A3D-9BCD-E42CED54EEC7}
 		{212E015B-F824-4D5C-BEED-9119E7025590} = {C430ED8B-6687-44A6-B89F-9C3C129A205F}
+		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755} = {29A3E85A-AD9A-4F3A-9B6A-288B2D64455D}
 	EndGlobalSection
 EndGlobal

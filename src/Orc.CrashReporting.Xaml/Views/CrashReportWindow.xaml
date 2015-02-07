@@ -21,8 +21,8 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
-            <toolkit:DropDownButton Header="Send report">
-                <views:CrashReportProvidersView/>
+            <toolkit:DropDownButton Header="Report">
+                <views:CrashReportLoggersView/>
             </toolkit:DropDownButton>
             <Button Content="Close" />
         </StackPanel>
