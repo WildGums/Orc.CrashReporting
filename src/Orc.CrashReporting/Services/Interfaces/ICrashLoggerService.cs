@@ -8,7 +8,7 @@
 namespace Orc.CrashReporting.Services
 {
     using System.Collections.Generic;
-    using Reporters;
+    using Loggers;
 
     public interface ICrashLoggerService
     {

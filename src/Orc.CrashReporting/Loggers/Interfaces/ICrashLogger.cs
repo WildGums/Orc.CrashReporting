@@ -5,9 +5,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Reporters
+namespace Orc.CrashReporting.Loggers
 {
-    using System;
     using Models;
 
     public interface ICrashLogger
@@ -17,7 +16,7 @@ namespace Orc.CrashReporting.Reporters
         #endregion
 
         #region Methods
-        void Report(CrashReport exception, string fileToAttach);
+        void LogCrashReport(CrashReport crashReport, string fileToAttach);
         #endregion
     }
 }

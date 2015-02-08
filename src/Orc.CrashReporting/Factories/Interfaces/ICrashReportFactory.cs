@@ -1,23 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EmailLogger.cs" company="Wild Gums">
+// <copyright file="ICrashReportFactory.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
-namespace Orc.CrashReporting.Reporters
+
+
+namespace Orc.CrashReporting
 {
     using System;
     using Models;
 
-    public class EmailLogger : ICrashLogger
+    public interface ICrashReportFactory
     {
-        public string Title
-        {
-            get { return "Email"; }
-        }
-
-        public void Report(CrashReport exception, string fileToAttach)
-        {
-            
-        }
+        #region Methods
+        CrashReport CreateCrashReport(Exception exception);
+        #endregion
     }
 }

@@ -8,7 +8,8 @@
                   xmlns:toolkit="clr-namespace:Orc.Toolkit;assembly=Orc.Toolkit"
                   mc:Ignorable="d"
                   d:DesignHeight="300"
-                  d:DesignWidth="300" Title="Error">
+                  d:DesignWidth="300" 
+                  Title="Error">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="300"/>
@@ -36,7 +37,7 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
-            <toolkit:DropDownButton Header="Report">
+            <toolkit:DropDownButton Header="LogCrashReport">
                 <views:CrashReportLoggersView/>
             </toolkit:DropDownButton>
             <Button Content="Close" />

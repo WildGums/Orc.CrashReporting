@@ -11,7 +11,7 @@ namespace Orc.CrashReporting.Services
     using System.Linq;
     using Catel.IoC;
     using Catel.Reflection;
-    using Reporters;
+    using Loggers;
 
     public class CrashLoggerService : ICrashLoggerService
     {

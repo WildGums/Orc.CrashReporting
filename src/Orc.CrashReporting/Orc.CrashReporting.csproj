@@ -100,7 +100,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CrashInfoService.cs" />
     <Compile Include="Services\CrashLoggerService.cs" />
-    <Compile Include="Services\CrashReportFactory.cs" />
+    <Compile Include="Factories\CrashReportFactory.cs" />
     <Compile Include="Helpers\CrashReporterInitializer.cs" />
     <Compile Include="Services\ExceptionHandlerService.cs" />
     <Compile Include="Loggers\Interfaces\ICrashLogger.cs" />
@@ -108,7 +108,7 @@
     <Compile Include="Services\Interfaces\IExceptionHandlerService.cs" />
     <Compile Include="Services\Interfaces\ICrashInfoService.cs" />
     <Compile Include="Services\Interfaces\ICrashReporterService.cs" />
-    <Compile Include="Services\Interfaces\ICrashReportFactory.cs" />
+    <Compile Include="Factories\Interfaces\ICrashReportFactory.cs" />
     <Compile Include="SupportPackage\Providers\CrashReportSupportPackageProvider.cs" />
   </ItemGroup>
   <ItemGroup>

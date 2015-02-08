@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Services
+namespace Orc.CrashReporting
 {
     using System;
     using Catel;
@@ -16,14 +16,17 @@ namespace Orc.CrashReporting.Services
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
+        private readonly IServiceLocator _serviceLocator;
         #endregion
 
         #region Constructors
-        public CrashReportFactory(ITypeFactory typeFactory)
+        public CrashReportFactory(ITypeFactory typeFactory, IServiceLocator serviceLocator)
         {
             Argument.IsNotNull(() => typeFactory);
+            Argument.IsNotNull(() => serviceLocator);
 
             _typeFactory = typeFactory;
+            _serviceLocator = serviceLocator;
         }
         #endregion
 
@@ -32,7 +35,10 @@ namespace Orc.CrashReporting.Services
         {
             Argument.IsNotNull(() => exception);
 
-            return _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReport>(exception);
+            var crashReport = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReport>(exception);
+            _serviceLocator.RegisterInstance(typeof(CrashReport), crashReport);
+
+            return crashReport;
         }
         #endregion
     }

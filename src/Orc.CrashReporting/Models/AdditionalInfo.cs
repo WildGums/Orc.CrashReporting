@@ -7,6 +7,7 @@
 
 namespace Orc.CrashReporting.Models
 {
+    using System.IO;
     using Orc.SupportPackage;
 
     public class AdditionalInfo : CrashInfoBase
@@ -22,7 +23,9 @@ namespace Orc.CrashReporting.Models
 
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
         {
-            base.ProvideSupportPackageData(supportPackageContext);
+            var file = supportPackageContext.GetFile("AdditionalInfo.txt");
+
+            File.WriteAllText(file, Text);
         }
     }
 }
