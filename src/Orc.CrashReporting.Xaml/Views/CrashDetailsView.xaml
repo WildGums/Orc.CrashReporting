@@ -40,7 +40,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
-        <ListBox Name="listBox" ItemsSource="{Binding CrashDetails}" SelectedItem="{Binding SelectedCrashDetails}" Grid.Column="0">
+        <ListBox Name="listBox" ItemsSource="{Binding CrashDetails}" SelectedIndex="{Binding SelectedIndex}" Grid.Column="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
@@ -49,6 +49,6 @@
         </ListBox>
         <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  
-                        ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"></ContentControl>
+                        ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
     </Grid>
 </catel:UserControl>

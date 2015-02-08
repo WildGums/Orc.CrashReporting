@@ -8,15 +8,30 @@
                   xmlns:toolkit="clr-namespace:Orc.Toolkit;assembly=Orc.Toolkit"
                   mc:Ignorable="d"
                   d:DesignHeight="300"
-                  d:DesignWidth="300">
+                  d:DesignWidth="300" Title="Error">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="300"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBox IsReadOnly="True" Text="{Binding Message}"/>
-        <views:CrashDetailsView Grid.Row="1" DataContext="{Binding CrashReport}"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error.png" Height="64" Width="64"/>
+            <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}"/>
+        </Grid>
+        
+        <Expander Grid.Row="1" ExpandDirection="Up" Header="Crash detils" IsExpanded="False">
+            <views:CrashDetailsView  DataContext="{Binding CrashReport}"/>
+        </Expander>
+        
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"

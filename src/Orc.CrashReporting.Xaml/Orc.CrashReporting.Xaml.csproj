@@ -166,7 +166,9 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\error.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AdditionalInfoView.xaml">
       <SubType>Designer</SubType>

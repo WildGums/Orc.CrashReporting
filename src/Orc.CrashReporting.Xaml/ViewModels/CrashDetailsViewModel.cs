@@ -7,6 +7,8 @@
 
 namespace Orc.CrashReporting.ViewModels
 {
+    using System.ComponentModel;
+    using System.Linq;
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
@@ -28,7 +30,8 @@ namespace Orc.CrashReporting.ViewModels
         [Expose("CrashDetails")]
         public CrashReport CrashReport { get; private set; }
 
-        public ICrashInfo SelectedCrashInfo { get; set; }
+        [DefaultValue(0)]
+        public int SelectedIndex { get; set; }
         #endregion
     }
 }
