@@ -7,6 +7,8 @@
 
 namespace Orc.CrashReporting.Models
 {
+    using Orc.SupportPackage;
+
     public class AdditionalInfo : CrashInfoBase
     {
         #region Constructors
@@ -15,5 +17,12 @@ namespace Orc.CrashReporting.Models
         {
         }
         #endregion
+
+        public string Text { get; set; }
+
+        public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
+        {
+            base.ProvideSupportPackageData(supportPackageContext);
+        }
     }
 }
