@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{C430
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Example", "Orc.CrashReporting.Example\Orc.CrashReporting.Example.csproj", "{212E015B-F824-4D5C-BEED-9119E7025590}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Loggers.Email", "Orc.CrashReporting.Loggers.Email\Orc.CrashReporting.Loggers.Email.csproj", "{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Providers.Email", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.csproj", "{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

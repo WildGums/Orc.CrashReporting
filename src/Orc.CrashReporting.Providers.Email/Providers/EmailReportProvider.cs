@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Loggers
+namespace Orc.CrashReporting
 {
     using System.Diagnostics;
     using System.IO;
@@ -48,9 +48,9 @@ namespace Orc.CrashReporting.Loggers
 
             if (!string.IsNullOrWhiteSpace(fileToAttach) && File.Exists(fileToAttach))
             {
-               // var uri = new System.Uri(fileToAttach);
-                var converted = fileToAttach;//uri.AbsoluteUri;//*/.Replace('\\','/');
-                mailTo += string.Format("&attachment=\"{0}\"", converted);
+                var uri = new System.Uri(fileToAttach);
+                var converted = /*uri.AbsoluteUri;*/fileToAttach.Replace('\\','/');
+                mailTo += string.Format("&attachment={0}", converted);
             }
 
             var process = Process.Start(mailTo);

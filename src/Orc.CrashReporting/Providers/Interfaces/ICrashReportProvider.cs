@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Loggers
+namespace Orc.CrashReporting
 {
     using Models;
 

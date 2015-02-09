@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orc.CrashReporting</RootNamespace>
-    <AssemblyName>Orc.CrashReporting.Loggers.Email</AssemblyName>
+    <AssemblyName>Orc.CrashReporting.Providers.Email</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>1ecf3fc3</NuGetPackageImportStamp>
@@ -17,20 +17,20 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\output\debug\Orc.CrashReporting.Loggers.Email\</OutputPath>
+    <OutputPath>..\..\output\debug\Orc.CrashReporting.Providers.Email\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\output\debug\Orc.CrashReporting.Loggers.Email\Orc.CrashReporting.Loggers.Email.XML</DocumentationFile>
+    <DocumentationFile>..\..\output\debug\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\output\release\Orc.CrashReporting.Loggers.Email\</OutputPath>
+    <OutputPath>..\..\output\release\Orc.CrashReporting.Providers.Email\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\output\release\Orc.CrashReporting.Loggers.Email\Orc.CrashReporting.Loggers.Email.XML</DocumentationFile>
+    <DocumentationFile>..\..\output\release\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Catel.Core">
@@ -68,7 +68,7 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="Loggers\EmailReportProvider.cs" />
+    <Compile Include="Providers\EmailReportProvider.cs" />
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -103,7 +103,7 @@
     <Compile Include="Factories\CrashReportFactory.cs" />
     <Compile Include="Initializers\CrashReporterInitializer.cs" />
     <Compile Include="Services\ExceptionHandlerService.cs" />
-    <Compile Include="Loggers\Interfaces\ICrashReportProvider.cs" />
+    <Compile Include="Providers\Interfaces\ICrashReportProvider.cs" />
     <Compile Include="Services\Interfaces\ICrashLoggerService.cs" />
     <Compile Include="Services\Interfaces\IExceptionHandlerService.cs" />
     <Compile Include="Services\Interfaces\ICrashInfoService.cs" />
