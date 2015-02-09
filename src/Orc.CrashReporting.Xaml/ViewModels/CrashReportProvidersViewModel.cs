@@ -12,7 +12,6 @@ namespace Orc.CrashReporting.ViewModels
     using Catel.IoC;
     using Catel.Logging;
     using Catel.MVVM;
-    using Loggers;
     using Models;
     using Orc.SupportPackage;
     using Services;

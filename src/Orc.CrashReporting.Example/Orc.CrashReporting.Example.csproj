@@ -130,7 +130,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Orc.CrashReporting.Loggers.Email\Orc.CrashReporting.Providers.Email.csproj">
+    <ProjectReference Include="..\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.csproj">
       <Project>{d69fe6f6-d5e6-46bc-a9a1-ed13450e0755}</Project>
       <Name>Orc.CrashReporting.Providers.Email</Name>
     </ProjectReference>

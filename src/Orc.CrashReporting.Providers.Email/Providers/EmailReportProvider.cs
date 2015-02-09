@@ -49,7 +49,7 @@ namespace Orc.CrashReporting
             if (!string.IsNullOrWhiteSpace(fileToAttach) && File.Exists(fileToAttach))
             {
                 var uri = new System.Uri(fileToAttach);
-                var converted = /*uri.AbsoluteUri;*/fileToAttach.Replace('\\','/');
+                var converted = /*uri.AbsoluteUri;*/ fileToAttach.Replace('\\', '/');
                 mailTo += string.Format("&attachment={0}", converted);
             }
 
