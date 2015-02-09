@@ -8,6 +8,7 @@
 namespace Orc.CrashReporting.Models
 {
     using System.IO;
+    using Catel;
     using Orc.SupportPackage;
 
     public class AdditionalInfo : CrashInfoBase
@@ -19,13 +20,23 @@ namespace Orc.CrashReporting.Models
         }
         #endregion
 
+        #region Properties
         public string Text { get; set; }
+        #endregion
 
+        #region Methods
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
         {
+            Argument.IsNotNull(() => supportPackageContext);
+
+            if (string.IsNullOrWhiteSpace(Text))
+            {
+                return;
+            }
             var file = supportPackageContext.GetFile("AdditionalInfo.txt");
 
             File.WriteAllText(file, Text);
         }
+        #endregion
     }
 }

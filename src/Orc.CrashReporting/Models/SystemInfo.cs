@@ -8,7 +8,6 @@
 namespace Orc.CrashReporting.Models
 {
     using System.Text;
-    using System.Threading.Tasks;
     using Catel;
     using Orc.SystemInfo;
 
@@ -28,7 +27,7 @@ namespace Orc.CrashReporting.Models
 
             Initialize();
         }
-        #endregion        
+        #endregion
 
         #region Properties
         public string Details { get; set; }

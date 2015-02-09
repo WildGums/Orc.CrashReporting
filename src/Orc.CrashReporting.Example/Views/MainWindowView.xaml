@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:catel="http://catel.codeplex.com"
         Title="Orc.CrashLogCrashReporting Example" Height="350" Width="525">
-    <Grid>
-        <Button Content="Sow crash report" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Command="{Binding ShowCrashReport}"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button Content="Throw exception" HorizontalAlignment="Left"  VerticalAlignment="Top" Command="{Binding ThrowException}"/>
 
     </Grid>
 </catel:Window>

@@ -9,6 +9,7 @@ namespace Orc.CrashReporting.Services
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Catel;
     using Catel.IoC;
     using Catel.Reflection;
     using Loggers;
@@ -22,6 +23,8 @@ namespace Orc.CrashReporting.Services
         #region Constructors
         public CrashLoggerService(ITypeFactory typeFactory)
         {
+            Argument.IsNotNull(() => typeFactory);
+
             _typeFactory = typeFactory;
         }
         #endregion

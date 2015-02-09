@@ -3,6 +3,8 @@
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+
 namespace Orc.CrashReporting.SupportPackage.Providers
 {
     using System.Threading.Tasks;
@@ -12,21 +14,29 @@ namespace Orc.CrashReporting.SupportPackage.Providers
 
     public class CrashReportSupportPackageProvider : SupportPackageProviderBase
     {
+        #region Fields
         private readonly CrashReport _crashReport;
+        #endregion
 
+        #region Constructors
         public CrashReportSupportPackageProvider(CrashReport crashReport)
         {
             Argument.IsNotNull(() => crashReport);
 
             _crashReport = crashReport;
         }
+        #endregion
 
-        public async override Task Provide(ISupportPackageContext supportPackageContext)
+        #region Methods
+        public override async Task Provide(ISupportPackageContext supportPackageContext)
         {
+            Argument.IsNotNull(() => supportPackageContext);
+
             foreach (var crashInfo in _crashReport.CrashDetails)
             {
                 crashInfo.ProvideSupportPackageData(supportPackageContext);
             }
         }
+        #endregion
     }
 }

@@ -10,7 +10,6 @@ namespace Orc.CrashReporting
     using System;
     using System.Windows.Threading;
     using Catel;
-    using Models;
     using Services;
 
     public class UnhandledCatcher

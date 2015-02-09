@@ -3,42 +3,36 @@
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
+
+
 namespace Orc.CrashReporting
 {
     using System;
     using System.IO;
+    using Catel;
     using Catel.Logging;
     using Catel.Reflection;
 
-    public class CrashReportingContext : IDisposable, ICrashReportingContext
+    public class CrashReportingContext : ICrashReportingContext
     {
+        #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
         private readonly string _rootDirectory;
+        #endregion
 
+        #region Constructors
         public CrashReportingContext()
         {
             var assembly = AssemblyHelper.GetEntryAssembly();
 
             _rootDirectory = Path.Combine(Path.GetTempPath(), assembly.Company(), assembly.Title(),
-                "support", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+                "supportPackage", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
 
             Directory.CreateDirectory(_rootDirectory);
         }
+        #endregion
 
-        public string GetFile(string relativeFilePath)
-        {
-            var fullPath = Path.Combine(_rootDirectory, relativeFilePath);
-
-            var directory = Path.GetDirectoryName(fullPath);
-            if (!Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
-
-            return fullPath;
-        }
-
+        #region Methods
         public void Dispose()
         {
             Log.Info("Deleting temporary files from '{0}'", _rootDirectory);
@@ -55,5 +49,21 @@ namespace Orc.CrashReporting
                 Log.Error(ex, "Failed to delete temporary files");
             }
         }
+
+        public string GetFile(string relativeFilePath)
+        {
+            Argument.IsNotNullOrWhitespace(() => relativeFilePath);
+
+            var fullPath = Path.Combine(_rootDirectory, relativeFilePath);
+
+            var directory = Path.GetDirectoryName(fullPath);
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            return fullPath;
+        }
+        #endregion
     }
 }

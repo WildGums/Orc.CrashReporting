@@ -14,15 +14,19 @@ namespace Orc.CrashReporting.ViewModels
 
     internal class ExceptionViewModel : ViewModelBase
     {
+        #region Constructors
         public ExceptionViewModel(ExceptionInfo exceptionInfo)
         {
             Argument.IsNotNull(() => exceptionInfo);
 
             ExceptionInfo = exceptionInfo;
         }
+        #endregion
 
+        #region Properties
         [Model]
         [Expose("FullExceptionText")]
         public ExceptionInfo ExceptionInfo { get; private set; }
+        #endregion
     }
 }

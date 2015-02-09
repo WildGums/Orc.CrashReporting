@@ -11,9 +11,12 @@ namespace Orc.CrashReporting.Models
 
     public interface ICrashInfo
     {
-        void ProvideSupportPackageData(ISupportPackageContext supportPackageContext);
         #region Properties
         string Title { get; }
+        #endregion
+
+        #region Methods
+        void ProvideSupportPackageData(ISupportPackageContext supportPackageContext);
         #endregion
     }
 }

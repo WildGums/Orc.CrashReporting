@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Extensions
+namespace Orc.CrashReporting
 {
     using System.Collections.Generic;
     using System.Diagnostics;

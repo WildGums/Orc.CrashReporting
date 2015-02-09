@@ -7,7 +7,8 @@
              xmlns:templateSelectors="clr-namespace:Orc.CrashReporting.TemplateSelectors"
              xmlns:views="clr-namespace:Orc.CrashReporting.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+                   x:ClassModifier="internal">
     <catel:UserControl.Resources>
         <DataTemplate x:Key="ExceptionTemplate">
             <views:ExceptionView />
@@ -35,7 +36,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
@@ -48,7 +49,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  
+        <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  MinWidth="300"
                         ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
     </Grid>
 </catel:UserControl>

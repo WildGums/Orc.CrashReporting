@@ -8,40 +8,30 @@
 namespace Orc.CrashReporting.Example.ViewModels
 {
     using System;
-    using Catel;
     using Catel.MVVM;
-    using Services;
 
     public class MainWindowViewModel : ViewModelBase
     {
-        #region Fields
-        private readonly IExceptionHandlerService _exceptionHandlerService;
-        #endregion
-
         #region Constructors
-        public MainWindowViewModel(IExceptionHandlerService exceptionHandlerService)
+        public MainWindowViewModel()
         {
-            Argument.IsNotNull(() => exceptionHandlerService);
-            _exceptionHandlerService = exceptionHandlerService;
-
-            ShowCrashReport = new Command(OnShowCrashReportExecute);
+            ThrowException = new Command(OnThrowExceptionExecute);
         }
         #endregion
 
         #region Commands
-        public Command ShowCrashReport { get; private set; }
+        public Command ThrowException { get; private set; }
 
-        private async void OnShowCrashReportExecute()
+        private async void OnThrowExceptionExecute()
         {
             try
             {
-                throw new NotImplementedException("message");
+                throw new NotImplementedException("Inner exception message");
             }
             catch (Exception exception)
             {
-                throw new InvalidOperationException("message2", exception);
+                throw new InvalidOperationException("Exception message", exception);
             }
-            
         }
         #endregion
     }

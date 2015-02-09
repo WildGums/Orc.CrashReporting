@@ -8,7 +8,6 @@
 namespace Orc.CrashReporting.ViewModels
 {
     using System.ComponentModel;
-    using System.Linq;
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;

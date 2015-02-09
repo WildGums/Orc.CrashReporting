@@ -88,7 +88,7 @@
     <Compile Include="Context\Interfaces\ICrashReportingContext.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\SystemInfoExtensions.cs" />
-    <Compile Include="Helpers\UnhandledCatcher.cs" />
+    <Compile Include="Handlers\UnhandledCatcher.cs" />
     <Compile Include="Models\AdditionalInfo.cs" />
     <Compile Include="Models\Base\CrashInfoBase.cs" />
     <Compile Include="Models\CrashReport.cs" />
@@ -101,7 +101,7 @@
     <Compile Include="Services\CrashInfoService.cs" />
     <Compile Include="Services\CrashLoggerService.cs" />
     <Compile Include="Factories\CrashReportFactory.cs" />
-    <Compile Include="Helpers\CrashReporterInitializer.cs" />
+    <Compile Include="Initializers\CrashReporterInitializer.cs" />
     <Compile Include="Services\ExceptionHandlerService.cs" />
     <Compile Include="Loggers\Interfaces\ICrashLogger.cs" />
     <Compile Include="Services\Interfaces\ICrashLoggerService.cs" />

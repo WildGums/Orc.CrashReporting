@@ -8,8 +8,10 @@
 namespace Orc.CrashReporting.Models
 {
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
     using Catel;
-    using Extensions;
+    using Orc.SupportPackage;
     using Orc.SystemInfo;
 
     public class LoadedModulesInfo : CrashInfoBase
@@ -37,6 +39,22 @@ namespace Orc.CrashReporting.Models
         private async void Initialize()
         {
             LoadedModules = new List<string>(await _systemInfoService.GetLoadedModules());
+        }
+
+        public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
+        {
+            Argument.IsNotNull(() => supportPackageContext);
+
+            var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += string.Format("{0}\n", assembly));
+
+            if (string.IsNullOrWhiteSpace(loadedModules))
+            {
+                return;
+            }
+
+            var file = supportPackageContext.GetFile("LoadedModules.txt");
+
+            File.WriteAllText(file, loadedModules);
         }
         #endregion
     }

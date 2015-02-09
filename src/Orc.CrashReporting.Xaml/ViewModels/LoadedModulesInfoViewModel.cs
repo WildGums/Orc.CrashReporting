@@ -7,11 +7,12 @@
 
 namespace Orc.CrashReporting.ViewModels
 {
+    using Catel;
     using Catel.Fody;
     using Catel.MVVM;
     using Models;
 
-    public class LoadedModulesInfoViewModel : ViewModelBase
+    internal class LoadedModulesInfoViewModel : ViewModelBase
     {
         #region Fields
         private readonly LoadedModulesInfo _loadedModulesInfo;
@@ -20,6 +21,8 @@ namespace Orc.CrashReporting.ViewModels
         #region Constructors
         public LoadedModulesInfoViewModel(LoadedModulesInfo loadedModulesInfo)
         {
+            Argument.IsNotNull(() => loadedModulesInfo);
+
             LoadedModulesInfo = loadedModulesInfo;
         }
         #endregion

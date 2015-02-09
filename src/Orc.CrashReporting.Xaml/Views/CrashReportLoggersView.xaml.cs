@@ -12,7 +12,7 @@ namespace Orc.CrashReporting.Views
     /// <summary>
     /// Interaction logic for CrashReportLoggersView.xaml
     /// </summary>
-    public partial class CrashReportLoggersView
+    internal partial class CrashReportLoggersView
     {
         #region Constructors
         public CrashReportLoggersView()
@@ -21,9 +21,11 @@ namespace Orc.CrashReporting.Views
         }
         #endregion
 
+        #region Methods
         protected override void OnLoaded(EventArgs e)
         {
             base.OnLoaded(e);
         }
+        #endregion
     }
 }

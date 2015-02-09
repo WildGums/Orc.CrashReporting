@@ -10,7 +10,6 @@ namespace Orc.CrashReporting.Services
     using System;
     using Catel;
     using Catel.IoC;
-    using SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
@@ -50,7 +49,6 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public void HandleException(Exception exception)
         {
-
             var crashReport = _crashReportFactory.CreateCrashReport(exception);
             CrashReporterService.ShowCrashReport(crashReport);
         }

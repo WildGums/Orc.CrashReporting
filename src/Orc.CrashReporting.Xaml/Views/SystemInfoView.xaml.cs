@@ -10,7 +10,7 @@ namespace Orc.CrashReporting.Views
     /// <summary>
     /// Interaction logic for SystemInfoView.xaml
     /// </summary>
-    public partial class SystemInfoView
+    internal partial class SystemInfoView
     {
         #region Constructors
         public SystemInfoView()

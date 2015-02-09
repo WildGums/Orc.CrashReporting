@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Extensions
+namespace Orc.CrashReporting
 {
     using System;
     using System.Text;

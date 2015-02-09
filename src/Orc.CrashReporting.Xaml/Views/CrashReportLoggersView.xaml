@@ -6,7 +6,8 @@
              xmlns:catel="http://catel.codeplex.com"
              xmlns:views="clr-namespace:Orc.CrashReporting.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+                   x:ClassModifier="internal">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
             <ListBox ItemsSource="{Binding Loggers}" SelectedItem="{Binding SelectedLogger}">

@@ -34,6 +34,8 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public void ShowCrashReport(CrashReport crashReport)
         {
+            Argument.IsNotNull(() => crashReport);
+
             var crashReporterVm = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReportViewModel>(crashReport);
             _uiVisualizerService.ShowDialog(crashReporterVm);
         }

@@ -9,7 +9,8 @@
                   mc:Ignorable="d"
                   d:DesignHeight="300"
                   d:DesignWidth="300" 
-                  Title="Error">
+                  Title="Error"
+                  x:ClassModifier="internal">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="300"/>
@@ -29,7 +30,7 @@
             <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}"/>
         </Grid>
         
-        <Expander Grid.Row="1" ExpandDirection="Up" Header="Crash detils" IsExpanded="False">
+        <Expander Grid.Row="1" ExpandDirection="Down" Header="Show detils" IsExpanded="False">
             <views:CrashDetailsView  DataContext="{Binding CrashReport}"/>
         </Expander>
         
@@ -37,10 +38,11 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
-            <toolkit:DropDownButton Header="LogCrashReport">
+            <ContentControl Margin="5,2">
+                <toolkit:DropDownButton Header="Send crash report">
                 <views:CrashReportLoggersView/>
             </toolkit:DropDownButton>
-            <Button Content="Close" />
+            </ContentControl>
         </StackPanel>
     </Grid>
 </catel:DataWindow>

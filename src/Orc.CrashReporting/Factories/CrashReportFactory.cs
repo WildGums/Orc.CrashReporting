@@ -15,8 +15,8 @@ namespace Orc.CrashReporting
     public class CrashReportFactory : ICrashReportFactory
     {
         #region Fields
-        private readonly ITypeFactory _typeFactory;
         private readonly IServiceLocator _serviceLocator;
+        private readonly ITypeFactory _typeFactory;
         #endregion
 
         #region Constructors
@@ -36,7 +36,7 @@ namespace Orc.CrashReporting
             Argument.IsNotNull(() => exception);
 
             var crashReport = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReport>(exception);
-            _serviceLocator.RegisterInstance(typeof(CrashReport), crashReport);
+            _serviceLocator.RegisterInstance(typeof (CrashReport), crashReport);
 
             return crashReport;
         }

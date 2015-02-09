@@ -7,8 +7,6 @@
 
 namespace Orc.CrashReporting.Example
 {
-    using System.Windows;
-
     /// <summary>
     /// Interaction logic for MainWindowView.xaml
     /// </summary>

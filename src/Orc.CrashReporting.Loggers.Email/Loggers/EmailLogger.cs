@@ -7,31 +7,24 @@
 
 namespace Orc.CrashReporting.Loggers
 {
-    using System;
     using System.Diagnostics;
     using System.IO;
-    using System.Net;
-    using System.Net.Mail;
     using Catel;
     using Catel.Configuration;
-    using Catel.Services;
     using Models;
 
     public class EmailLogger : ICrashLogger
     {
         #region Fields
         private readonly IConfigurationService _configurationService;
-        private readonly IPleaseWaitService _pleaseWaitService;
         #endregion
 
         #region Constructors
-        public EmailLogger(IConfigurationService configurationService, IPleaseWaitService pleaseWaitService)
+        public EmailLogger(IConfigurationService configurationService)
         {
             Argument.IsNotNull(() => configurationService);
-            Argument.IsNotNull(() => pleaseWaitService);
 
             _configurationService = configurationService;
-            _pleaseWaitService = pleaseWaitService;
         }
         #endregion
 
@@ -51,9 +44,18 @@ namespace Orc.CrashReporting.Loggers
             var emailSubject = _configurationService.GetValue(EmailLoggerSettings.EmailSubject, EmailLoggerSettings.EmailSubjectDefaultValue);
             var emailBody = crashReport.Exception.ToString();
 
-            var mailTo = string.Format("mailto:{0}?subject={1}&body={2}", emailTo, emailSubject, emailBody);
+            var mailTo = string.Format("mailto:{0}&subject={1}&body={2}", emailTo, emailSubject, emailBody);
 
-            Process.Start(mailTo);
+            if (!string.IsNullOrWhiteSpace(fileToAttach) && File.Exists(fileToAttach))
+            {
+                mailTo += string.Format("&attach={0}", fileToAttach);
+            }
+
+            var process = Process.Start(mailTo);
+            if (process != null)
+            {
+                process.WaitForExit();
+            }
         }
         #endregion
     }

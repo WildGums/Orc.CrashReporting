@@ -36,7 +36,6 @@ namespace Orc.CrashReporting.Models
         {
             get { return Exception.Message; }
         }
-
         #endregion
     }
 }
