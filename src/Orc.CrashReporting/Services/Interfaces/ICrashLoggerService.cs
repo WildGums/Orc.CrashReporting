@@ -13,7 +13,7 @@ namespace Orc.CrashReporting.Services
     public interface ICrashLoggerService
     {
         #region Methods
-        IEnumerable<ICrashLogger> GetAllCrashLoggers();
+        IEnumerable<ICrashReportProvider> GetAllCrashLoggers();
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿<catel:UserControl x:Class="Orc.CrashReporting.Views.CrashReportLoggersView"
+﻿<catel:UserControl x:Class="Orc.CrashReporting.Views.CrashReportProvidersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,7 @@
                    x:ClassModifier="internal">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="400">
-            <ListBox ItemsSource="{Binding Loggers}" SelectedItem="{Binding SelectedLogger}">
+            <ListBox ItemsSource="{Binding CrashReportProviders}" SelectedItem="{Binding SelectedReportProvider}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

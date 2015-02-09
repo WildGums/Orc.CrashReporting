@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EmailLogger.cs" company="Wild Gums">
+// <copyright file="EmailReportProvider.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -13,14 +13,14 @@ namespace Orc.CrashReporting.Loggers
     using Catel.Configuration;
     using Models;
 
-    public class EmailLogger : ICrashLogger
+    public class EmailReportProvider : ICrashReportProvider
     {
         #region Fields
         private readonly IConfigurationService _configurationService;
         #endregion
 
         #region Constructors
-        public EmailLogger(IConfigurationService configurationService)
+        public EmailReportProvider(IConfigurationService configurationService)
         {
             Argument.IsNotNull(() => configurationService);
 
@@ -48,13 +48,15 @@ namespace Orc.CrashReporting.Loggers
 
             if (!string.IsNullOrWhiteSpace(fileToAttach) && File.Exists(fileToAttach))
             {
-                mailTo += string.Format("&attach={0}", fileToAttach);
+               // var uri = new System.Uri(fileToAttach);
+                var converted = fileToAttach;//uri.AbsoluteUri;//*/.Replace('\\','/');
+                mailTo += string.Format("&attachment=\"{0}\"", converted);
             }
 
             var process = Process.Start(mailTo);
             if (process != null)
             {
-                process.WaitForExit();
+                process.WaitForInputIdle();
             }
         }
         #endregion

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportLoggersViewModel.cs" company="Wild Gums">
+// <copyright file="CrashReportProvidersViewModel.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ namespace Orc.CrashReporting.ViewModels
     using Orc.SupportPackage;
     using Services;
 
-    internal class CrashReportLoggersViewModel : ViewModelBase
+    internal class CrashReportProvidersViewModel : ViewModelBase
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
@@ -28,7 +28,7 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Constructors
-        public CrashReportLoggersViewModel(CrashReport crashReport, ICrashLoggerService crashLoggerService, ISupportPackageService supportPackageService, IServiceLocator serviceLocator)
+        public CrashReportProvidersViewModel(CrashReport crashReport, ICrashLoggerService crashLoggerService, ISupportPackageService supportPackageService, IServiceLocator serviceLocator)
         {
             Argument.IsNotNull(() => crashReport);
             Argument.IsNotNull(() => crashLoggerService);
@@ -40,19 +40,19 @@ namespace Orc.CrashReporting.ViewModels
             _supportPackageService = supportPackageService;
             _serviceLocator = serviceLocator;
 
-            Loggers = new List<ICrashLogger>(_crashLoggerService.GetAllCrashLoggers());
+            CrashReportProviders = new List<ICrashReportProvider>(_crashLoggerService.GetAllCrashLoggers());
         }
         #endregion
 
         #region Properties
-        public IList<ICrashLogger> Loggers { get; private set; }
-        public ICrashLogger SelectedLogger { get; set; }
+        public IList<ICrashReportProvider> CrashReportProviders { get; private set; }
+        public ICrashReportProvider SelectedReportProvider { get; set; }
         #endregion
 
         #region Methods
-        private async void OnSelectedLoggerChanged()
+        private async void OnSelectedReportProviderChanged()
         {
-            if (SelectedLogger == null)
+            if (SelectedReportProvider == null)
             {
                 return;
             }
@@ -62,7 +62,7 @@ namespace Orc.CrashReporting.ViewModels
                 var file = crashRportingContext.GetFile("SupportPackage.zip");
                 if (await _supportPackageService.CreateSupportPackage(file))
                 {
-                    SelectedLogger.LogCrashReport(_crashReport, file);
+                    SelectedReportProvider.LogCrashReport(_crashReport, file);
                 }
             }
 

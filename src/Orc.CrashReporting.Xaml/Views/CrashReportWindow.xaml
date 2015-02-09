@@ -40,7 +40,7 @@
                     VerticalAlignment="Center">
             <ContentControl Margin="5,2">
                 <toolkit:DropDownButton Header="Send crash report">
-                <views:CrashReportLoggersView/>
+                <views:CrashReportProvidersView/>
             </toolkit:DropDownButton>
             </ContentControl>
         </StackPanel>

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICrashLogger.cs" company="Wild Gums">
+// <copyright file="ICrashReportProvider.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -9,7 +9,7 @@ namespace Orc.CrashReporting.Loggers
 {
     using Models;
 
-    public interface ICrashLogger
+    public interface ICrashReportProvider
     {
         #region Properties
         string Title { get; }

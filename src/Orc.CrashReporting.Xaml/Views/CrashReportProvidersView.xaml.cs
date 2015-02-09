@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportLoggersView.xaml.cs" company="Wild Gums">
+// <copyright file="CrashReportProvidersView.xaml.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -10,12 +10,12 @@ namespace Orc.CrashReporting.Views
     using System;
 
     /// <summary>
-    /// Interaction logic for CrashReportLoggersView.xaml
+    /// Interaction logic for CrashReportProvidersView.xaml
     /// </summary>
-    internal partial class CrashReportLoggersView
+    internal partial class CrashReportProvidersView
     {
         #region Constructors
-        public CrashReportLoggersView()
+        public CrashReportProvidersView()
         {
             InitializeComponent();
         }
