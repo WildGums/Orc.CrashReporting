@@ -32,9 +32,10 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public void AddCrashInfo<T>() where T : ICrashInfo
+        public void AddCrashInfo<T>() 
+            where T : ICrashInfo
         {
-            // don't used Catel.Reflection.TypeCahe because need to keep order
+            // don't used Catel.Reflection.TypeCache because need to keep order
             _types.Add(typeof (T));
         }
 

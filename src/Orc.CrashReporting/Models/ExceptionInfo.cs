@@ -21,9 +21,10 @@ namespace Orc.CrashReporting.Models
         public ExceptionInfo(CrashReport crashReport)
             : base(CrashDetails.ExceptionDetailsTitle, crashReport)
         {
-            _crashReport = crashReport;
             Argument.IsNotNull(() => crashReport);
 
+            _crashReport = crashReport;
+            
             FullExceptionText = crashReport.Exception.GetExceptionInfo();
         }
         #endregion

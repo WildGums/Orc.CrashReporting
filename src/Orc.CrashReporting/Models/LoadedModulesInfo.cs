@@ -21,7 +21,8 @@ namespace Orc.CrashReporting.Models
         #endregion
 
         #region Constructors
-        public LoadedModulesInfo(CrashReport crashReport, ISystemInfoService systemInfoService) : base(CrashDetails.LoadedModulesInfo, crashReport)
+        public LoadedModulesInfo(CrashReport crashReport, ISystemInfoService systemInfoService) 
+            : base(CrashDetails.LoadedModulesInfo, crashReport)
         {
             Argument.IsNotNull(() => systemInfoService);
 

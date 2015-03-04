@@ -33,6 +33,7 @@ namespace Orc.CrashReporting.Models
             {
                 return;
             }
+
             var file = supportPackageContext.GetFile("AdditionalInfo.txt");
 
             File.WriteAllText(file, Text);

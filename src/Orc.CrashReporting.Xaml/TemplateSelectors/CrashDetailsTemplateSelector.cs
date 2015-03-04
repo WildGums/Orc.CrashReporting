@@ -37,16 +37,15 @@ namespace Orc.CrashReporting.TemplateSelectors
             {
                 case CrashDetails.ExceptionDetailsTitle:
                     return ExceptionTemplate;
-                    break;
+
                 case CrashDetails.SystemInfoTitle:
                     return SystemInfoTemplate;
-                    break;
+                    
                 case CrashDetails.AdditionalInfo:
                     return AdditionatInfoTemplate;
-                    break;
+                    
                 case CrashDetails.LoadedModulesInfo:
                     return LoadedModulesTemplate;
-                    break;
             }
 
             return base.SelectTemplate(item, container);

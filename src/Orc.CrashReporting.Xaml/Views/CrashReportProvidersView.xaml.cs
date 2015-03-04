@@ -7,8 +7,6 @@
 
 namespace Orc.CrashReporting.Views
 {
-    using System;
-
     /// <summary>
     /// Interaction logic for CrashReportProvidersView.xaml
     /// </summary>
@@ -18,13 +16,6 @@ namespace Orc.CrashReporting.Views
         public CrashReportProvidersView()
         {
             InitializeComponent();
-        }
-        #endregion
-
-        #region Methods
-        protected override void OnLoaded(EventArgs e)
-        {
-            base.OnLoaded(e);
         }
         #endregion
     }

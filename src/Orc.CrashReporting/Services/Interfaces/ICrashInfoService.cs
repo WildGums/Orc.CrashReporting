@@ -13,7 +13,9 @@ namespace Orc.CrashReporting.Services
     public interface ICrashInfoService
     {
         #region Methods
-        void AddCrashInfo<T>() where T : ICrashInfo;
+        void AddCrashInfo<T>() 
+            where T : ICrashInfo;
+
         IEnumerable<ICrashInfo> GetAllCrashInfos(CrashReport crashReport);
         #endregion
     }
