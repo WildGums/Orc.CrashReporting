@@ -9,7 +9,6 @@ namespace Orc.CrashReporting.SupportPackage.Providers
 {
     using System.Threading.Tasks;
     using Catel;
-    using Models;
     using Orc.SupportPackage;
 
     public class CrashReportSupportPackageProvider : SupportPackageProviderBase
@@ -19,18 +18,18 @@ namespace Orc.CrashReporting.SupportPackage.Providers
         #endregion
 
         #region Constructors
-        public CrashReportSupportPackageProvider(CrashReport crashReport)
+        public CrashReportSupportPackageProvider(ICrashReportingContext crashReportingContext)
         {
-            Argument.IsNotNull(() => crashReport);
+            Argument.IsNotNull("crashReportingContext", crashReportingContext);
 
-            _crashReport = crashReport;
+            _crashReport = crashReportingContext.CrashReport;
         }
         #endregion
 
         #region Methods
         public override async Task Provide(ISupportPackageContext supportPackageContext)
         {
-            Argument.IsNotNull(() => supportPackageContext);
+            Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
             foreach (var crashInfo in _crashReport.CrashDetails)
             {

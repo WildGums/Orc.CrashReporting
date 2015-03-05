@@ -12,7 +12,6 @@ namespace Orc.CrashReporting.ViewModels
     using Catel.IoC;
     using Catel.Logging;
     using Catel.MVVM;
-    using Models;
     using Orc.SupportPackage;
     using Services;
 
@@ -20,7 +19,6 @@ namespace Orc.CrashReporting.ViewModels
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
         private readonly ICrashLoggerService _crashLoggerService;
         private readonly CrashReport _crashReport;
         private readonly IServiceLocator _serviceLocator;

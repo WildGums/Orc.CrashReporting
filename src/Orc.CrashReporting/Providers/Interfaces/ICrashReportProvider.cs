@@ -7,8 +7,6 @@
 
 namespace Orc.CrashReporting
 {
-    using Models;
-
     public interface ICrashReportProvider
     {
         #region Properties

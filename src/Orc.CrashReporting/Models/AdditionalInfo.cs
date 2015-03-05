@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
     using System.IO;
     using Catel;
@@ -14,8 +14,8 @@ namespace Orc.CrashReporting.Models
     public class AdditionalInfo : CrashInfoBase
     {
         #region Constructors
-        public AdditionalInfo(CrashReport crashReport)
-            : base(CrashDetails.AdditionalInfo, crashReport)
+        public AdditionalInfo()
+            : base(CrashDetails.AdditionalInfo)
         {
         }
         #endregion
@@ -27,7 +27,7 @@ namespace Orc.CrashReporting.Models
         #region Methods
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
         {
-            Argument.IsNotNull(() => supportPackageContext);
+            Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
             if (string.IsNullOrWhiteSpace(Text))
             {

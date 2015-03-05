@@ -15,18 +15,15 @@ namespace Orc.CrashReporting.Services
     {
         #region Fields
         private ICrashReporterService _crashReporterService;
-        private readonly ICrashReportFactory _crashReportFactory;
         private readonly IServiceLocator _serviceLocator;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator, ICrashReportFactory crashReportFactory)
+        public ExceptionHandlerService(IServiceLocator serviceLocator)
         {
-            Argument.IsNotNull(() => serviceLocator);
-            Argument.IsNotNull(() => crashReportFactory);
+            Argument.IsNotNull("serviceLocator", serviceLocator);
 
             _serviceLocator = serviceLocator;
-            _crashReportFactory = crashReportFactory;
         }
         #endregion
 
@@ -49,8 +46,7 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public void HandleException(Exception exception)
         {
-            var crashReport = _crashReportFactory.CreateCrashReport(exception);
-            CrashReporterService.ShowCrashReport(crashReport);
+            CrashReporterService.ShowCrashReport(exception);
         }
         #endregion
     }

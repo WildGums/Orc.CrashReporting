@@ -11,7 +11,6 @@ namespace Orc.CrashReporting
     using System.IO;
     using Catel;
     using Catel.Configuration;
-    using Models;
 
     public class EmailReportProvider : ICrashReportProvider
     {

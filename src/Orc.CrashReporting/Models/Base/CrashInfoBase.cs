@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
     using Catel;
     using Catel.Data;
@@ -14,10 +14,9 @@ namespace Orc.CrashReporting.Models
     public abstract class CrashInfoBase : ModelBase, ICrashInfo
     {
         #region Constructors
-        public CrashInfoBase(string title, CrashReport crashReport)
+        public CrashInfoBase(string title)
         {
-            Argument.IsNotNullOrWhitespace(() => title);
-            Argument.IsNotNull(() => crashReport);
+            Argument.IsNotNullOrWhitespace("title", title);
 
             Title = title;
         }

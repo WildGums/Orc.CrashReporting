@@ -11,7 +11,6 @@ namespace Orc.CrashReporting.Services
     using System.Collections.Generic;
     using Catel;
     using Catel.IoC;
-    using Models;
 
     public class CrashInfoService : ICrashInfoService
     {
@@ -23,7 +22,7 @@ namespace Orc.CrashReporting.Services
         #region Constructors
         public CrashInfoService(ITypeFactory typeFactory)
         {
-            Argument.IsNotNull(() => typeFactory);
+            Argument.IsNotNull("typeFactory", typeFactory);
 
             _typeFactory = typeFactory;
 
@@ -32,20 +31,18 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public void AddCrashInfo<T>() 
+        public void AddCrashInfo<T>()
             where T : ICrashInfo
         {
             // don't used Catel.Reflection.TypeCache because need to keep order
             _types.Add(typeof (T));
         }
 
-        public IEnumerable<ICrashInfo> GetAllCrashInfos(CrashReport crashReport)
+        public IEnumerable<ICrashInfo> GetAllCrashInfos()
         {
-            Argument.IsNotNull(() => crashReport);
-
             foreach (var type in _types)
             {
-                yield return (ICrashInfo) _typeFactory.CreateInstanceWithParametersAndAutoCompletion(type, crashReport);
+                yield return (ICrashInfo) _typeFactory.CreateInstance(type);
             }
         }
         #endregion

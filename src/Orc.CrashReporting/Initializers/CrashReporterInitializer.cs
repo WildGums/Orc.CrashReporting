@@ -9,7 +9,6 @@ namespace Orc.CrashReporting
 {
     using Catel;
     using Catel.IoC;
-    using Models;
     using Services;
 
     internal class CrashReporterInitializer
@@ -22,8 +21,8 @@ namespace Orc.CrashReporting
         #region Constructors
         public CrashReporterInitializer(ICrashInfoService crashInfoService, IServiceLocator serviceLocator)
         {
-            Argument.IsNotNull(() => crashInfoService);
-            Argument.IsNotNull(() => serviceLocator);
+            Argument.IsNotNull("crashInfoService", crashInfoService);
+            Argument.IsNotNull("serviceLocator", serviceLocator);
 
             _crashInfoService = crashInfoService;
             _serviceLocator = serviceLocator;

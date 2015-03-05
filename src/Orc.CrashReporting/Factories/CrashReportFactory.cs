@@ -10,34 +10,28 @@ namespace Orc.CrashReporting
     using System;
     using Catel;
     using Catel.IoC;
-    using Models;
 
     public class CrashReportFactory : ICrashReportFactory
     {
         #region Fields
-        private readonly IServiceLocator _serviceLocator;
         private readonly ITypeFactory _typeFactory;
         #endregion
 
         #region Constructors
-        public CrashReportFactory(ITypeFactory typeFactory, IServiceLocator serviceLocator)
+        public CrashReportFactory(ITypeFactory typeFactory)
         {
-            Argument.IsNotNull(() => typeFactory);
-            Argument.IsNotNull(() => serviceLocator);
+            Argument.IsNotNull("typeFactory", typeFactory);
 
             _typeFactory = typeFactory;
-            _serviceLocator = serviceLocator;
         }
         #endregion
 
         #region Methods
         public CrashReport CreateCrashReport(Exception exception)
         {
-            Argument.IsNotNull(() => exception);
+            Argument.IsNotNull("exception", exception);
 
             var crashReport = _typeFactory.CreateInstanceWithParametersAndAutoCompletion<CrashReport>(exception);
-            _serviceLocator.RegisterInstance(typeof (CrashReport), crashReport);
-
             return crashReport;
         }
         #endregion

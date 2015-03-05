@@ -22,7 +22,7 @@ namespace Orc.CrashReporting.Services
         #region Constructors
         public CrashLoggerService(ITypeFactory typeFactory)
         {
-            Argument.IsNotNull(() => typeFactory);
+            Argument.IsNotNull("typeFactory", typeFactory);
 
             _typeFactory = typeFactory;
         }
@@ -32,13 +32,13 @@ namespace Orc.CrashReporting.Services
         public IEnumerable<ICrashReportProvider> GetAllCrashLoggers()
         {
             var crashLoggerTypes = (from type in TypeCache.GetTypes()
-                                    where !type.IsAbstractEx() && type.IsClassEx() &&
-                                          type.ImplementsInterfaceEx<ICrashReportProvider>()
-                                    select type).ToList();
+                where !type.IsAbstractEx() && type.IsClassEx() &&
+                      type.ImplementsInterfaceEx<ICrashReportProvider>()
+                select type).ToList();
 
             foreach (var crashLoggerType in crashLoggerTypes)
             {
-                yield return (ICrashReportProvider)_typeFactory.CreateInstance(crashLoggerType);
+                yield return (ICrashReportProvider) _typeFactory.CreateInstance(crashLoggerType);
             }
         }
         #endregion

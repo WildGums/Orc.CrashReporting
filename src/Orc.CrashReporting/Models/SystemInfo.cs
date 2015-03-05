@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
     using System.Text;
     using Catel;
@@ -18,10 +18,10 @@ namespace Orc.CrashReporting.Models
         #endregion
 
         #region Constructors
-        public SystemInfo(CrashReport crashReport, ISystemInfoService systemInfoService)
-            : base(CrashDetails.SystemInfoTitle, crashReport)
+        public SystemInfo(ISystemInfoService systemInfoService)
+            : base(CrashDetails.SystemInfoTitle)
         {
-            Argument.IsNotNull(() => systemInfoService);
+            Argument.IsNotNull("systemInfoService", systemInfoService);
 
             _systemInfoService = systemInfoService;
 

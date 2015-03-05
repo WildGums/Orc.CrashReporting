@@ -10,16 +10,15 @@ namespace Orc.CrashReporting.ViewModels
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
-    using Models;
 
     internal class CrashReportViewModel : ViewModelBase
     {
         #region Constructors
-        public CrashReportViewModel(CrashReport crashReport)
+        public CrashReportViewModel(ICrashReportingContext crashReportingContext)
         {
-            Argument.IsNotNull(() => crashReport);
+            Argument.IsNotNull(() => crashReportingContext);
 
-            CrashReport = crashReport;
+            CrashReport = crashReportingContext.CrashReport;
         }
         #endregion
 

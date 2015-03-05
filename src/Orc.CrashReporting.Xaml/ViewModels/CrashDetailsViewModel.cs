@@ -11,7 +11,6 @@ namespace Orc.CrashReporting.ViewModels
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
-    using Models;
 
     internal class CrashDetailsViewModel : ViewModelBase
     {

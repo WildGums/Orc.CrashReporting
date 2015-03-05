@@ -17,12 +17,17 @@ namespace Orc.CrashReporting
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+        private readonly ICrashReportFactory _crashReportFactory;
         private readonly string _rootDirectory;
         #endregion
 
         #region Constructors
-        public CrashReportingContext()
+        public CrashReportingContext(ICrashReportFactory crashReportFactory)
         {
+            Argument.IsNotNull("crashReportFactory", crashReportFactory);
+
+            _crashReportFactory = crashReportFactory;
+
             var assembly = AssemblyHelper.GetEntryAssembly();
 
             _rootDirectory = Path.Combine(Path.GetTempPath(), assembly.Company(), assembly.Title(),
@@ -30,6 +35,11 @@ namespace Orc.CrashReporting
 
             Directory.CreateDirectory(_rootDirectory);
         }
+        #endregion
+
+        #region Properties
+        public CrashReport CrashReport { get; private set; }
+        public Exception Exception { get; private set; }
         #endregion
 
         #region Methods
@@ -52,7 +62,7 @@ namespace Orc.CrashReporting
 
         public string GetFile(string relativeFilePath)
         {
-            Argument.IsNotNullOrWhitespace(() => relativeFilePath);
+            Argument.IsNotNullOrWhitespace("relativeFilePath", relativeFilePath);
 
             var fullPath = Path.Combine(_rootDirectory, relativeFilePath);
 
@@ -63,6 +73,12 @@ namespace Orc.CrashReporting
             }
 
             return fullPath;
+        }
+
+        public void RegisterException(Exception exception)
+        {
+            Exception = exception;
+            CrashReport = _crashReportFactory.CreateCrashReport(exception);
         }
         #endregion
     }

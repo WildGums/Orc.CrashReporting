@@ -8,8 +8,6 @@
              d:DesignHeight="300" d:DesignWidth="300"
                    x:ClassModifier="internal">
     <Grid>
-        <ScrollViewer>
-            <ListBox ItemsSource="{Binding LoadedModules}"/>
-        </ScrollViewer>
+        <ListBox ItemsSource="{Binding LoadedModules}"/>
     </Grid>
 </catel:UserControl>

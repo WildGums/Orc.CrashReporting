@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
     using System.Collections.Generic;
     using System.IO;
@@ -21,10 +21,10 @@ namespace Orc.CrashReporting.Models
         #endregion
 
         #region Constructors
-        public LoadedModulesInfo(CrashReport crashReport, ISystemInfoService systemInfoService) 
-            : base(CrashDetails.LoadedModulesInfo, crashReport)
+        public LoadedModulesInfo(ISystemInfoService systemInfoService)
+            : base(CrashDetails.LoadedModulesInfo)
         {
-            Argument.IsNotNull(() => systemInfoService);
+            Argument.IsNotNull("systemInfoService", systemInfoService);
 
             _systemInfoService = systemInfoService;
 
@@ -44,7 +44,7 @@ namespace Orc.CrashReporting.Models
 
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
         {
-            Argument.IsNotNull(() => supportPackageContext);
+            Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
             var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += string.Format("{0}\n", assembly));
 

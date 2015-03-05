@@ -11,15 +11,15 @@ namespace Orc.CrashReporting
     using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
-    using SystemInfo;
     using Catel;
+    using Orc.SystemInfo;
 
     public static class SystemInfoExtensions
     {
         #region Methods
         public static async Task<IEnumerable<string>> GetLoadedModules(this ISystemInfoService systemInfoService)
         {
-            Argument.IsNotNull(() => systemInfoService);
+            Argument.IsNotNull("systemInfoService", systemInfoService);
 
             return await Task.Factory.StartNew(() => GetLoadedModules());
         }

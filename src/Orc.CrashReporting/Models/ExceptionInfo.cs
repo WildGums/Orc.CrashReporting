@@ -5,8 +5,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
+    using System;
     using System.IO;
     using Catel;
     using Orc.SupportPackage;
@@ -14,18 +15,17 @@ namespace Orc.CrashReporting.Models
     public class ExceptionInfo : CrashInfoBase
     {
         #region Fields
-        private readonly CrashReport _crashReport;
+        private readonly Exception _exception;
         #endregion
 
         #region Constructors
-        public ExceptionInfo(CrashReport crashReport)
-            : base(CrashDetails.ExceptionDetailsTitle, crashReport)
+        public ExceptionInfo(ICrashReportingContext crashReportingContext)
+            : base(CrashDetails.ExceptionDetailsTitle)
         {
-            Argument.IsNotNull(() => crashReport);
+            Argument.IsNotNull("crashReportingContext", crashReportingContext);
 
-            _crashReport = crashReport;
-            
-            FullExceptionText = crashReport.Exception.GetExceptionInfo();
+            _exception = crashReportingContext.Exception;
+            FullExceptionText = _exception.GetExceptionInfo();
         }
         #endregion
 
@@ -36,11 +36,11 @@ namespace Orc.CrashReporting.Models
         #region Methods
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)
         {
-            Argument.IsNotNull(() => supportPackageContext);
+            Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
             var txtFile = supportPackageContext.GetFile("Exception.txt");
 
-            var exception = _crashReport.Exception;
+            var exception = _exception;
             File.WriteAllText(txtFile, exception.ToString());
         }
         #endregion

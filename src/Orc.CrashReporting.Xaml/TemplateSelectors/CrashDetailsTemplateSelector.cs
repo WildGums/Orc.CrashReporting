@@ -10,7 +10,6 @@ namespace Orc.CrashReporting.TemplateSelectors
     using System.Windows;
     using System.Windows.Controls;
     using Catel;
-    using Models;
 
     internal class CrashDetailsTemplateSelector : DataTemplateSelector
     {
@@ -40,10 +39,10 @@ namespace Orc.CrashReporting.TemplateSelectors
 
                 case CrashDetails.SystemInfoTitle:
                     return SystemInfoTemplate;
-                    
+
                 case CrashDetails.AdditionalInfo:
                     return AdditionatInfoTemplate;
-                    
+
                 case CrashDetails.LoadedModulesInfo:
                     return LoadedModulesTemplate;
             }

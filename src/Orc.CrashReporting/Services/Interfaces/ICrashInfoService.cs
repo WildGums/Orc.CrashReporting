@@ -8,15 +8,14 @@
 namespace Orc.CrashReporting.Services
 {
     using System.Collections.Generic;
-    using Models;
 
     public interface ICrashInfoService
     {
         #region Methods
-        void AddCrashInfo<T>() 
+        void AddCrashInfo<T>()
             where T : ICrashInfo;
 
-        IEnumerable<ICrashInfo> GetAllCrashInfos(CrashReport crashReport);
+        IEnumerable<ICrashInfo> GetAllCrashInfos();
         #endregion
     }
 }

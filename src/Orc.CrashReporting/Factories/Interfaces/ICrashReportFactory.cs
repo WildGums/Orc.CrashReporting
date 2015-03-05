@@ -8,7 +8,6 @@
 namespace Orc.CrashReporting
 {
     using System;
-    using Models;
 
     public interface ICrashReportFactory
     {

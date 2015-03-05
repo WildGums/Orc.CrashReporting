@@ -21,7 +21,7 @@ namespace Orc.CrashReporting
         #region Constructors
         public UnhandledCatcher(IExceptionHandlerService exceptionHandlerService)
         {
-            Argument.IsNotNull(() => exceptionHandlerService);
+            Argument.IsNotNull("exceptionHandlerService", exceptionHandlerService);
 
             _exceptionHandlerService = exceptionHandlerService;
 

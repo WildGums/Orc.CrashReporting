@@ -11,8 +11,14 @@ namespace Orc.CrashReporting
 
     public interface ICrashReportingContext : IDisposable
     {
+        #region Properties
+        CrashReport CrashReport { get; }
+        Exception Exception { get; }
+        #endregion
+
         #region Methods
         string GetFile(string relativeFilePath);
+        void RegisterException(Exception exception);
         #endregion
     }
 }

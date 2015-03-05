@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Models
+namespace Orc.CrashReporting
 {
     using System;
     using System.Collections.Generic;
@@ -18,12 +18,12 @@ namespace Orc.CrashReporting.Models
         #region Constructors
         public CrashReport(Exception exception, ICrashInfoService crashInfoService)
         {
-            Argument.IsNotNull(() => exception);
-            Argument.IsNotNull(() => crashInfoService);
+            Argument.IsNotNull("exception", exception);
+            Argument.IsNotNull("crashInfoService", crashInfoService);
 
             Exception = exception;
 
-            var infos = crashInfoService.GetAllCrashInfos(this);
+            var infos = crashInfoService.GetAllCrashInfos();
             CrashDetails = new List<ICrashInfo>(infos);
         }
         #endregion
