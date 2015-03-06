@@ -13,16 +13,11 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Orc.CrashReporting.Providers.Email")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Orc.CrashReporting.Providers.Email")]
+[assembly: AssemblyDescription("Orc.CrashReporting.Providers.Email library")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-
-[assembly: Guid("8e58a92c-4923-429a-9af8-64d14db5fb30")]

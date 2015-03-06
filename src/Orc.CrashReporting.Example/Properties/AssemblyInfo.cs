@@ -14,9 +14,8 @@ using System.Windows;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("Orc.CrashReporting.Example")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Orc.CrashReporting.Example")]
+[assembly: AssemblyDescription("Orc.CrashReporting.Example application")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
