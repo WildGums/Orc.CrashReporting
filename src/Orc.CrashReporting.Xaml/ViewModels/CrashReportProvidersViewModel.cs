@@ -19,26 +19,25 @@ namespace Orc.CrashReporting.ViewModels
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-        private readonly ICrashLoggerService _crashLoggerService;
         private readonly CrashReport _crashReport;
-        private readonly IServiceLocator _serviceLocator;
+        private readonly ICrashReportingContext _crashReportingContext;
+        private readonly ICrashReportProvidersService _crashReportProvidersService;
         private readonly ISupportPackageService _supportPackageService;
         #endregion
 
         #region Constructors
-        public CrashReportProvidersViewModel(CrashReport crashReport, ICrashLoggerService crashLoggerService, ISupportPackageService supportPackageService, IServiceLocator serviceLocator)
+        public CrashReportProvidersViewModel(CrashReport crashReport, ICrashReportProvidersService crashReportProvidersService, 
+            ICrashReportingContext crashReportingContext)
         {
             Argument.IsNotNull(() => crashReport);
-            Argument.IsNotNull(() => crashLoggerService);
-            Argument.IsNotNull(() => supportPackageService);
-            Argument.IsNotNull(() => serviceLocator);
+            Argument.IsNotNull(() => crashReportProvidersService);
+            Argument.IsNotNull(() => crashReportingContext);
 
             _crashReport = crashReport;
-            _crashLoggerService = crashLoggerService;
-            _supportPackageService = supportPackageService;
-            _serviceLocator = serviceLocator;
+            _crashReportProvidersService = crashReportProvidersService;
+            _crashReportingContext = crashReportingContext;
 
-            CrashReportProviders = new List<ICrashReportProvider>(_crashLoggerService.GetAllCrashLoggers());
+            CrashReportProviders = new List<ICrashReportProvider>(_crashReportProvidersService.GetAllCrashReportProviders());
         }
         #endregion
 
@@ -55,14 +54,9 @@ namespace Orc.CrashReporting.ViewModels
                 return;
             }
 
-            using (var crashRportingContext = _serviceLocator.ResolveType<ICrashReportingContext>())
-            {
-                var file = crashRportingContext.GetFile("SupportPackage.zip");
-                if (await _supportPackageService.CreateSupportPackage(file))
-                {
-                    SelectedReportProvider.LogCrashReport(_crashReport, file);
-                }
-            }
+            var supportFackageFile = _crashReportingContext.SupportFackageFile;
+
+            SelectedReportProvider.SendCrashReport(_crashReport, supportFackageFile);
 
             await CloseViewModel(null);
         }

@@ -8,11 +8,12 @@
 namespace Orc.CrashReporting.Services
 {
     using System;
+    using System.Threading.Tasks;
 
     public interface IExceptionHandlerService
     {
         #region Methods
-        void HandleException(Exception exception);
+        Task HandleException(Exception exception);
         #endregion
     }
 }

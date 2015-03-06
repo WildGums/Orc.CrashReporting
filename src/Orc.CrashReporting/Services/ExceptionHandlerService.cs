@@ -8,22 +8,28 @@
 namespace Orc.CrashReporting.Services
 {
     using System;
+    using System.Threading.Tasks;
+    using System.Windows;
     using Catel;
     using Catel.IoC;
+    using Orc.SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
         #region Fields
         private ICrashReporterService _crashReporterService;
         private readonly IServiceLocator _serviceLocator;
+        private readonly ISupportPackageService _supportPackageService;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService)
         {
             Argument.IsNotNull("serviceLocator", serviceLocator);
+            Argument.IsNotNull("supportPackageService", supportPackageService);
 
             _serviceLocator = serviceLocator;
+            _supportPackageService = supportPackageService;
         }
         #endregion
 
@@ -44,9 +50,17 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public void HandleException(Exception exception)
+        public async Task HandleException(Exception exception)
         {
-            CrashReporterService.ShowCrashReport(exception);
+            using (exception.UseInReportingContext())
+            {
+                var context = _serviceLocator.ResolveType<ICrashReportingContext>();
+                var supportFackageFile = context.RegisterSupportFackageFile("SupportPackage.zip");
+
+                await _supportPackageService.CreateSupportPackage(supportFackageFile);
+                
+                await CrashReporterService.ShowCrashReport(exception);
+            }
         }
         #endregion
     }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashLoggerService.cs" company="Wild Gums">
+// <copyright file="CrashReportProvidersService.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -13,14 +13,14 @@ namespace Orc.CrashReporting.Services
     using Catel.IoC;
     using Catel.Reflection;
 
-    public class CrashLoggerService : ICrashLoggerService
+    public class CrashReportProvidersService : ICrashReportProvidersService
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
         #endregion
 
         #region Constructors
-        public CrashLoggerService(ITypeFactory typeFactory)
+        public CrashReportProvidersService(ITypeFactory typeFactory)
         {
             Argument.IsNotNull("typeFactory", typeFactory);
 
@@ -29,7 +29,7 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public IEnumerable<ICrashReportProvider> GetAllCrashLoggers()
+        public IEnumerable<ICrashReportProvider> GetAllCrashReportProviders()
         {
             var crashLoggerTypes = (from type in TypeCache.GetTypes()
                 where !type.IsAbstractEx() && type.IsClassEx() &&

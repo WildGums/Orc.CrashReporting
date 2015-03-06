@@ -21,7 +21,7 @@ namespace Orc.CrashReporting
             Argument.IsNotNull("exception", exception);
             Argument.IsNotNull("crashInfoService", crashInfoService);
 
-            Exception = exception;
+            Message = exception.Message;
 
             var infos = crashInfoService.GetAllCrashInfos();
             CrashDetails = new List<ICrashInfo>(infos);
@@ -30,12 +30,8 @@ namespace Orc.CrashReporting
 
         #region Properties
         public IList<ICrashInfo> CrashDetails { get; private set; }
-        public Exception Exception { get; private set; }
 
-        public string Message
-        {
-            get { return Exception.Message; }
-        }
+        public string Message { get; private set; }
         #endregion
     }
 }

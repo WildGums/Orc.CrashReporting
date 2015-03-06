@@ -40,6 +40,8 @@ namespace Orc.CrashReporting
         #region Properties
         public CrashReport CrashReport { get; private set; }
         public Exception Exception { get; private set; }
+
+        public string SupportFackageFile { get; private set; }
         #endregion
 
         #region Methods
@@ -60,7 +62,7 @@ namespace Orc.CrashReporting
             }
         }
 
-        public string GetFile(string relativeFilePath)
+        public string RegisterSupportFackageFile(string relativeFilePath)
         {
             Argument.IsNotNullOrWhitespace("relativeFilePath", relativeFilePath);
 
@@ -71,6 +73,8 @@ namespace Orc.CrashReporting
             {
                 Directory.CreateDirectory(directory);
             }
+
+            SupportFackageFile = fullPath;
 
             return fullPath;
         }

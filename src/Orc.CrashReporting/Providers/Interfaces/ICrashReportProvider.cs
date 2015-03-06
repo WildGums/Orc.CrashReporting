@@ -14,7 +14,7 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        void LogCrashReport(CrashReport crashReport, string fileToAttach);
+        void SendCrashReport(CrashReport crashReport, string fileToAttach);
         #endregion
     }
 }

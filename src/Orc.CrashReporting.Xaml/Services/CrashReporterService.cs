@@ -31,10 +31,7 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task ShowCrashReport(Exception exception)
         {
-            using (exception.UseInReportingContext())
-            {
-                await _uiVisualizerService.ShowDialog<CrashReportViewModel>();
-            }
+            await _uiVisualizerService.ShowDialog<CrashReportViewModel>();
         }
         #endregion
     }

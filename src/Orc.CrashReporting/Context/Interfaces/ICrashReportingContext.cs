@@ -14,10 +14,11 @@ namespace Orc.CrashReporting
         #region Properties
         CrashReport CrashReport { get; }
         Exception Exception { get; }
+        string SupportFackageFile { get; }
         #endregion
 
         #region Methods
-        string GetFile(string relativeFilePath);
+        string RegisterSupportFackageFile(string relativeFilePath);
         void RegisterException(Exception exception);
         #endregion
     }
