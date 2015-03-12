@@ -38,11 +38,10 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
-            <ContentControl Margin="5,2">
-                <toolkit:DropDownButton Header="Send crash report">
+
+            <toolkit:DropDownButton Header="Send crash report">
                 <views:CrashReportProvidersView/>
             </toolkit:DropDownButton>
-            </ContentControl>
         </StackPanel>
     </Grid>
 </catel:DataWindow>

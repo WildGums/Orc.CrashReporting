@@ -26,16 +26,15 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Constructors
-        public CrashReportProvidersViewModel(CrashReport crashReport, ICrashReportProvidersService crashReportProvidersService, 
+        public CrashReportProvidersViewModel(ICrashReportProvidersService crashReportProvidersService, 
             ICrashReportingContext crashReportingContext)
         {
-            Argument.IsNotNull(() => crashReport);
             Argument.IsNotNull(() => crashReportProvidersService);
             Argument.IsNotNull(() => crashReportingContext);
 
-            _crashReport = crashReport;
             _crashReportProvidersService = crashReportProvidersService;
             _crashReportingContext = crashReportingContext;
+            _crashReport = _crashReportingContext.CrashReport;
 
             CrashReportProviders = new List<ICrashReportProvider>(_crashReportProvidersService.GetAllCrashReportProviders());
         }

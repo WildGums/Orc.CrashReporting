@@ -74,7 +74,7 @@ namespace Orc.CrashReporting
             return (message.ToString());
         }
 
-        public static IDisposable UseInReportingContext(this Exception exception)
+        public static DisposableToken<ICrashReportingContext> UseInReportingContext(this Exception exception)
         {
             Argument.IsNotNull("exception", exception);
 

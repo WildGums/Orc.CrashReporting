@@ -52,9 +52,10 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleException(Exception exception)
         {
-            using (exception.UseInReportingContext())
+            using (var disposableToken = exception.UseInReportingContext())
             {
-                var context = _serviceLocator.ResolveType<ICrashReportingContext>();
+                var context = disposableToken.Instance;
+
                 var supportFackageFile = context.RegisterSupportFackageFile("SupportPackage.zip");
 
                 await _supportPackageService.CreateSupportPackage(supportFackageFile);

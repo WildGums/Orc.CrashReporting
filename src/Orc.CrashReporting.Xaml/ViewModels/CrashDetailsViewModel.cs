@@ -15,11 +15,11 @@ namespace Orc.CrashReporting.ViewModels
     internal class CrashDetailsViewModel : ViewModelBase
     {
         #region Constructors
-        public CrashDetailsViewModel(CrashReport crashReport)
+        public CrashDetailsViewModel(ICrashReportingContext crashReportingContext)
         {
-            Argument.IsNotNull(() => crashReport);
+            Argument.IsNotNull(() => crashReportingContext);
 
-            CrashReport = crashReport;
+            CrashReport = crashReportingContext.CrashReport;
         }
         #endregion
 
