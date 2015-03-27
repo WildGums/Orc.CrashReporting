@@ -5,7 +5,6 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:catel="http://catel.codeplex.com"
                   xmlns:views="clr-namespace:Orc.CrashReporting.Views"
-                  xmlns:toolkit="clr-namespace:Orc.Toolkit;assembly=Orc.Toolkit"
                   xmlns:controls="clr-namespace:Orc.Controls;assembly=Orc.Controls"
                   mc:Ignorable="d"
                   d:DesignHeight="300"
