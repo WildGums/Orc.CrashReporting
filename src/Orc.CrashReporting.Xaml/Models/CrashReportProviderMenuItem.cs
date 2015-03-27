@@ -1,19 +1,17 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICrashReporterService.cs" company="Wild Gums">
+// <copyright file="CrashReportProviderMenuItem.cs" company="Wild Gums">
 //   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting
+namespace Orc.CrashReporting.Models
 {
-    using System;
-    using System.Threading.Tasks;
+    using System.Windows.Input;
 
-    public interface ICrashReporterService
+    public class CrashReportProviderMenuItem
     {
-        #region Methods
-        Task ShowCrashReport(Exception exception);
-        #endregion
+        public ICommand Command { get; set; }
+        public string Title { get; set; }
     }
 }

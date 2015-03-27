@@ -6,6 +6,7 @@
                   xmlns:catel="http://catel.codeplex.com"
                   xmlns:views="clr-namespace:Orc.CrashReporting.Views"
                   xmlns:toolkit="clr-namespace:Orc.Toolkit;assembly=Orc.Toolkit"
+                  xmlns:controls="clr-namespace:Orc.Controls;assembly=Orc.Controls"
                   mc:Ignorable="d"
                   d:DesignHeight="300"
                   d:DesignWidth="300" 
@@ -39,9 +40,30 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
 
-            <toolkit:DropDownButton Header="Send crash report">
-                <views:CrashReportProvidersView/>
-            </toolkit:DropDownButton>
+            <controls:DropDownButton Header="Send crash report">
+                <controls:DropDownButton.DropDown>
+                    <ContextMenu ItemsSource="{Binding CrashReportProviders}">
+                        <ContextMenu.Resources>
+                            <Style TargetType="{x:Type MenuItem}">
+                                <Setter Property="Command" Value="{Binding Command}" />
+                                <Setter Property="Header" Value="{Binding Title}" />
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding }" Value="{x:Null}">
+                                        <Setter Property="Template" >
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}" />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContextMenu.Resources>
+                    </ContextMenu>
+                </controls:DropDownButton.DropDown>             
+            </controls:DropDownButton>
         </StackPanel>
     </Grid>
 </catel:DataWindow>

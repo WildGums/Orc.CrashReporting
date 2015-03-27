@@ -7,18 +7,24 @@
 
 namespace Orc.CrashReporting.ViewModels
 {
+    using System.Collections.Generic;
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
+    using Models;
 
     internal class CrashReportViewModel : ViewModelBase
     {
+        public IEnumerable<CrashReportProviderMenuItem> CrashReportProviders { get; set; }
+
         #region Constructors
-        public CrashReportViewModel(ICrashReportingContext crashReportingContext)
-        {
+        public CrashReportViewModel(ICrashReportingContext crashReportingContext, ICrashReportProviderMenuService crashReportProviderMenuService)
+        {            
             Argument.IsNotNull(() => crashReportingContext);
+            Argument.IsNotNull(() => crashReportProviderMenuService);
 
             CrashReport = crashReportingContext.CrashReport;
+            CrashReportProviders = crashReportProviderMenuService.GetCrashReporterProviders();
         }
         #endregion
 

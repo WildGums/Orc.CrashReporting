@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-namespace Orc.CrashReporting.Services
+namespace Orc.CrashReporting
 {
     using System;
     using System.Threading.Tasks;

@@ -1,5 +1,6 @@
 ﻿using Catel.IoC;
 using Catel.MVVM;
+using Orc.CrashReporting;
 using Orc.CrashReporting.Views;
 using Orc.CrashReporting.Services;
 
@@ -16,5 +17,6 @@ public static class ModuleInitializer
         var serviceLocator = ServiceLocator.Default;
         
         serviceLocator.RegisterType<ICrashReporterService, CrashReporterService>();
+        serviceLocator.RegisterType<ICrashReportProviderMenuService, CrashReportProviderMenuService>();
     }
 }
