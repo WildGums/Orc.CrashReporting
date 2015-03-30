@@ -9,8 +9,6 @@ namespace Orc.CrashReporting.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-    using System.Windows.Input;
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
@@ -37,10 +35,8 @@ namespace Orc.CrashReporting.ViewModels
             var defaultCrashReportProvider = defaultCrashReportProviderService.GetDefaultCrashReportProvider();
             DefaultCrashReportProvider = CrashReportProviders.FirstOrDefault(x => Equals(x.Provider, defaultCrashReportProvider));
 
-            DefaultProviderAction = new TaskCommand(OnDefaultProviderActionExecute, OnDefaultProviderActionCanExecute);
+            DefaultProviderAction = new Command(OnDefaultProviderActionExecute, OnDefaultProviderActionCanExecute);
         }
-
-        
         #endregion
 
         #region Properties
@@ -50,16 +46,22 @@ namespace Orc.CrashReporting.ViewModels
         [Expose("DefaultProviderHeader", "Title")]
         public CrashReportProviderMenuItem DefaultCrashReportProvider { get; set; }
 
-        public TaskCommand DefaultProviderAction { get; private set; }
+        [Model]
+        [Expose("Message")]
+        public CrashReport CrashReport { get; set; }
+        #endregion
 
-        private async Task OnDefaultProviderActionExecute()
+        #region Commands
+        public Command DefaultProviderAction { get; private set; }
+
+        private void OnDefaultProviderActionExecute()
         {
             if (DefaultCrashReportProvider == null || DefaultCrashReportProvider.Command == null)
             {
                 return;
             }
 
-            await Task.Factory.StartNew(() => DefaultCrashReportProvider.Command.Execute(null));
+            DefaultCrashReportProvider.Command.Execute(null);
         }
 
         private bool OnDefaultProviderActionCanExecute()
@@ -71,12 +73,6 @@ namespace Orc.CrashReporting.ViewModels
 
             return DefaultCrashReportProvider.Command.CanExecute(null);
         }
-
-        [Model]
-        [Expose("Message")]
-        public CrashReport CrashReport { get; set; }
         #endregion
-
-
     }
 }

@@ -39,7 +39,7 @@ namespace Orc.CrashReporting
         #region Properties
         public string Title
         {
-            get { return "Email"; }
+            get { return "Email crash report"; }
         }
         #endregion
 
