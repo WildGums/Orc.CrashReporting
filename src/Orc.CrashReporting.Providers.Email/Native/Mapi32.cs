@@ -13,7 +13,7 @@ namespace Orc.CrashReporting.Native
     public class Mapi32
     {
         #region Delegates
-        public enum HowTo 
+        public enum HowTo
         {
             MAPI_ORIG = 0,
             MAPI_TO = 1,
@@ -31,8 +31,10 @@ namespace Orc.CrashReporting.Native
         #region Methods
         [DllImport("MAPI32.DLL")]
         public static extern int MAPISendMail(IntPtr sess, IntPtr hwnd, MapiMessage message, int flg, int rsv);
+
         [DllImport("MAPI32.DLL")]
         public static extern int MAPIInitialize(IntPtr lpMapiInit);
+
         [DllImport("MAPI32.DLL")]
         public static extern void MAPIUninitialize();
         #endregion
@@ -69,7 +71,7 @@ namespace Orc.CrashReporting.Native
         public class MapiRecipDesc
         {
             public uint reserved = 0;
-            public uint recipClass = (uint)HowTo.MAPI_TO;
+            public uint recipClass = (uint) HowTo.MAPI_TO;
             public string name = string.Empty;
             public string address = string.Empty;
             public uint eIDSize = 0;

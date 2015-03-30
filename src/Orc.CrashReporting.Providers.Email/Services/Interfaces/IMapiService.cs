@@ -7,11 +7,12 @@
 
 namespace Orc.CrashReporting
 {
-    using System.Collections.Generic;
     using Models;
 
     public interface IMapiService
     {
+        #region Methods
         bool SendMailPopup(Email email);
+        #endregion
     }
 }

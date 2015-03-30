@@ -17,6 +17,7 @@ namespace Orc.CrashReporting.Services
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
+        private IList<ICrashReportProvider> _crashReportProviders;
         #endregion
 
         #region Constructors
@@ -28,7 +29,6 @@ namespace Orc.CrashReporting.Services
         }
         #endregion
 
-        private IList<ICrashReportProvider> _crashReportProviders;
         #region Methods
         public IEnumerable<ICrashReportProvider> GetAllCrashReportProviders()
         {
@@ -47,7 +47,6 @@ namespace Orc.CrashReporting.Services
             }
 
             return _crashReportProviders;
-
         }
         #endregion
     }

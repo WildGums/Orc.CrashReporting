@@ -40,7 +40,6 @@ namespace Orc.CrashReporting
         #region Properties
         public CrashReport CrashReport { get; private set; }
         public Exception Exception { get; private set; }
-
         public string SupportFackageFile { get; private set; }
         #endregion
 

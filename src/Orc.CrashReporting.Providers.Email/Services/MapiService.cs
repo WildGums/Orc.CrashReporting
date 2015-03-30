@@ -20,8 +20,8 @@ namespace Orc.CrashReporting
 
     public class MapiService : IMapiService
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         #region Fields
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private readonly IMapiErrorHandlingService _mapiErrorHandlingService;
         #endregion
 

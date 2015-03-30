@@ -7,12 +7,10 @@
 
 namespace Orc.CrashReporting
 {
-    using System;
     using System.Linq;
     using Catel;
     using Catel.Configuration;
     using Models;
-    using Native;
 
     public class EmailReportProvider : ICrashReportProvider
     {
@@ -47,10 +45,8 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull(() => crashReport);
 
-           
             var email = new Email();
 
-            
             var emailTo = _configurationService.GetValue(EmailLoggerSettings.EmailTo, EmailLoggerSettings.EmailToDefaultValue);
             var exceptionInfo = crashReport.CrashDetails.OfType<ExceptionInfo>().FirstOrDefault();
             var emailBody = exceptionInfo == null ? string.Empty : exceptionInfo.FullExceptionText;
