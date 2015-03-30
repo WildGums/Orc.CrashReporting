@@ -13,12 +13,14 @@ namespace Orc.CrashReporting
     using System.Runtime.InteropServices;
     using Catel;
     using Catel.IO;
+    using Catel.Logging;
     using Extensions;
     using Models;
     using Native;
 
     public class MapiService : IMapiService
     {
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         #region Fields
         private readonly IMapiErrorHandlingService _mapiErrorHandlingService;
         #endregion
@@ -37,8 +39,25 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull(() => email);
 
-            var error = SendMail(email, Mapi32.MAPI_LOGON_UI | Mapi32.MAPI_DIALOG);
-            return error <= 1;
+            var result = Mapi32.MAPIInitialize(IntPtr.Zero);
+            try
+            {
+                if (result == 0)
+                {
+                    var error = SendMail(email, Mapi32.MAPI_LOGON_UI | Mapi32.MAPI_DIALOG);
+                    return error <= 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Fail to send email.");
+            }
+            finally
+            {
+                Mapi32.MAPIUninitialize();
+            }
+
+            return false;
         }
 
         private IntPtr GetAttachmentsPtr(IEnumerable<string> attachments, out int fileCount)

@@ -7,8 +7,7 @@
 
 namespace Orc.CrashReporting
 {
-    using System.Diagnostics;
-    using System.IO;
+    using System;
     using System.Linq;
     using Catel;
     using Catel.Configuration;
@@ -47,8 +46,10 @@ namespace Orc.CrashReporting
         public void SendCrashReport(CrashReport crashReport, string fileToAttach)
         {
             Argument.IsNotNull(() => crashReport);
-            
+
+           
             var email = new Email();
+
             
             var emailTo = _configurationService.GetValue(EmailLoggerSettings.EmailTo, EmailLoggerSettings.EmailToDefaultValue);
             var exceptionInfo = crashReport.CrashDetails.OfType<ExceptionInfo>().FirstOrDefault();
