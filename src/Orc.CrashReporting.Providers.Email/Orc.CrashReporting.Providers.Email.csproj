@@ -73,9 +73,16 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Extensions\EmailExtensions.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Native\Mapi32.cs" />
     <Compile Include="Providers\EmailReportProvider.cs" />
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IMapiErrorHandlingService.cs" />
+    <Compile Include="Services\Interfaces\IMapiService.cs" />
+    <Compile Include="Services\MapiErrorHandlingService.cs" />
+    <Compile Include="Services\MapiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />

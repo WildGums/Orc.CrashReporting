@@ -12,22 +12,27 @@ namespace Orc.CrashReporting
     using System.Linq;
     using Catel;
     using Catel.Configuration;
+    using Models;
+    using Native;
 
     public class EmailReportProvider : ICrashReportProvider
     {
         #region Fields
         private readonly IConfigurationService _configurationService;
         private readonly ICrashReportingContext _crashReportingContext;
+        private readonly IMapiService _mapiService;
         #endregion
 
         #region Constructors
-        public EmailReportProvider(IConfigurationService configurationService, ICrashReportingContext crashReportingContext)
+        public EmailReportProvider(IConfigurationService configurationService, ICrashReportingContext crashReportingContext, IMapiService mapiService)
         {
             Argument.IsNotNull(() => configurationService);
             Argument.IsNotNull(() => crashReportingContext);
+            Argument.IsNotNull(() => mapiService);
 
             _configurationService = configurationService;
             _crashReportingContext = crashReportingContext;
+            _mapiService = mapiService;
         }
         #endregion
 
@@ -42,26 +47,20 @@ namespace Orc.CrashReporting
         public void SendCrashReport(CrashReport crashReport, string fileToAttach)
         {
             Argument.IsNotNull(() => crashReport);
-
+            
+            var email = new Email();
+            
             var emailTo = _configurationService.GetValue(EmailLoggerSettings.EmailTo, EmailLoggerSettings.EmailToDefaultValue);
-            var emailSubject = _configurationService.GetValue(EmailLoggerSettings.EmailSubject, EmailLoggerSettings.EmailSubjectDefaultValue);
             var exceptionInfo = crashReport.CrashDetails.OfType<ExceptionInfo>().FirstOrDefault();
             var emailBody = exceptionInfo == null ? string.Empty : exceptionInfo.FullExceptionText;
 
-            var mailTo = string.Format("mailto:{0}&subject={1}&body={2}", emailTo, emailSubject, emailBody);
+            email.RecipientsTo.Add(emailTo);
+            email.Body = emailBody;
+            email.Subject = _configurationService.GetValue(EmailLoggerSettings.EmailSubject, EmailLoggerSettings.EmailSubjectDefaultValue);
 
-            if (!string.IsNullOrWhiteSpace(fileToAttach) && File.Exists(fileToAttach))
-            {
-                var uri = new System.Uri(fileToAttach);
-                var converted = /*uri.AbsoluteUri;*/ fileToAttach.Replace('\\', '/');
-                mailTo += string.Format("&attachment={0}", converted);
-            }
+            email.Attachments.Add(fileToAttach);
 
-            var process = Process.Start(mailTo);
-            if (process != null)
-            {
-                process.WaitForInputIdle();
-            }
+            _mapiService.SendMailPopup(email);
         }
         #endregion
     }
