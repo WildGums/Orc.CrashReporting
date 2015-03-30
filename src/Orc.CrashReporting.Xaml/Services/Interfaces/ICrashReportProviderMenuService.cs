@@ -12,6 +12,6 @@ namespace Orc.CrashReporting
 
     public interface ICrashReportProviderMenuService
     {
-        IEnumerable<CrashReportProviderMenuItem> GetCrashReporterProviders();
+        IEnumerable<CrashReportProviderMenuItem> CrashReportProviders { get; }
     }
 }

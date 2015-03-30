@@ -18,5 +18,6 @@ public static class ModuleInitializer
         
         serviceLocator.RegisterType<ICrashReporterService, CrashReporterService>();
         serviceLocator.RegisterType<ICrashReportProviderMenuService, CrashReportProviderMenuService>();
+        serviceLocator.RegisterType<IDefaultCrashReportProviderService, DefaultCrashReportProviderService>();
     }
 }

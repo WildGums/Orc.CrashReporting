@@ -82,7 +82,9 @@ namespace Orc.CrashReporting
 
             var msg = new Mapi32.MapiMessage {subject = email.Subject, noteText = email.Body};
 
-            msg.recips = GetRecipientsPtr(email.GetRecepients(), out msg.recipCount);
+            var mapiRecipDescs = email.GetRecepients().ToArray();
+
+            msg.recips = GetRecipientsPtr(mapiRecipDescs, out msg.recipCount);
             msg.files = GetAttachmentsPtr(email.Attachments, out msg.fileCount);
 
             var errorCode = Mapi32.MAPISendMail(IntPtr.Zero, IntPtr.Zero, msg, how, 0);

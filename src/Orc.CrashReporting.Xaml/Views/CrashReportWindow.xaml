@@ -39,7 +39,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center">
 
-            <controls:DropDownButton Header="Send crash report">
+            <controls:DropDownButton Header="{Binding DefaultProviderHeader}" Command="{Binding DefaultProviderAction}">
                 <controls:DropDownButton.DropDown>
                     <ContextMenu ItemsSource="{Binding CrashReportProviders}">
                         <ContextMenu.Resources>

@@ -28,18 +28,26 @@ namespace Orc.CrashReporting.Services
         }
         #endregion
 
+        private IList<ICrashReportProvider> _crashReportProviders;
         #region Methods
         public IEnumerable<ICrashReportProvider> GetAllCrashReportProviders()
         {
-            var crashLoggerTypes = (from type in TypeCache.GetTypes()
-                where !type.IsAbstractEx() && type.IsClassEx() &&
-                      type.ImplementsInterfaceEx<ICrashReportProvider>()
-                select type).ToList();
-
-            foreach (var crashLoggerType in crashLoggerTypes)
+            if (_crashReportProviders == null)
             {
-                yield return (ICrashReportProvider) _typeFactory.CreateInstance(crashLoggerType);
+                _crashReportProviders = new List<ICrashReportProvider>();
+                var crashLoggerTypes = (from type in TypeCache.GetTypes()
+                    where !type.IsAbstractEx() && type.IsClassEx() &&
+                          type.ImplementsInterfaceEx<ICrashReportProvider>()
+                    select type).ToList();
+
+                foreach (var crashLoggerType in crashLoggerTypes)
+                {
+                    _crashReportProviders.Add((ICrashReportProvider) _typeFactory.CreateInstance(crashLoggerType));
+                }
             }
+
+            return _crashReportProviders;
+
         }
         #endregion
     }

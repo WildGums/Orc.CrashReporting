@@ -63,8 +63,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.Controls">
-      <HintPath>..\..\lib\Orc.Controls.1.0.0-unstable0158\lib\net40\Orc.Controls.dll</HintPath>
+    <Reference Include="Orc.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Orc.Controls.1.0.0-unstable0162\lib\net40\Orc.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Orc.SupportPackage, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -112,6 +113,8 @@
     </Compile>
     <Compile Include="Services\CrashReporterService.cs" />
     <Compile Include="Services\CrashReportProviderMenuService.cs" />
+    <Compile Include="Services\DefaultCrashReportProviderService.cs" />
+    <Compile Include="Services\Interfaces\IDefaultCrashReportProviderService.cs" />
     <Compile Include="Services\Interfaces\ICrashReportProviderMenuService.cs" />
     <Compile Include="TemplateSelectors\CrashDetailsTemplateSelector.cs" />
     <Compile Include="ViewModels\AdditionalInfoViewModel.cs" />

@@ -17,7 +17,7 @@ namespace Orc.CrashReporting.Extensions
         #region Methods
         public static IEnumerable<Mapi32.MapiRecipDesc> GetRecepients(this Email email)
         {
-            return email.RecipientsTo.Select(recepient => new Mapi32.MapiRecipDesc {recipClass = (int) Mapi32.HowTo.MAPI_TO, address = recepient});
+            return email.RecipientsTo.Select(recepient => new Mapi32.MapiRecipDesc {recipClass = (int) Mapi32.HowTo.MAPI_TO, name = recepient});
         }
         #endregion
     }

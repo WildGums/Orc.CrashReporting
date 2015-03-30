@@ -15,6 +15,7 @@ namespace Orc.CrashReporting.Services
     {
         private readonly ICrashReportProvidersService _crashReportProvidersService;
         private readonly ICrashReportingContext _crashReportingContext;
+        private readonly IDefaultCrashReportProviderService _defaultCrashReportProviderService;
 
         public CrashReportProviderMenuService(ICrashReportProvidersService crashReportProvidersService, ICrashReportingContext crashReportingContext)
         {
@@ -23,20 +24,26 @@ namespace Orc.CrashReporting.Services
 
             _crashReportProvidersService = crashReportProvidersService;
             _crashReportingContext = crashReportingContext;
+
+
+            CrashReportProviders = GetCrashReporterProviders().ToArray();
         }
 
-        public IEnumerable<CrashReportProviderMenuItem> GetCrashReporterProviders()
+        private IEnumerable<CrashReportProviderMenuItem> GetCrashReporterProviders()
         {
-            return _crashReportProvidersService.GetAllCrashReportProviders().Select(x =>
+            return _crashReportProvidersService.GetAllCrashReportProviders().Select(provider =>
             {
                 var menuItem = new CrashReportProviderMenuItem();
-                menuItem.Title = x.Title;
+                menuItem.Title = provider.Title;
                 menuItem.Command = new Command(() =>
                 {
-                    x.SendCrashReport(_crashReportingContext.CrashReport, _crashReportingContext.SupportFackageFile);
+                    provider.SendCrashReport(_crashReportingContext.CrashReport, _crashReportingContext.SupportFackageFile);
                 });
+                menuItem.Provider = provider;
                 return menuItem;
             });
         }
+
+        public IEnumerable<CrashReportProviderMenuItem> CrashReportProviders { get; private set; }
     }
 }
