@@ -52,11 +52,13 @@
     <Reference Include="Orc.Controls">
       <HintPath>..\..\..\lib\Orc.Controls.1.0.0-unstable0162\lib\net45\Orc.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.SupportPackage">
-      <HintPath>..\..\..\lib\Orc.SupportPackage.0.2.0-unstable0026\lib\net40\Orc.SupportPackage.dll</HintPath>
+    <Reference Include="Orc.SupportPackage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.1.0.0-unstable0029\lib\net45\Orc.SupportPackage.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.SupportPackage.Xaml">
-      <HintPath>..\..\..\lib\Orc.SupportPackage.Xaml.0.2.0-unstable0026\lib\net40\Orc.SupportPackage.Xaml.dll</HintPath>
+    <Reference Include="Orc.SupportPackage.Xaml, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.Xaml.1.0.0-unstable0029\lib\net45\Orc.SupportPackage.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

@@ -50,13 +50,13 @@
     <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
       <HintPath>..\..\..\lib\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.SupportPackage, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Orc.SupportPackage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SupportPackage.0.2.0-unstable0026\lib\net40\Orc.SupportPackage.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.1.0.0-unstable0029\lib\net40\Orc.SupportPackage.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.SystemInfo, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Orc.SystemInfo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SystemInfo.0.2.0-unstable0022\lib\net40\Orc.SystemInfo.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SystemInfo.1.0.0-unstable0026\lib\net40\Orc.SystemInfo.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
