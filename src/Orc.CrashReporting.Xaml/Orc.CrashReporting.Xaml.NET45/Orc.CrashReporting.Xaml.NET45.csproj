@@ -89,6 +89,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\Orc.CrashReporting.Xaml.Shared\Resources\Images\error.png">
+      <Link>Resources\Images\error.png</Link>
+    </Resource>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems')" />
