@@ -22,7 +22,6 @@ namespace Orc.CrashReporting.ViewModels
         private readonly CrashReport _crashReport;
         private readonly ICrashReportingContext _crashReportingContext;
         private readonly ICrashReportProvidersService _crashReportProvidersService;
-        private readonly ISupportPackageService _supportPackageService;
         #endregion
 
         #region Constructors

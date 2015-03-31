@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9f064879-d8bc-40fa-bba6-c0f281aca98a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Orc.CrashReporting.Xaml.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\SolutionAssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CrashReportProviderMenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CrashReporterService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CrashReportProviderMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DefaultCrashReportProviderService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICrashReportProviderMenuService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IDefaultCrashReportProviderService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateSelectors\CrashDetailsTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AdditionalInfoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CrashDetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CrashReportProvidersViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CrashReportViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ExceptionViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoadedModulesInfoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SystemInfoViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\AdditionalInfoView.xaml.cs">
+      <DependentUpon>AdditionalInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CrashDetailsView.xaml.cs">
+      <DependentUpon>CrashDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CrashReportProvidersView.xaml.cs">
+      <DependentUpon>CrashReportProvidersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CrashReportWindow.xaml.cs">
+      <DependentUpon>CrashReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ExceptionView.xaml.cs">
+      <DependentUpon>ExceptionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LoadedModulesInfoView.xaml.cs">
+      <DependentUpon>LoadedModulesInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SystemInfoView.xaml.cs">
+      <DependentUpon>SystemInfoView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\Images\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Views\AdditionalInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CrashDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CrashReportProvidersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CrashReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\ExceptionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\LoadedModulesInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\SystemInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -14,7 +14,7 @@ namespace Orc.CrashReporting.ViewModels
     internal class LoadedModulesInfoViewModel : ViewModelBase
     {
         #region Fields
-        private readonly LoadedModulesInfo _loadedModulesInfo;
+
         #endregion
 
         #region Constructors

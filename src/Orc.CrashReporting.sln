@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting", "Orc.CrashReporting\Orc.CrashReporting.csproj", "{31CE78CE-896E-43B5-AE7E-A6A4B9944AA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.NET40", "Orc.CrashReporting\Orc.CrashReporting.NET40\Orc.CrashReporting.NET40.csproj", "{31CE78CE-896E-43B5-AE7E-A6A4B9944AA4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E426EAD0-F378-4A3D-9BCD-E42CED54EEC7}"
 EndProject
@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{199C8479-5A4
 		..\lib\repositories.config = ..\lib\repositories.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Tests", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.csproj", "{A226D12E-9802-4364-B4F3-2CAAAE059DD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Tests.NET40", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.NET40\Orc.CrashReporting.Tests.NET40.csproj", "{A226D12E-9802-4364-B4F3-2CAAAE059DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Xaml", "Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.csproj", "{9CD38A5C-9656-4F67-AAD0-F9629B4BFE99}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Xaml.NET40", "Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.NET40\Orc.CrashReporting.Xaml.NET40.csproj", "{9CD38A5C-9656-4F67-AAD0-F9629B4BFE99}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{29A3E85A-AD9A-4F3A-9B6A-288B2D64455D}"
 EndProject
@@ -31,13 +31,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{C430
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Example", "Orc.CrashReporting.Example\Orc.CrashReporting.Example.csproj", "{212E015B-F824-4D5C-BEED-9119E7025590}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Providers.Email", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.csproj", "{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Providers.Email.NET40", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET40\Orc.CrashReporting.Providers.Email.NET40.csproj", "{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Providers", "Core.Providers", "{DCF291E5-D2F0-4C97-87DC-A120E0ED1315}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Xaml", "Core.Xaml", "{6D330950-790C-473F-AD8D-65C532B55EBE}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.CrashReporting.Shared", "Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.shproj", "{7B831C5E-59E3-40CE-9097-A2EBC475DF24}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.CrashReporting.Providers.Email.Shared", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.shproj", "{4D489F3A-83FD-48CF-B8F9-137916C4354B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.CrashReporting.Xaml.Shared", "Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.shproj", "{9F064879-D8BC-40FA-BBA6-C0F281ACA98A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.CrashReporting.Tests.Shared", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.shproj", "{6707C7ED-9C15-483E-BD23-2A5481DCAF80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.NET45", "Orc.CrashReporting\Orc.CrashReporting.NET45\Orc.CrashReporting.NET45.csproj", "{824073FF-5ED0-48C4-81E9-B2772B264D02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Providers.Email.NET45", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET45\Orc.CrashReporting.Providers.Email.NET45.csproj", "{063E2020-A9F1-45A6-A3A6-526E4479D6AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Xaml.NET45", "Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.NET45\Orc.CrashReporting.Xaml.NET45.csproj", "{7B925AE2-F94F-4A94-B5A7-5009B2A6225C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Tests.NET45", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.NET45\Orc.CrashReporting.Tests.NET45.csproj", "{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{7b831c5e-59e3-40ce-9097-a2ebc475df24}*SharedItemsImports = 13
+		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{9f064879-d8bc-40fa-bba6-c0f281aca98a}*SharedItemsImports = 13
+		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{6707c7ed-9c15-483e-bd23-2a5481dcaf80}*SharedItemsImports = 13
+		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{7b925ae2-f94f-4a94-b5a7-5009b2a6225c}*SharedItemsImports = 4
+		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{b167270f-a5fe-461e-8cf5-cd53e2db29ea}*SharedItemsImports = 4
+		Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.projitems*{4d489f3a-83fd-48cf-b8f9-137916c4354b}*SharedItemsImports = 13
+		Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.projitems*{d69fe6f6-d5e6-46bc-a9a1-ed13450e0755}*SharedItemsImports = 4
+		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{9cd38a5c-9656-4f67-aad0-f9629b4bfe99}*SharedItemsImports = 4
+		Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.projitems*{063e2020-a9f1-45a6-a3a6-526e4479d6ad}*SharedItemsImports = 4
+		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{a226d12e-9802-4364-b4f3-2caaae059dd4}*SharedItemsImports = 4
+		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{31ce78ce-896e-43b5-ae7e-a6a4b9944aa4}*SharedItemsImports = 4
+		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{824073ff-5ed0-48c4-81e9-b2772b264d02}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -63,6 +93,22 @@ Global
 		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824073FF-5ED0-48C4-81E9-B2772B264D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824073FF-5ED0-48C4-81E9-B2772B264D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824073FF-5ED0-48C4-81E9-B2772B264D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824073FF-5ED0-48C4-81E9-B2772B264D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063E2020-A9F1-45A6-A3A6-526E4479D6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063E2020-A9F1-45A6-A3A6-526E4479D6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063E2020-A9F1-45A6-A3A6-526E4479D6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063E2020-A9F1-45A6-A3A6-526E4479D6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +124,13 @@ Global
 		{D69FE6F6-D5E6-46BC-A9A1-ED13450E0755} = {DCF291E5-D2F0-4C97-87DC-A120E0ED1315}
 		{DCF291E5-D2F0-4C97-87DC-A120E0ED1315} = {E426EAD0-F378-4A3D-9BCD-E42CED54EEC7}
 		{6D330950-790C-473F-AD8D-65C532B55EBE} = {E426EAD0-F378-4A3D-9BCD-E42CED54EEC7}
+		{7B831C5E-59E3-40CE-9097-A2EBC475DF24} = {29A3E85A-AD9A-4F3A-9B6A-288B2D64455D}
+		{4D489F3A-83FD-48CF-B8F9-137916C4354B} = {DCF291E5-D2F0-4C97-87DC-A120E0ED1315}
+		{9F064879-D8BC-40FA-BBA6-C0F281ACA98A} = {6D330950-790C-473F-AD8D-65C532B55EBE}
+		{6707C7ED-9C15-483E-BD23-2A5481DCAF80} = {832C935D-D23A-4C38-9B52-CAC0F508F875}
+		{824073FF-5ED0-48C4-81E9-B2772B264D02} = {29A3E85A-AD9A-4F3A-9B6A-288B2D64455D}
+		{063E2020-A9F1-45A6-A3A6-526E4479D6AD} = {DCF291E5-D2F0-4C97-87DC-A120E0ED1315}
+		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C} = {6D330950-790C-473F-AD8D-65C532B55EBE}
+		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA} = {832C935D-D23A-4C38-9B52-CAC0F508F875}
 	EndGlobalSection
 EndGlobal

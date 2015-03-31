@@ -15,7 +15,6 @@ namespace Orc.CrashReporting.Services
     {
         private readonly ICrashReportProvidersService _crashReportProvidersService;
         private readonly ICrashReportingContext _crashReportingContext;
-        private readonly IDefaultCrashReportProviderService _defaultCrashReportProviderService;
 
         public CrashReportProviderMenuService(ICrashReportProvidersService crashReportProvidersService, ICrashReportingContext crashReportingContext)
         {
