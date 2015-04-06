@@ -91,7 +91,7 @@
     </Style>
     
     <Style TargetType="{x:Type TextBox}">
-        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
     <!-- Expander -->
@@ -112,7 +112,7 @@
     <Style TargetType="{x:Type Expander}">
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Background" Value="{StaticResource Expander.Background}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -133,7 +133,7 @@
 								    FontStretch="{TemplateBinding FontStretch}" 
 								    FontSize="{TemplateBinding FontSize}" 
 								    FontFamily="{TemplateBinding FontFamily}" 
-								    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+								    HorizontalContentAlignment="Center" 
 								    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
 								    Padding="{TemplateBinding Padding}" 
 								    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>

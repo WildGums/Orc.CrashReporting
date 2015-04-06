@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
                    x:ClassModifier="internal">
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer HorizontalAlignment="Stretch">
             <TextBox IsReadOnly="True" Text="{Binding Details, Mode=OneWay}"/>
         </ScrollViewer>        
     </Grid>

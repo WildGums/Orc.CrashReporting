@@ -10,46 +10,54 @@
              d:DesignHeight="300" d:DesignWidth="300"
                    x:ClassModifier="internal">
     <catel:UserControl.Resources>
-        <DataTemplate x:Key="ExceptionTemplate">
-            <views:ExceptionView />
-        </DataTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         
-        <DataTemplate x:Key="SystemInfoTemplate">
-            <views:SystemInfoView />
-        </DataTemplate>
+            <DataTemplate x:Key="ExceptionTemplate">
+                <views:ExceptionView />
+            </DataTemplate>
+        
+            <DataTemplate x:Key="SystemInfoTemplate">
+                <views:SystemInfoView />
+            </DataTemplate>
 
-        <DataTemplate x:Key="AdditionalInfoTemplate">
-            <views:AdditionalInfoView />
-        </DataTemplate>
+            <DataTemplate x:Key="AdditionalInfoTemplate">
+                <views:AdditionalInfoView />
+            </DataTemplate>
 
-        <DataTemplate x:Key="LoadedModulesTemplate">
-            <views:LoadedModulesInfoView />
-        </DataTemplate>
+            <DataTemplate x:Key="LoadedModulesTemplate">
+                <views:LoadedModulesInfoView />
+            </DataTemplate>
 
-        <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" 
-                                                        ExceptionTemplate="{StaticResource ExceptionTemplate}"
-                                                        SystemInfoTemplate="{StaticResource SystemInfoTemplate}" 
-                                                        AdditionatInfoTemplate="{StaticResource AdditionalInfoTemplate}"
-                                                        LoadedModulesTemplate="{StaticResource LoadedModulesTemplate}"/>
+            <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" 
+                                                            ExceptionTemplate="{StaticResource ExceptionTemplate}"
+                                                            SystemInfoTemplate="{StaticResource SystemInfoTemplate}" 
+                                                            AdditionatInfoTemplate="{StaticResource AdditionalInfoTemplate}"
+                                                            LoadedModulesTemplate="{StaticResource LoadedModulesTemplate}"/>
+        </ResourceDictionary>
     </catel:UserControl.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="110" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
-        </Grid.RowDefinitions>
-        <ListBox Name="listBox" ItemsSource="{Binding CrashDetails}" SelectedIndex="{Binding SelectedIndex}" Grid.Column="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Title}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  MinWidth="300"
-                        ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
-    </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="110" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <ListBox Name="listBox" Grid.Column="0"
+                     ItemsSource="{Binding CrashDetails}" SelectedIndex="{Binding SelectedIndex}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Title}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <GridSplitter Grid.Column="1" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                          IsEnabled="False"/>
+            <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  MinWidth="300"
+                            ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
+        </Grid>
 </catel:UserControl>
