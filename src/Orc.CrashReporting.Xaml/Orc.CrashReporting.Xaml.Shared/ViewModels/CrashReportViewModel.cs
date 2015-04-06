@@ -36,6 +36,8 @@ namespace Orc.CrashReporting.ViewModels
             DefaultCrashReportProvider = CrashReportProviders.FirstOrDefault(x => Equals(x.Provider, defaultCrashReportProvider));
 
             DefaultProviderAction = new Command(OnDefaultProviderActionExecute, OnDefaultProviderActionCanExecute);
+
+            AccentColorHelper.CreateAccentColorResourceDictionary();
         }
         #endregion
 

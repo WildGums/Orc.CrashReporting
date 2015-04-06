@@ -11,6 +11,13 @@
                   d:DesignWidth="300" 
                   Title="Error"
                   x:ClassModifier="internal">
+    <catel:DataWindow.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+    </catel:DataWindow.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
