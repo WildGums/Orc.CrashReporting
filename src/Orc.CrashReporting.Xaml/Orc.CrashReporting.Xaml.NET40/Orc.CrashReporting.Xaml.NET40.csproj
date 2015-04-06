@@ -124,6 +124,9 @@
       <Link>Resources\Images\error.png</Link>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\error1.png" />
+  </ItemGroup>
   <Import Project="..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

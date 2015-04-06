@@ -89,6 +89,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\error1.png" />
     <Resource Include="..\Orc.CrashReporting.Xaml.Shared\Resources\Images\error.png">
       <Link>Resources\Images\error.png</Link>
     </Resource>

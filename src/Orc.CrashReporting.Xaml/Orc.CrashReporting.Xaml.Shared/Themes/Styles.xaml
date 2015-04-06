@@ -34,6 +34,7 @@
 
     <Style TargetType="{x:Type ListBox}">
         <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
     </Style>
 
     <Style TargetType="{x:Type ListBoxItem}">
@@ -59,6 +60,10 @@
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="Width" Value="1" />
+    </Style>
+    
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="BorderBrush" Value="Transparent"/>
     </Style>
 
     <!-- Expander -->
