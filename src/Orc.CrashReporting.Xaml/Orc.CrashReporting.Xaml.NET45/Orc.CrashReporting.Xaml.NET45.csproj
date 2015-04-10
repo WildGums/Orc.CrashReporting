@@ -49,8 +49,9 @@
     <Reference Include="Catel.MVVM">
       <HintPath>..\..\..\lib\Catel.MVVM.4.2.0-unstable0012\lib\net45\Catel.MVVM.dll</HintPath>
     </Reference>
-    <Reference Include="Orc.Controls">
-      <HintPath>..\..\..\lib\Orc.Controls.1.0.0-unstable0162\lib\net45\Orc.Controls.dll</HintPath>
+    <Reference Include="Orc.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Orc.Controls.1.0.0-unstable0170\lib\net45\Orc.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Orc.SupportPackage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

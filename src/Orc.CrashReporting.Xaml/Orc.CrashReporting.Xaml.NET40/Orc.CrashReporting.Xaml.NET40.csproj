@@ -65,7 +65,7 @@
     </Reference>
     <Reference Include="Orc.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.Controls.1.0.0-unstable0162\lib\net40\Orc.Controls.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.Controls.1.0.0-unstable0170\lib\net40\Orc.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Orc.SupportPackage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
