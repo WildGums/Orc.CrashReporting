@@ -45,7 +45,9 @@
         </Expander>
         
         <StackPanel Grid.Row="1" Margin="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <controls:DropDownButton Header="{Binding DefaultProviderHeader}" Width="180" Command="{Binding DefaultProviderAction}">
+            <controls:DropDownButton Width="180" AccentColorBrush="{DynamicResource AccentColorBrush}"
+                                    Header="{Binding DefaultProviderHeader}" 
+                                    Command="{Binding DefaultProviderAction}">
                 <controls:DropDownButton.DropDown>
                     <ContextMenu ItemsSource="{Binding CrashReportProviders}">
                         <ContextMenu.Resources>

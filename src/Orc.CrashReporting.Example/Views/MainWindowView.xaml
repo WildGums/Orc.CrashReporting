@@ -4,7 +4,7 @@
         xmlns:catel="http://catel.codeplex.com"
         Title="Orc.CrashLogCrashReporting Example" Height="350" Width="525">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Content="Throw exception" HorizontalAlignment="Left"  VerticalAlignment="Top" Command="{Binding ThrowException}"/>
+        <Button Content="Throw exception" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding ThrowException}"/>
 
     </Grid>
 </catel:Window>
