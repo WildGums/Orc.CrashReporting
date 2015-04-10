@@ -8,8 +8,8 @@
              d:DesignHeight="300" d:DesignWidth="300"
                    x:ClassModifier="internal">
     <Grid>
-        <ScrollViewer>
-            <TextBox IsReadOnly="True" Text="{Binding FullExceptionText, Mode=OneWay}"/>
-        </ScrollViewer>
+        <TextBox IsReadOnly="True" Text="{Binding FullExceptionText, Mode=OneWay}"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto"/>
     </Grid>
 </catel:UserControl>
