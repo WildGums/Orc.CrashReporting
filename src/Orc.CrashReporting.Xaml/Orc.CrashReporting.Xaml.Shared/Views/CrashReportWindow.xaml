@@ -25,6 +25,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="4" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0 4 4 0">
             <Grid.ColumnDefinitions>
@@ -33,8 +34,9 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error1.png"
-                   Height="64" Width="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}"/>
+                   Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}" MaxHeight="100"
+                     VerticalScrollBarVisibility="Auto"/>
         </Grid>
         <Expander Grid.Row="1" ExpandDirection="Down" IsExpanded="False" >
             <StackPanel>
@@ -48,7 +50,7 @@
                             <ToggleButton x:Name="HeaderSite" 
 								    Content="Show details" 
                                     Width="90"
-                                    Margin="4"
+                                    Margin="4 4 0 0"
                                     HorizontalAlignment="Right"
 								    Foreground="{TemplateBinding Foreground}" 
 								    FontWeight="{TemplateBinding FontWeight}" 
@@ -61,7 +63,7 @@
 								    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
 								    Padding="{TemplateBinding Padding}" 
 								    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <StackPanel Margin="4 4 4 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                                 <controls:DropDownButton AccentColorBrush="{DynamicResource AccentColorBrush}"
                                                          Header="{Binding DefaultProviderHeader}"
                                                          Command="{Binding DefaultProviderAction}">
@@ -91,9 +93,9 @@
                         </StackPanel>
                         <ContentPresenter x:Name="ExpandSite"
 								        DockPanel.Dock="Bottom"
-								        Focusable="false" 
+								        Focusable="false"
 								        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-								        Margin="0" 
+								        Margin="0 0 4 0" 
 								        Visibility="Collapsed" 
 								        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </DockPanel>
@@ -110,7 +112,5 @@
                 </ControlTemplate>
             </Expander.Template>
         </Expander>
-        
-        
     </Grid>
 </catel:DataWindow>
