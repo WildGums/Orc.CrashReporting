@@ -36,41 +36,81 @@
                    Height="64" Width="64" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}"/>
         </Grid>
-        
         <Expander Grid.Row="1" ExpandDirection="Down" IsExpanded="False" >
             <StackPanel>
                 <GridSplitter Style="{StaticResource HorizontalGridSplitterStyle}" />
                 <views:CrashDetailsView  DataContext="{Binding CrashReport}" />
             </StackPanel>
+            <Expander.Template>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right">
+                            <ToggleButton x:Name="HeaderSite" 
+								    Content="Show details" 
+                                    Width="90"
+                                    Margin="4"
+                                    HorizontalAlignment="Right"
+								    Foreground="{TemplateBinding Foreground}" 
+								    FontWeight="{TemplateBinding FontWeight}" 
+								    FocusVisualStyle="{DynamicResource ExpanderHeaderFocusVisual}" 
+								    FontStyle="{TemplateBinding FontStyle}" 
+								    FontStretch="{TemplateBinding FontStretch}" 
+								    FontSize="{TemplateBinding FontSize}" 
+								    FontFamily="{TemplateBinding FontFamily}" 
+								    HorizontalContentAlignment="Center" 
+								    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
+								    Padding="{TemplateBinding Padding}" 
+								    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                <controls:DropDownButton AccentColorBrush="{DynamicResource AccentColorBrush}"
+                                                         Header="{Binding DefaultProviderHeader}"
+                                                         Command="{Binding DefaultProviderAction}">
+                                    <controls:DropDownButton.DropDown>
+                                        <ContextMenu ItemsSource="{Binding CrashReportProviders}">
+                                            <ContextMenu.Resources>
+                                                <Style TargetType="{x:Type MenuItem}">
+                                                    <Setter Property="Command" Value="{Binding Command}" />
+                                                    <Setter Property="Header" Value="{Binding Title}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding }" Value="{x:Null}">
+                                                            <Setter Property="Template" >
+                                                                <Setter.Value>
+                                                                    <ControlTemplate>
+                                                                        <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}" />
+                                                                    </ControlTemplate>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ContextMenu.Resources>
+                                        </ContextMenu>
+                                    </controls:DropDownButton.DropDown>
+                                </controls:DropDownButton>
+                            </StackPanel>
+                        </StackPanel>
+                        <ContentPresenter x:Name="ExpandSite"
+								        DockPanel.Dock="Bottom"
+								        Focusable="false" 
+								        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+								        Margin="0" 
+								        Visibility="Collapsed" 
+								        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsExpanded" Value="true">
+                            <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                            <Setter Property="Content" TargetName="HeaderSite" Value="Hide details"/>
+                            <Setter Property="Foreground" TargetName="HeaderSite" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFADADAD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Expander.Template>
         </Expander>
         
-        <StackPanel Grid.Row="1" Margin="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <controls:DropDownButton Width="180" AccentColorBrush="{DynamicResource AccentColorBrush}"
-                                    Header="{Binding DefaultProviderHeader}" 
-                                    Command="{Binding DefaultProviderAction}">
-                <controls:DropDownButton.DropDown>
-                    <ContextMenu ItemsSource="{Binding CrashReportProviders}">
-                        <ContextMenu.Resources>
-                            <Style TargetType="{x:Type MenuItem}">
-                                <Setter Property="Command" Value="{Binding Command}" />
-                                <Setter Property="Header" Value="{Binding Title}" />
-
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding }" Value="{x:Null}">
-                                        <Setter Property="Template" >
-                                            <Setter.Value>
-                                                <ControlTemplate>
-                                                    <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}" />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ContextMenu.Resources>
-                    </ContextMenu>
-                </controls:DropDownButton.DropDown>             
-            </controls:DropDownButton>
-        </StackPanel>
+        
     </Grid>
 </catel:DataWindow>
