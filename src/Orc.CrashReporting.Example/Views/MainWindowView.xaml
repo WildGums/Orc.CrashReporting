@@ -2,9 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:catel="http://catel.codeplex.com"
-        Title="Orc.CrashLogCrashReporting Example" Height="350" Width="525">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Content="Throw exception" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding ThrowException}"/>
-
-    </Grid>
+        Title="Orc.CrashLogCrashReporting Example"
+        Height="120" Width="560">
+    <catel:Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </catel:Window.Resources>
+    <Button Content="Throw Exception" Command="{Binding ThrowException}" VerticalAlignment="Center"
+            HorizontalAlignment="Center" Width="200"/>
 </catel:Window>
