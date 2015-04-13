@@ -17,7 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemInfoExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\CrashReportFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\Interfaces\ICrashReportFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Handlers\UnhandledCatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Handlers\UnhandledExceptionWatcher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Initializers\CrashReporterInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\AdditionalInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Base\CrashInfoBase.cs" />

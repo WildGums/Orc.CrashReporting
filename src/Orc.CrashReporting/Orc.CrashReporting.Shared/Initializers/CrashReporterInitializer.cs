@@ -35,7 +35,7 @@ namespace Orc.CrashReporting
         #region Methods
         private void InitializeUnhandledCatcher()
         {
-            _serviceLocator.RegisterTypeAndInstantiate<UnhandledCatcher>();
+            _serviceLocator.RegisterTypeAndInstantiate<UnhandledExceptionWatcher>();
         }
 
         private void InitializeCrashInfoProvider()
