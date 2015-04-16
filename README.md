@@ -1,48 +1,50 @@
-# Orc.CrashReporting
+Orc.CrashReporting
+======================
 
-simple way to hatch unhandled exceptions, prepare support package and inform the support team about the crash
+This library is used to:
+- catch unhandled exceptions
+- prepare a support package (optional)
+- inform the support team about the crash (optional)
 
-## Features
+Features
+----------
 
-* no need to handle catch unhandled exceptions. **Orc.CrashReporting** will do it by itself.
-* able to provide additional information, which may help to findout the way hoe to solve the problem
-* crash report providers can be added as prigins for the **Orc.CrashReporting** 
-* implemented email crash provider
+- **Orc.CrashReporting** will catch all unhandled exceptions automatically
+- Additional information can be added the report to help identify the cause of the problem
+- Crash report providers can be added as plugins
+- Reports can be sent by email to a designated email address
 
-## How to add crash report provider
+How to add a crash report provider
+---------------------------------
 
-Implement the **ICrashReportProvider** in your project
+All you need to do is implement the **ICrashReportProvider** interface in your project.
 
-	public interface ICrashReportProvider
-    {
-        #region Properties
-        string Title { get; }
-        #endregion
+```c#
+public interface ICrashReportProvider
+{
+    string Title { get; }
 
-        #region Methods
-        void SendCrashReport(CrashReport crashReport, string fileToAttach);
-        #endregion
-    }
+    void SendCrashReport(CrashReport crashReport, string fileToAttach);
+}
+```
 
-If you're implementing this interface in separate assembly, then just add reference to it into your main project. 
+Screenshot
+---------------
 
-that's all what you need to make it works.
-
-
-## Screenshot
-
-that's how the error message loks like:
+The error message will look like this:
 
 ![Orc.CrashReporting 01](doc/images/Orc.CrashReporting_01.png)
 
-You can see the details and user can provide the description of what he did before error occured.
+Clicking on the "Show Details" button will display more information, and give the user the chance to add extra information before sending the report.
 
 ![Orc.CrashReporting 02](doc/images/Orc.CrashReporting_02.png)
 
-exception detail:
+The exception details:
 
 ![Orc.CrashReporting 03](doc/images/Orc.CrashReporting_03.png)
 
-User can choose any available crash report provider from drop down menu to send crash report  (or just use the default one by ckicking the button):
+The system info tab will display all relevant information about the user's computer, and uses the [Orc.SystemInfo](https://github.com/WildGums/Orc.SystemInfo) library.
+
+Multiple report providers can be implemented and shown in the drop down menu to send the crash report:
 
 ![Orc.CrashReporting 04](doc/images/Orc.CrashReporting_04.png)
