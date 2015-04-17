@@ -13,8 +13,7 @@
                                 TextWrapping="Wrap" AcceptsReturn="True">
             <catel:WatermarkTextBox.Watermark>
                 <TextBlock Grid.Row="0" TextWrapping="Wrap">
-                    You can describe what have you done before this message appeared. 
-                    It could help to avoid this error in future.
+                    Please include any extra information you believe might help us identify and fix this issue.
                 </TextBlock>
             </catel:WatermarkTextBox.Watermark>
         </catel:WatermarkTextBox>
