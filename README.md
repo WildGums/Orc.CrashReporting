@@ -17,7 +17,7 @@ Features
 Crash reports will contain:
 - The exception message
 - The users system information (see [Orc.SystemInfo](https://github.com/WildGums/Orc.SystemInfo) for more details)
-- All the DLLs that were loaded when the exception occured (as well as their version number)
+- All the DLLs that were loaded when the exception occured
 - Optional message for the user, if they want to add more information before sending the report.
 
 How to add a crash report provider
@@ -40,9 +40,12 @@ The error message will look like this:
 
 ![Orc.CrashReporting 01](doc/images/Orc.CrashReporting_01.png)
 
-Clicking on the "Show details" button will display more information, and give the user the chance to add extra information before sending the report.
+Clicking on the "Show details" button will display more information.
 
 ### Additional info:
+
+This tab gives the user the chance to add extra information before sending the report.
+
 ![Additional info](doc/images/Orc.CrashReporting_02.png)
 
 ### Exception details:
