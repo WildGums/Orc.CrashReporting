@@ -42,12 +42,25 @@ The error message will look like this:
 
 Clicking on the "Show details" button will display more information, and give the user the chance to add extra information before sending the report.
 
-![Orc.CrashReporting 02](doc/images/Orc.CrashReporting_02.png)
+### Additional info:
+![Additional info](doc/images/Orc.CrashReporting_02.png)
 
-The exception details:
+### Exception details:
 
-![Orc.CrashReporting 03](doc/images/Orc.CrashReporting_03.png)
+![Exception details](doc/images/Orc.CrashReporting_03.png)
+
+### System info:
+
+![System info](doc/images/Orc.CrashReporting_04.png)
+
+### Loaded modules:
+
+![Loaded modules](doc/images/Orc.CrashReporting_05.png)
+
+### Sending the report
 
 Multiple messaging providers can be implemented and will be shown in the drop down menu. 
 
-![Orc.CrashReporting 04](doc/images/Orc.CrashReporting_04.png)
+A default email provider is available by default.
+
+![Orc.CrashReporting 04](doc/images/Orc.CrashReporting_06.png)
