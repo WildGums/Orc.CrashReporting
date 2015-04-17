@@ -2,9 +2,11 @@ Orc.CrashReporting
 ======================
 
 This library is used to:
-- catch unhandled exceptions
-- prepare a support package (optional)
-- send the crash report to the support team (optional)
+- Catch unhandled exceptions
+- Prepare a support package (optional)
+- Send the crash report to the support team (optional)
+
+This library is available on NuGet.
 
 Features
 ----------
@@ -67,3 +69,9 @@ Multiple messaging providers can be implemented and will be shown in the drop do
 A default email provider is available by default.
 
 ![Orc.CrashReporting 04](doc/images/Orc.CrashReporting_06.png)
+
+
+License
+--------
+
+MIT license
