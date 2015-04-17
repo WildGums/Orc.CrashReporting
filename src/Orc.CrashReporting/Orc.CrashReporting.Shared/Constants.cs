@@ -11,8 +11,8 @@ namespace Orc.CrashReporting
     {
         #region Fields
         public const string ExceptionDetailsTitle = "Exception details";
-        public const string SystemInfoTitle = "System Info";
-        public const string AdditionalInfo = "Additional Info";
+        public const string SystemInfoTitle = "System info";
+        public const string AdditionalInfo = "Additional info";
         public const string LoadedModulesInfo = "Loaded modules";
         #endregion
     }
