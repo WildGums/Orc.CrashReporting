@@ -13,21 +13,21 @@ This library is available on NuGet.
 Features
 ----------
 
-- **Orc.CrashReporting** will catch all unhandled exceptions automatically
+- *Orc.CrashReporting* will catch all unhandled exceptions automatically
 - Crash report providers can be added as plugins
 - Reports can be sent by email to a designated email address
 - Extra messaging providers can also be implemented
 
 Crash reports will contain:
 - The exception message
-- The users system information (see [Orc.SystemInfo](https://github.com/WildGums/Orc.SystemInfo) for more details)
+- The users system information (see *[Orc.SystemInfo](https://github.com/WildGums/Orc.SystemInfo)* for more details)
 - All the DLLs that were loaded when the exception occurred
 - Optional message for the user, if they want to add more information before sending the report.
 
 How to add a crash report provider
 ---------------------------------
 
-All you need to do is implement the **ICrashReportProvider** interface in your project.
+All you need to do is implement the *ICrashReportProvider* interface in your project.
 
 ```c#
 public interface ICrashReportProvider
