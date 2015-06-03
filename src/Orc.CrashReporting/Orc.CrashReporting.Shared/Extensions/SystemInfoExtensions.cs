@@ -12,16 +12,17 @@ namespace Orc.CrashReporting
     using System.Linq;
     using System.Threading.Tasks;
     using Catel;
+    using Catel.Threading;
     using Orc.SystemInfo;
 
     public static class SystemInfoExtensions
     {
         #region Methods
-        public static async Task<IEnumerable<string>> GetLoadedModules(this ISystemInfoService systemInfoService)
+        public static Task<IEnumerable<string>> GetLoadedModules(this ISystemInfoService systemInfoService)
         {
             Argument.IsNotNull("systemInfoService", systemInfoService);
 
-            return await Task.Factory.StartNew(() => GetLoadedModules());
+            return TaskHelper.Run(() => GetLoadedModules());
         }
 
         private static IEnumerable<string> GetLoadedModules()
@@ -29,7 +30,7 @@ namespace Orc.CrashReporting
             var currentProcess = Process.GetCurrentProcess();
 
             return from ProcessModule module in currentProcess.Modules
-                select string.Format("{0} {1}", module.FileName, module.FileVersionInfo.FileVersion);
+                   select string.Format("{0} {1}", module.FileName, module.FileVersionInfo.FileVersion);
         }
         #endregion
     }
