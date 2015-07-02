@@ -3,6 +3,11 @@ Orc.CrashReporting
 
 [![Join the chat at https://gitter.im/WildGums/Orc.CrashReporting](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/WildGums/Orc.CrashReporting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+![License](https://img.shields.io/github/license/wildgums/orc.crashreporting.svg)
+![NuGet downloads](https://img.shields.io/nuget/dt/orc.crashreporting.svg)
+![Version](https://img.shields.io/nuget/v/orc.crashreporting.svg)
+![Pre-release version](https://img.shields.io/nuget/vpre/orc.crashreporting.svg)
+
 This library is used to:
 - Catch unhandled exceptions
 - Prepare a support package (optional)
