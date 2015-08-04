@@ -34,10 +34,11 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        private async void Initialize()
+        private void Initialize()
         {
-            var systemInfo = await _systemInfoService.GetSystemInfo();
+            var systemInfo = _systemInfoService.GetSystemInfo();
             var stringBuilder = new StringBuilder();
+
             foreach (var infoElement in systemInfo)
             {
                 if (string.IsNullOrEmpty(infoElement.Name))

@@ -18,7 +18,7 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        string RegisterSupportFackageFile(string relativeFilePath);
+        string RegisterSupportPackageFile(string relativeFilePath);
         void RegisterException(Exception exception);
         #endregion
     }

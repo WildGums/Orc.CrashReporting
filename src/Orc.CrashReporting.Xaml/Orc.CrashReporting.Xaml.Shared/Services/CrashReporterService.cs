@@ -8,7 +8,6 @@
 namespace Orc.CrashReporting
 {
     using System;
-    using System.Threading.Tasks;
     using Catel;
     using Catel.Services;
     using ViewModels;
@@ -29,7 +28,7 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        public async Task ShowCrashReport(Exception exception)
+        public void ShowCrashReport(Exception exception)
         {
             _uiVisualizerService.ShowDialog<CrashReportViewModel>();
         }

@@ -61,7 +61,7 @@ namespace Orc.CrashReporting
             }
         }
 
-        public string RegisterSupportFackageFile(string relativeFilePath)
+        public string RegisterSupportPackageFile(string relativeFilePath)
         {
             Argument.IsNotNullOrWhitespace("relativeFilePath", relativeFilePath);
 

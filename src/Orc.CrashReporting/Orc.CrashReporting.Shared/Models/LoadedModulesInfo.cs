@@ -37,9 +37,9 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        private async void Initialize()
+        private void Initialize()
         {
-            LoadedModules = new List<string>(await _systemInfoService.GetLoadedModules());
+            LoadedModules = new List<string>(_systemInfoService.GetLoadedModules());
         }
 
         public override void ProvideSupportPackageData(ISupportPackageContext supportPackageContext)

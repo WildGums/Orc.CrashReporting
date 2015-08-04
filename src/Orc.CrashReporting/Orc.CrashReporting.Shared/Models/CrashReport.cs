@@ -30,6 +30,7 @@ namespace Orc.CrashReporting
 
         #region Properties
         public IList<ICrashInfo> CrashDetails { get; private set; }
+
         public string Message { get; private set; }
         #endregion
     }

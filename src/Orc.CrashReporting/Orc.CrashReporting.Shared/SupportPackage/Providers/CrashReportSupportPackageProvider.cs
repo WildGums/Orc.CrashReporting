@@ -7,7 +7,6 @@
 
 namespace Orc.CrashReporting.SupportPackage.Providers
 {
-    using System.Threading.Tasks;
     using Catel;
     using Orc.SupportPackage;
 
@@ -27,7 +26,7 @@ namespace Orc.CrashReporting.SupportPackage.Providers
         #endregion
 
         #region Methods
-        public override async Task Provide(ISupportPackageContext supportPackageContext)
+        public override void Provide(ISupportPackageContext supportPackageContext)
         {
             Argument.IsNotNull("supportPackageContext", supportPackageContext);
 

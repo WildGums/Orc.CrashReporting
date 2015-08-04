@@ -36,13 +36,12 @@ namespace Orc.CrashReporting.Services
             {
                 _crashReportProviders = new List<ICrashReportProvider>();
                 var crashLoggerTypes = (from type in TypeCache.GetTypes()
-                    where !type.IsAbstractEx() && type.IsClassEx() &&
-                          type.ImplementsInterfaceEx<ICrashReportProvider>()
-                    select type).ToList();
+                                        where !type.IsAbstractEx() && type.IsClassEx() && type.ImplementsInterfaceEx<ICrashReportProvider>()
+                                        select type).ToList();
 
                 foreach (var crashLoggerType in crashLoggerTypes)
                 {
-                    _crashReportProviders.Add((ICrashReportProvider) _typeFactory.CreateInstance(crashLoggerType));
+                    _crashReportProviders.Add((ICrashReportProvider)_typeFactory.CreateInstance(crashLoggerType));
                 }
             }
 
