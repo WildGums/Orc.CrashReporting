@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Orc.CrashReporting.Xaml</id>
+    <version>[VERSION]</version>
+    <title>Orc.CrashReporting.Xaml</title>
+    <authors>OrchestraDevs</authors>
+    <owners>OrchestraDevs</owners>
+
+	<description>
+	  This library provides a xaml implementation around Orc.CrashReporting.
+	</description>
+	<summary>
+	</summary>
+
+	<tags>orc support package</tags>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright Wild Gums 2010 - 2015</copyright>
+
+	<language>en-US</language>
+	<projectUrl>https://github.com/WildGums/Orc.CrashReporting</projectUrl>
+	<!--<licenseUrl>http://catel.codeplex.com/license</licenseUrl>-->
+	<!--<iconUrl>http://www.catenalogic.com/catel.png</iconUrl>-->
+    
+    <dependencies>
+      <dependency id="Orc.CrashReporting" version="[VERSION]" />
+      <dependency id="Catel.Extensions.Controls" version="[replaced]" />
+	  <dependency id="Orc.Controls" version="[replaced]" />
+	  <dependency id="Orc.SupportPackage.Xaml" version="[replaced]" />
+    </dependencies>
+  </metadata>
+</package>

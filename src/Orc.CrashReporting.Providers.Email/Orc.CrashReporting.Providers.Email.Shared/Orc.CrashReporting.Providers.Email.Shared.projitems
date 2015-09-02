@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>4d489f3a-83fd-48cf-b8f9-137916c4354b</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Orc.CrashReporting.Providers.Email.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)..\..\SolutionAssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\EmailExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Email.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Native\Mapi32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Providers\EmailReportProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IMapiErrorHandlingService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IMapiService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MapiErrorHandlingService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MapiService.cs" />
+  </ItemGroup>
+</Project>
