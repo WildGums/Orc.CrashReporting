@@ -7,6 +7,8 @@
 
 namespace Orc.CrashReporting
 {
+    using System.Threading.Tasks;
+
     public interface ICrashReportProvider
     {
         #region Properties
@@ -14,7 +16,7 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        void SendCrashReport(CrashReport crashReport, string fileToAttach);
+        Task SendCrashReportAsync(CrashReport crashReport, string fileToAttach);
         #endregion
     }
 }

@@ -8,6 +8,7 @@
 namespace Orc.CrashReporting
 {
     using System.Linq;
+    using System.Threading.Tasks;
     using Catel;
     using Catel.Configuration;
     using Models;
@@ -41,7 +42,7 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        public void SendCrashReport(CrashReport crashReport, string fileToAttach)
+        public async Task SendCrashReportAsync(CrashReport crashReport, string fileToAttach)
         {
             Argument.IsNotNull(() => crashReport);
 

@@ -19,6 +19,7 @@ namespace Orc.CrashReporting.ViewModels
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         private readonly CrashReport _crashReport;
         private readonly ICrashReportingContext _crashReportingContext;
         private readonly ICrashReportProvidersService _crashReportProvidersService;
@@ -41,6 +42,7 @@ namespace Orc.CrashReporting.ViewModels
 
         #region Properties
         public IList<ICrashReportProvider> CrashReportProviders { get; private set; }
+
         public ICrashReportProvider SelectedReportProvider { get; set; }
         #endregion
 
@@ -54,9 +56,9 @@ namespace Orc.CrashReporting.ViewModels
 
             var supportFackageFile = _crashReportingContext.SupportFackageFile;
 
-            SelectedReportProvider.SendCrashReport(_crashReport, supportFackageFile);
+            await SelectedReportProvider.SendCrashReportAsync(_crashReport, supportFackageFile);
 
-            await CloseViewModel(null);
+            await CloseViewModelAsync(null);
         }
         #endregion
     }

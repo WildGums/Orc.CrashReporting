@@ -20,6 +20,7 @@ namespace Orc.CrashReporting
             Argument.IsNotNull("exception", exception);
 
             var exceptionInfo = new StringBuilder();
+
             exceptionInfo
                 .AppendLine("Exception classes:")
                 .AppendLine(exception.GetExceptionTypeStack())

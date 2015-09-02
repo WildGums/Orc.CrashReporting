@@ -12,12 +12,14 @@ namespace Orc.CrashReporting
     using System.Windows.Threading;
     using Catel;
     using Catel.Logging;
+    using Catel.Threading;
     using Services;
 
     public class UnhandledExceptionWatcher
     {
         #region Fields
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
         private readonly IExceptionHandlerService _exceptionHandlerService;
         #endregion
 
@@ -35,13 +37,13 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
-        private void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        private async void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
             try
             {
                 var exception = e.Exception;
 
-                HandleException(exception);
+                await HandleExceptionAsync(exception);
             }
             catch (Exception ex)
             {
@@ -49,15 +51,19 @@ namespace Orc.CrashReporting
             }
         }
 
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        private async void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            // Don't exit yet
+            e.Handled = true;
+
             try
             {
                 var exception = e.Exception;
 
-                HandleException(exception);
-
-                e.Handled = true;
+                // Note: force wait (don't allow app to exit)
+                await HandleExceptionAsync(exception);
+                
+                // TODO: Now we can exit...
             }
             catch (Exception ex)
             {
@@ -65,13 +71,15 @@ namespace Orc.CrashReporting
             }
         }
 
-        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
             {
                 var exception = (Exception) e.ExceptionObject;
 
-                HandleException(exception);
+                // TODO: how to ensure that we will not exit?
+                var task = HandleExceptionAsync(exception);
+                task.Wait();
             }
             catch (Exception ex)
             {
@@ -79,10 +87,11 @@ namespace Orc.CrashReporting
             }
         }
 
-        private void HandleException(Exception exception)
+        private async Task HandleExceptionAsync(Exception exception)
         {
             Log.Error(exception);
-            _exceptionHandlerService.HandleException(exception);
+
+            await _exceptionHandlerService.HandleExceptionAsync(exception);
         }
         #endregion
     }

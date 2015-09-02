@@ -24,7 +24,6 @@ namespace Orc.CrashReporting.Services
             _crashReportProvidersService = crashReportProvidersService;
             _crashReportingContext = crashReportingContext;
 
-
             CrashReportProviders = GetCrashReporterProviders().ToArray();
         }
 
@@ -34,9 +33,9 @@ namespace Orc.CrashReporting.Services
             {
                 var menuItem = new CrashReportProviderMenuItem();
                 menuItem.Title = provider.Title;
-                menuItem.Command = new Command(() =>
+                menuItem.Command = new TaskCommand(() =>
                 {
-                    provider.SendCrashReport(_crashReportingContext.CrashReport, _crashReportingContext.SupportFackageFile);
+                    return provider.SendCrashReportAsync(_crashReportingContext.CrashReport, _crashReportingContext.SupportFackageFile);
                 });
                 menuItem.Provider = provider;
                 return menuItem;

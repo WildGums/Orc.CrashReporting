@@ -4,16 +4,17 @@
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:catel="http://catel.codeplex.com"
+                   xmlns:orc="http://www.wildgums.net.au/orc"
                    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <catel:WatermarkTextBox VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto"
-                                Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
-                                TextWrapping="Wrap" AcceptsReturn="True">
-            <catel:WatermarkTextBox.Watermark>
+        <orc:WatermarkTextBox VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto"
+                              Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                              TextWrapping="Wrap" AcceptsReturn="True">
+            <orc:WatermarkTextBox.Watermark>
                 <TextBlock Grid.Row="0" TextWrapping="Wrap">
                     Please include any extra information you believe might help us identify and fix this issue.
                 </TextBlock>
-            </catel:WatermarkTextBox.Watermark>
-        </catel:WatermarkTextBox>
+            </orc:WatermarkTextBox.Watermark>
+        </orc:WatermarkTextBox>
     </Grid>
 </catel:UserControl>

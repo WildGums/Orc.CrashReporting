@@ -8,6 +8,7 @@
 namespace Orc.CrashReporting.Services
 {
     using System;
+    using System.Threading.Tasks;
     using Catel;
     using Catel.IoC;
     using Orc.SupportPackage;
@@ -48,7 +49,7 @@ namespace Orc.CrashReporting.Services
         #endregion
 
         #region Methods
-        public void HandleException(Exception exception)
+        public async Task HandleExceptionAsync(Exception exception)
         {
             using (var disposableToken = exception.UseInReportingContext())
             {
@@ -56,7 +57,7 @@ namespace Orc.CrashReporting.Services
 
                 var supportFackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
 
-                _supportPackageService.CreateSupportPackage(supportFackageFile);
+                await _supportPackageService.CreateSupportPackageAsync(supportFackageFile);
 
                 CrashReporterService.ShowCrashReport(exception);
             }
