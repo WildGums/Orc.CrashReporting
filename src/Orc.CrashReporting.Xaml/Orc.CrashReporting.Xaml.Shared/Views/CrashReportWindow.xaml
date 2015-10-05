@@ -5,7 +5,6 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:catel="http://catel.codeplex.com"
                   xmlns:views="clr-namespace:Orc.CrashReporting.Views"
-                  xmlns:controls="clr-namespace:Orc.Controls;assembly=Orc.Controls"
                   mc:Ignorable="d"
                   d:DesignHeight="650"
                   d:DesignWidth="550" 
@@ -15,11 +14,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
-            <DataTemplate x:Key="AdditionalInfoTemplate">
-                <views:AdditionalInfoView />
-            </DataTemplate>
-
         </ResourceDictionary>
     </catel:DataWindow.Resources>
     <Grid>
@@ -48,8 +42,13 @@
                     In order for us to fix this issue in future versions please provide some details about what you were doing and click the "Email Report" button.
                 </TextBlock>
                 <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
-                <ContentControl Margin="0 2 4 4" ContentTemplate="{StaticResource AdditionalInfoTemplate}"
-                                MinHeight="56" MaxHeight="56"/>
+                <ContentControl Margin="0 2 4 4" MinHeight="56" MaxHeight="56">
+                    <ContentControl.ContentTemplate>
+                        <DataTemplate>
+                            <views:AdditionalInfoView />
+                        </DataTemplate>
+                    </ContentControl.ContentTemplate>
+                </ContentControl>
             </StackPanel>
             
         </Grid>

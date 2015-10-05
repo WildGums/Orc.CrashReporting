@@ -44,7 +44,7 @@
             </Grid.RowDefinitions>
             
             <ListBox Grid.Column="1" Name="listBox" ItemsSource="{Binding CrashDetailsToDisplay}"
-                     SelectedIndex="{Binding SelectedIndex}">
+                     SelectedIndex="{Binding SelectedIndex}" Style="{DynamicResource CrashDetilsListBoxStyle}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
