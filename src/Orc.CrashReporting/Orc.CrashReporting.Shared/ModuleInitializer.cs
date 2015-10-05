@@ -6,6 +6,7 @@
 
 
 using Catel.IoC;
+using Catel.Services;
 using Orc.CrashReporting;
 using Orc.CrashReporting.Services;
 
@@ -26,6 +27,7 @@ public static class ModuleInitializer
         serviceLocator.RegisterType<ICrashInfoService, CrashInfoService>();
         serviceLocator.RegisterType<IExceptionHandlerService, ExceptionHandlerService>();
         serviceLocator.RegisterType<ICrashReportProvidersService, CrashReportProvidersService>();
+        serviceLocator.RegisterType<IPleaseWaitService, Orc.CrashReporting.Services.PleaseWaitService>();
 
         serviceLocator.RegisterTypeAndInstantiate<CrashReporterInitializer>();
     }
