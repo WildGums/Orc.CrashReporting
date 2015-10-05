@@ -9,6 +9,7 @@ namespace Orc.CrashReporting
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Catel;
     using Catel.Data;
     using Services;
@@ -30,7 +31,10 @@ namespace Orc.CrashReporting
 
         #region Properties
         public IList<ICrashInfo> CrashDetails { get; private set; }
-
+        public IEnumerable<ICrashInfo> CrashDetailsToDisplay
+        {
+            get { return CrashDetails.Where(x => x.GetType() != typeof(AdditionalInfo)); }
+        }
         public string Message { get; private set; }
         #endregion
     }

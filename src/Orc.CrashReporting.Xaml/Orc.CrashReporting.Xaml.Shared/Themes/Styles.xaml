@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:orc="http://www.wildgums.net.au/orc">
 
     <Style TargetType="{x:Type Button}">
         <Setter Property="Padding" Value="4 2 4 2"/>
@@ -63,8 +64,48 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Bd"
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" 
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush4}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" TargetName="Bd">
+                                <Setter.Value>
+                                    <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="{x:Type ListBox}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemStyle}"/>
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    
+    <!--<Style TargetType="{x:Type ListBox}">
         <Setter Property="Margin" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
     </Style>
@@ -79,7 +120,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             </Trigger>
         </Style.Triggers>
-    </Style>
+    </Style>-->
 
     <Style x:Key="HorizontalGridSplitterStyle" TargetType="{x:Type GridSplitter}">
         <Setter Property="VerticalAlignment" Value="Bottom" />
@@ -99,24 +140,156 @@
     </Style>
 
     <!-- Expander -->
+    <Geometry x:Key="ExpanderToggleButtonArrow">M5,-0 L9,5 1,5 z</Geometry>
 
-    <SolidColorBrush x:Key="Expander.Background" Color="White"/>
-
-    <Style x:Key="ExpanderHeaderFocusVisual">
-        <Setter Property="Control.Template">
+    <Style x:Key="ExpanderToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
-                    <Border>
-                        <Rectangle Margin="0" SnapsToDevicePixels="true" Stroke="Black" StrokeThickness="1" StrokeDashArray="1 2"/>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border Padding="{TemplateBinding Padding}">
+                        <Grid Background="Transparent" SnapsToDevicePixels="False">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Path x:Name="arrow"
+                                  Grid.ColumnSpan="2"
+                                  HorizontalAlignment="Left"
+                                  Fill="Black"
+                                  Stroke="Black"
+                                  StrokeThickness="1"
+                                  VerticalAlignment="Top"
+                                  Data="{StaticResource ExpanderToggleButtonArrow}"
+                                  Height="4.5"
+                                  Stretch="Fill"
+                                  Width="8"
+                                  RenderTransformOrigin="0.5,0.5"
+                                  Margin="2,9,0,0">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="135"/>
+                                        <TranslateTransform X="0.18" Y="0.43"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <ContentPresenter Grid.Column="1"
+                                              HorizontalAlignment="Left"
+                                              Margin="4,0,0,0"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="True"
+                                              VerticalAlignment="Center"/>
+                        </Grid>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter Property="Margin" TargetName="arrow" Value="-1,8,0,0"/>
+                            <Setter Property="RenderTransform" TargetName="arrow">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="90"/>
+                                        <TranslateTransform X="0.18" Y="0.43"/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Fill" TargetName="arrow" Value="Transparent"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsChecked" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Fill" TargetName="arrow" Value="{DynamicResource AccentColorBrush}"/>
+                            <Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource AccentColorBrush}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                                <Condition Property="IsChecked" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Fill" TargetName="arrow" Value="Transparent"/>
+                            <Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource AccentColorBrush}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="false"/>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <ControlTemplate x:Key="ExpanderControlTemplate" TargetType="{x:Type Expander}">
+        <DockPanel>
+            <Grid  DockPanel.Dock="Top">
+                <ToggleButton x:Name="HeaderSite"
+                                HorizontalAlignment="Left"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"
+                                Content="{TemplateBinding Header}"
+                                DockPanel.Dock="Top"
+                                Foreground="{TemplateBinding Foreground}"
+                                FontWeight="{TemplateBinding FontWeight}"
+                                FontStyle="{TemplateBinding FontStyle}"
+                                FontStretch="{TemplateBinding FontStretch}"
+                                FontSize="{TemplateBinding FontSize}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                Margin="110,1,1,1"
+                                MinWidth="0"
+                                MinHeight="0"
+                                Padding="{TemplateBinding Padding}"
+                                Style="{DynamicResource ExpanderToggleButtonStyle}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                <StackPanel Margin="4 4 4 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <orc:DropDownButton AccentColorBrush="{DynamicResource AccentColorBrush}"
+                                                         Header="{Binding DefaultProviderHeader}"
+                                                         Command="{Binding DefaultProviderAction}">
+                        <orc:DropDownButton.DropDown>
+                            <ContextMenu ItemsSource="{Binding CrashReportProviders}">
+                                <ContextMenu.Resources>
+                                    <Style TargetType="{x:Type MenuItem}">
+                                        <Setter Property="Command" Value="{Binding Command}" />
+                                        <Setter Property="Header" Value="{Binding Title}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding }" Value="{x:Null}">
+                                                <Setter Property="Template" >
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}" />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContextMenu.Resources>
+                            </ContextMenu>
+                        </orc:DropDownButton.DropDown>
+                    </orc:DropDownButton>
+                </StackPanel>
+            </Grid>
+            <ContentPresenter x:Name="ExpandSite"
+                                          DockPanel.Dock="Bottom"
+                                          Focusable="false"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="0 0 4 0"
+                                          Visibility="Collapsed"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+        </DockPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded" Value="true">
+                <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                <Setter Property="Content" TargetName="HeaderSite" Value="Hide details"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="#FFADADAD"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
     <Style TargetType="{x:Type Expander}">
         <Setter Property="Padding" Value="1"/>
-        <Setter Property="Background" Value="{StaticResource Expander.Background}"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Template" Value="{StaticResource ExpanderControlTemplate}" />
     </Style>
 </ResourceDictionary>

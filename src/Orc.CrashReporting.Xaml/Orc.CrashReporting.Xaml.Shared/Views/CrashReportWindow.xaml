@@ -7,15 +7,19 @@
                   xmlns:views="clr-namespace:Orc.CrashReporting.Views"
                   xmlns:controls="clr-namespace:Orc.Controls;assembly=Orc.Controls"
                   mc:Ignorable="d"
-                  d:DesignHeight="550"
+                  d:DesignHeight="650"
                   d:DesignWidth="550" 
-                  Title="Error"
                   x:ClassModifier="internal">
     <catel:DataWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate x:Key="AdditionalInfoTemplate">
+                <views:AdditionalInfoView />
+            </DataTemplate>
+
         </ResourceDictionary>
     </catel:DataWindow.Resources>
     <Grid>
@@ -27,90 +31,31 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="4" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0 4 4 0">
+        <Grid Grid.Row="0" Margin="0 4 10 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error1.png"
-                   Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Message}" MaxHeight="100"
-                     VerticalScrollBarVisibility="Auto"/>
-        </Grid>
-        <Expander Grid.Row="1" ExpandDirection="Down" IsExpanded="False" >
-            <StackPanel>
-                <GridSplitter Style="{StaticResource HorizontalGridSplitterStyle}" />
-                <views:CrashDetailsView  DataContext="{Binding CrashReport}" />
+                   Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding AppName}" FontWeight="Medium" FontSize="13"/>
+                    <TextBlock Text=" encountered a problem" FontWeight="Medium" FontSize="13"/>
+                </StackPanel>
+                <!--<TextBlock>We are very sorry for the inconvenience.</TextBlock>-->
+                <TextBlock Margin="0 2 0 10" TextWrapping="Wrap">
+                    In order for us to fix this issue in future versions please provide some details about what you were doing and click the "Email Report" button.
+                </TextBlock>
+                <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
+                <ContentControl Margin="0 2 4 4" ContentTemplate="{StaticResource AdditionalInfoTemplate}" MinHeight="56"/>
             </StackPanel>
-            <Expander.Template>
-                <ControlTemplate TargetType="{x:Type Expander}">
-                    <DockPanel>
-                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right">
-                            <ToggleButton x:Name="HeaderSite" 
-								    Content="Show details" 
-                                    Width="90"
-                                    Margin="4 4 0 0"
-                                    HorizontalAlignment="Right"
-								    Foreground="{TemplateBinding Foreground}" 
-								    FontWeight="{TemplateBinding FontWeight}" 
-								    FocusVisualStyle="{DynamicResource ExpanderHeaderFocusVisual}" 
-								    FontStyle="{TemplateBinding FontStyle}" 
-								    FontStretch="{TemplateBinding FontStretch}" 
-								    FontSize="{TemplateBinding FontSize}" 
-								    FontFamily="{TemplateBinding FontFamily}" 
-								    HorizontalContentAlignment="Center" 
-								    IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" 
-								    Padding="{TemplateBinding Padding}" 
-								    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            <StackPanel Margin="4 4 4 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                                <controls:DropDownButton AccentColorBrush="{DynamicResource AccentColorBrush}"
-                                                         Header="{Binding DefaultProviderHeader}"
-                                                         Command="{Binding DefaultProviderAction}">
-                                    <controls:DropDownButton.DropDown>
-                                        <ContextMenu ItemsSource="{Binding CrashReportProviders}">
-                                            <ContextMenu.Resources>
-                                                <Style TargetType="{x:Type MenuItem}">
-                                                    <Setter Property="Command" Value="{Binding Command}" />
-                                                    <Setter Property="Header" Value="{Binding Title}" />
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding }" Value="{x:Null}">
-                                                            <Setter Property="Template" >
-                                                                <Setter.Value>
-                                                                    <ControlTemplate>
-                                                                        <Separator Style="{StaticResource {x:Static MenuItem.SeparatorStyleKey}}" />
-                                                                    </ControlTemplate>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </ContextMenu.Resources>
-                                        </ContextMenu>
-                                    </controls:DropDownButton.DropDown>
-                                </controls:DropDownButton>
-                            </StackPanel>
-                        </StackPanel>
-                        <ContentPresenter x:Name="ExpandSite"
-								        DockPanel.Dock="Bottom"
-								        Focusable="false"
-								        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-								        Margin="0 0 4 0" 
-								        Visibility="Collapsed" 
-								        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </DockPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsExpanded" Value="true">
-                            <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
-                            <Setter Property="Content" TargetName="HeaderSite" Value="Hide details"/>
-                            <Setter Property="Foreground" TargetName="HeaderSite" Value="White"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Foreground" Value="#FFADADAD"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Expander.Template>
+            
+        </Grid>
+        
+        <Expander Grid.Row="1" ExpandDirection="Down" IsExpanded="False" Margin="0 0 10 10" Header="Show details">
+            <views:CrashDetailsView  DataContext="{Binding CrashReport}" />
         </Expander>
     </Grid>
 </catel:DataWindow>

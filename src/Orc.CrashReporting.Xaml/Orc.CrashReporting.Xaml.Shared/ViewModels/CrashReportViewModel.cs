@@ -9,6 +9,7 @@ namespace Orc.CrashReporting.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using Catel;
     using Catel.Fody;
     using Catel.MVVM;
@@ -22,13 +23,13 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Constructors
-        public CrashReportViewModel(ICrashReportingContext crashReportingContext, ICrashReportProviderMenuService crashReportProviderMenuService,
-            IDefaultCrashReportProviderService defaultCrashReportProviderService)
+        public CrashReportViewModel(ICrashReportingContext crashReportingContext, ICrashReportProviderMenuService crashReportProviderMenuService, IDefaultCrashReportProviderService defaultCrashReportProviderService)
         {
-            _defaultCrashReportProviderService = defaultCrashReportProviderService;
             Argument.IsNotNull(() => crashReportingContext);
             Argument.IsNotNull(() => crashReportProviderMenuService);
             Argument.IsNotNull(() => defaultCrashReportProviderService);
+
+            _defaultCrashReportProviderService = defaultCrashReportProviderService;
 
             CrashReport = crashReportingContext.CrashReport;
             CrashReportProviders = crashReportProviderMenuService.CrashReportProviders;
@@ -36,12 +37,16 @@ namespace Orc.CrashReporting.ViewModels
             DefaultCrashReportProvider = CrashReportProviders.FirstOrDefault(x => Equals(x.Provider, defaultCrashReportProvider));
 
             DefaultProviderAction = new Command(OnDefaultProviderActionExecute, OnDefaultProviderActionCanExecute);
-
+            AppName = Assembly.GetExecutingAssembly().GetName().Name;
             AccentColorHelper.CreateAccentColorResourceDictionary();
+
+            Title = string.Format("{0} has encountered a problem", AppName);
         }
         #endregion
 
         #region Properties
+        public string AppName { get; set; }
+
         public IEnumerable<CrashReportProviderMenuItem> CrashReportProviders { get; set; }
 
         [Model]

@@ -25,7 +25,7 @@ namespace Orc.CrashReporting.ViewModels
 
         #region Properties
         [Model]
-        [Expose("CrashDetails")]
+        [Expose("CrashDetailsToDisplay")]
         public CrashReport CrashReport { get; private set; }
 
         [DefaultValue(0)]
