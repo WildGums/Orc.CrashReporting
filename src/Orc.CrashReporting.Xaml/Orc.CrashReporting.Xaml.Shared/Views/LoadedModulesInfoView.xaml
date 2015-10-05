@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
                    x:ClassModifier="internal">
-    <Grid>
+    <Border BorderThickness="1" BorderBrush="LightGray">
         <ListBox ItemsSource="{Binding LoadedModules}"/>
-    </Grid>
+    </Border>
 </catel:UserControl>

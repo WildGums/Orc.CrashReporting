@@ -33,23 +33,23 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0 4 10 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="86"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error1.png"
-                   Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                   Height="50" Margin="0 2 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <StackPanel Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding AppName}" FontWeight="Medium" FontSize="13"/>
                     <TextBlock Text=" encountered a problem" FontWeight="Medium" FontSize="13"/>
                 </StackPanel>
-                <!--<TextBlock>We are very sorry for the inconvenience.</TextBlock>-->
-                <TextBlock Margin="0 2 0 10" TextWrapping="Wrap">
+                <TextBlock Margin="0 8 0 10" TextWrapping="Wrap">
                     In order for us to fix this issue in future versions please provide some details about what you were doing and click the "Email Report" button.
                 </TextBlock>
                 <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
-                <ContentControl Margin="0 2 4 4" ContentTemplate="{StaticResource AdditionalInfoTemplate}" MinHeight="56"/>
+                <ContentControl Margin="0 2 4 4" ContentTemplate="{StaticResource AdditionalInfoTemplate}"
+                                MinHeight="56" MaxHeight="56"/>
             </StackPanel>
             
         </Grid>

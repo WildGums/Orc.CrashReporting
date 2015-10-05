@@ -40,7 +40,7 @@ namespace Orc.CrashReporting.ViewModels
             AppName = Assembly.GetExecutingAssembly().GetName().Name;
             AccentColorHelper.CreateAccentColorResourceDictionary();
 
-            Title = string.Format("{0} has encountered a problem", AppName);
+            Title = AppName;
         }
         #endregion
 

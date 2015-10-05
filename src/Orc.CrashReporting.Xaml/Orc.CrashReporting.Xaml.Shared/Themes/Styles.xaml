@@ -67,14 +67,13 @@
 
     <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="4 2 4 2"/>
         <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Border x:Name="Bd"
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}" 
                             Padding="{TemplateBinding Padding}"
                             SnapsToDevicePixels="true">
@@ -83,7 +82,7 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
+                        <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush4}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
@@ -105,23 +104,6 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
     
-    <!--<Style TargetType="{x:Type ListBox}">
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="BorderThickness" Value="0" />
-    </Style>
-
-    <Style TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Padding" Value="4"/>
-        <Style.Resources>
-            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{StaticResource AccentColor4}"/>
-        </Style.Resources>
-        <Style.Triggers>
-            <Trigger Property="ListBoxItem.IsSelected" Value="True" >
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>-->
-
     <Style x:Key="HorizontalGridSplitterStyle" TargetType="{x:Type GridSplitter}">
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -217,7 +199,7 @@
     </Style>
     <ControlTemplate x:Key="ExpanderControlTemplate" TargetType="{x:Type Expander}">
         <DockPanel>
-            <Grid  DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Top">
                 <ToggleButton x:Name="HeaderSite"
                                 HorizontalAlignment="Left"
                                 ContentTemplate="{TemplateBinding HeaderTemplate}"
@@ -232,7 +214,7 @@
                                 FontFamily="{TemplateBinding FontFamily}"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                Margin="110,1,1,1"
+                                Margin="86,1,1,1"
                                 MinWidth="0"
                                 MinHeight="0"
                                 Padding="{TemplateBinding Padding}"
@@ -267,12 +249,12 @@
                 </StackPanel>
             </Grid>
             <ContentPresenter x:Name="ExpandSite"
-                                          DockPanel.Dock="Bottom"
-                                          Focusable="false"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Margin="0 0 4 0"
-                                          Visibility="Collapsed"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                DockPanel.Dock="Bottom"
+                                Focusable="false"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="0 4 4 0"
+                                Visibility="Collapsed"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
         </DockPanel>
         <ControlTemplate.Triggers>
             <Trigger Property="IsExpanded" Value="true">

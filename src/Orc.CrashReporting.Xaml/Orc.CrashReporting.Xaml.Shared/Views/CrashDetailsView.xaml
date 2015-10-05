@@ -35,7 +35,7 @@
     </catel:UserControl.Resources>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="110" />
+                <ColumnDefinition Width="86" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
