@@ -32,7 +32,7 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error1.png"
-                   Height="50" Margin="0 2 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                   Height="50" Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <StackPanel Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding AppName}" FontWeight="Medium" FontSize="13"/>

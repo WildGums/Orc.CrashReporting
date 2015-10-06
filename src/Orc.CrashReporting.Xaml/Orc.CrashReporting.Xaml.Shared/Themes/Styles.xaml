@@ -146,7 +146,7 @@
                                   Stretch="Fill"
                                   Width="8"
                                   RenderTransformOrigin="0.5,0.5"
-                                  Margin="2,9,0,0">
+                                  Margin="2,10,0,0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform Angle="135"/>
@@ -164,7 +164,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="false">
-                            <Setter Property="Margin" TargetName="arrow" Value="-1,8,0,0"/>
+                            <Setter Property="Margin" TargetName="arrow" Value="-1,10,0,0"/>
                             <Setter Property="RenderTransform" TargetName="arrow">
                                 <Setter.Value>
                                     <TransformGroup>
@@ -221,14 +221,18 @@
                                 Style="{DynamicResource ExpanderToggleButtonStyle}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                 <StackPanel Margin="4 4 4 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <orc:DropDownButton AccentColorBrush="{DynamicResource AccentColorBrush}"
-                                        Header="{Binding DefaultProviderHeader}" Command="{Binding DefaultProviderAction}">
+                    <orc:DropDownButton Height="25" Width="150" AccentColorBrush="{DynamicResource AccentColorBrush}"
+                                        Header="{Binding DefaultProviderHeader}"
+                                        Command="{Binding DefaultProviderAction}">
                         <orc:DropDownButton.DropDown>
                             <ContextMenu ItemsSource="{Binding CrashReportProviders}">
                                 <ContextMenu.Resources>
                                     <Style TargetType="{x:Type MenuItem}">
                                         <Setter Property="Command" Value="{Binding Command}" />
                                         <Setter Property="Header" Value="{Binding Title}" />
+                                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                        <Setter Property="Padding" Value="4"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding }" Value="{x:Null}">
                                                 <Setter Property="Template" >
