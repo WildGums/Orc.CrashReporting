@@ -39,7 +39,7 @@
                     <TextBlock Text=" encountered a problem" FontWeight="Medium" FontSize="13"/>
                 </StackPanel>
                 <TextBlock Margin="0 8 0 10" TextWrapping="Wrap">
-                    In order for us to fix this issue in future versions please provide some details about what you were doing and click the "Email Report" button.
+                    In order for us to fix this issue please provide some details about what you were doing and report us using button below.
                 </TextBlock>
                 <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
                 <ContentControl Margin="0 2 4 4" MinHeight="56" MaxHeight="56">
