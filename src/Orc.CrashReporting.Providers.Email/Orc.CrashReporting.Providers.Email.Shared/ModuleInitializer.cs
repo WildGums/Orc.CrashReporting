@@ -1,4 +1,6 @@
 ﻿using Catel.IoC;
+using Catel.Services;
+using Catel.Services.Models;
 using Orc.CrashReporting;
 
 /// <summary>
@@ -15,5 +17,8 @@ public static class ModuleInitializer
 
         serviceLocator.RegisterType<IMapiService, MapiService>();
         serviceLocator.RegisterType<IMapiErrorHandlingService, MapiErrorHandlingService>();
+
+        var languageService = serviceLocator.ResolveType<ILanguageService>();
+        languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.CrashReporting.Providers.Email", "Orc.CrashReporting.Properties", "Resources"));
     }
 }
