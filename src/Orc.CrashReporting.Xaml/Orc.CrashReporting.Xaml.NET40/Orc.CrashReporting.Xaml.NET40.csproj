@@ -70,17 +70,17 @@
     </Reference>
     <Reference Include="Orc.Controls, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.Controls.1.2.0-unstable0006\lib\net40\Orc.Controls.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.Controls.1.2.0\lib\net40\Orc.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Orc.SupportPackage, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SupportPackage.1.2.0-unstable0002\lib\net40\Orc.SupportPackage.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.1.2.0\lib\net40\Orc.SupportPackage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Orc.SupportPackage.Xaml, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SupportPackage.Xaml.1.2.0-unstable0002\lib\net40\Orc.SupportPackage.Xaml.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.Xaml.1.2.0\lib\net40\Orc.SupportPackage.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

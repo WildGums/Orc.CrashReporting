@@ -50,12 +50,12 @@
     </Reference>
     <Reference Include="Orc.SupportPackage, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SupportPackage.1.2.0-unstable0002\lib\net45\Orc.SupportPackage.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SupportPackage.1.2.0\lib\net45\Orc.SupportPackage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Orc.SystemInfo, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SystemInfo.1.1.0-unstable0010\lib\net45\Orc.SystemInfo.dll</HintPath>
+      <HintPath>..\..\..\lib\Orc.SystemInfo.1.1.0\lib\net45\Orc.SystemInfo.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
