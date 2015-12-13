@@ -16,7 +16,6 @@ namespace Orc.CrashReporting.TemplateSelectors
         #region Properties
         public DataTemplate ExceptionTemplate { get; set; }
         public DataTemplate SystemInfoTemplate { get; set; }
-        public DataTemplate AdditionatInfoTemplate { get; set; }
         public DataTemplate LoadedModulesTemplate { get; set; }
         #endregion
 
@@ -39,9 +38,6 @@ namespace Orc.CrashReporting.TemplateSelectors
 
                 case CrashDetails.SystemInfoTitle:
                     return SystemInfoTemplate;
-
-                case CrashDetails.AdditionalInfo:
-                    return AdditionatInfoTemplate;
 
                 case CrashDetails.LoadedModulesInfo:
                     return LoadedModulesTemplate;

@@ -11,6 +11,7 @@ namespace Orc.CrashReporting.Services
     using System.Threading.Tasks;
     using Catel;
     using Catel.IoC;
+    using Catel.Services;
     using Orc.SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
@@ -18,17 +19,20 @@ namespace Orc.CrashReporting.Services
         #region Fields
         private readonly IServiceLocator _serviceLocator;
         private readonly ISupportPackageService _supportPackageService;
+        private readonly IPleaseWaitService _pleaseWaitService;
         private ICrashReporterService _crashReporterService;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService, IPleaseWaitService pleaseWaitService)
         {
             Argument.IsNotNull("serviceLocator", serviceLocator);
             Argument.IsNotNull("supportPackageService", supportPackageService);
+            Argument.IsNotNull(() => pleaseWaitService);
 
             _serviceLocator = serviceLocator;
             _supportPackageService = supportPackageService;
+            _pleaseWaitService = pleaseWaitService;
         }
         #endregion
 
@@ -51,13 +55,16 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleExceptionAsync(Exception exception)
         {
+            _pleaseWaitService.Show();
             using (var disposableToken = exception.UseInReportingContext())
             {
                 var context = disposableToken.Instance;
 
-                var supportFackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
+                var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
 
-                await _supportPackageService.CreateSupportPackageAsync(supportFackageFile);
+                await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
+
+                _pleaseWaitService.Hide();
 
                 CrashReporterService.ShowCrashReport(exception);
             }

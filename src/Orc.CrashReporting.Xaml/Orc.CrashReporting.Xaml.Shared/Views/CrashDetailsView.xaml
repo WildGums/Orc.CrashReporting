@@ -23,10 +23,6 @@
                 <views:SystemInfoView />
             </DataTemplate>
 
-            <DataTemplate x:Key="AdditionalInfoTemplate">
-                <views:AdditionalInfoView />
-            </DataTemplate>
-
             <DataTemplate x:Key="LoadedModulesTemplate">
                 <views:LoadedModulesInfoView />
             </DataTemplate>
@@ -34,30 +30,34 @@
             <templateSelectors:CrashDetailsTemplateSelector x:Key="CrashDetailsTemplateSelector" 
                                                             ExceptionTemplate="{StaticResource ExceptionTemplate}"
                                                             SystemInfoTemplate="{StaticResource SystemInfoTemplate}" 
-                                                            AdditionatInfoTemplate="{StaticResource AdditionalInfoTemplate}"
                                                             LoadedModulesTemplate="{StaticResource LoadedModulesTemplate}"/>
         </ResourceDictionary>
     </catel:UserControl.Resources>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" MinWidth="110" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="86" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
-            <ListBox Name="listBox" Grid.Column="0"
-                     ItemsSource="{Binding CrashDetails}" SelectedIndex="{Binding SelectedIndex}" >
+            
+            <ListBox Grid.Column="1" Name="listBox" ItemsSource="{Binding CrashDetailsToDisplay}"
+                     SelectedIndex="{Binding SelectedIndex}" Style="{DynamicResource CrashDetilsListBoxStyle}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Title}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <GridSplitter Grid.Column="1" Width="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
-                          IsEnabled="False"/>
-            <ContentControl Content="{Binding SelectedItem, ElementName=listBox}" Grid.Column="2"  MinWidth="300"
-                            ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
+            
+            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding SelectedItem, ElementName=listBox}"
+                            MinWidth="300" ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
         </Grid>
 </catel:UserControl>

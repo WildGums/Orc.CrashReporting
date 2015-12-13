@@ -12,7 +12,7 @@
                               TextWrapping="Wrap" AcceptsReturn="True">
             <orc:WatermarkTextBox.Watermark>
                 <TextBlock Grid.Row="0" TextWrapping="Wrap">
-                    Please include any extra information you believe might help us identify and fix this issue.
+                    Please tell us briefly what you were doing
                 </TextBlock>
             </orc:WatermarkTextBox.Watermark>
         </orc:WatermarkTextBox>
