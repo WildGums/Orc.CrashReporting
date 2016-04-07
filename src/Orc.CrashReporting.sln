@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.NET40", "Orc.CrashReporting\Orc.CrashReporting.NET40\Orc.CrashReporting.NET40.csproj", "{31CE78CE-896E-43B5-AE7E-A6A4B9944AA4}"
 EndProject
@@ -48,10 +48,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Xaml.NET
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Tests.NET45", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.NET45\Orc.CrashReporting.Tests.NET45.csproj", "{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.NET46", "Orc.CrashReporting\Orc.CrashReporting.NET46\Orc.CrashReporting.NET46.csproj", "{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Providers.Email.NET46", "Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET46\Orc.CrashReporting.Providers.Email.NET46.csproj", "{CFEC4807-3C0F-4A74-80BE-622693AD8ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Xaml.NET46", "Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.NET46\Orc.CrashReporting.Xaml.NET46.csproj", "{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CrashReporting.Tests.NET46", "Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.NET46\Orc.CrashReporting.Tests.NET46.csproj", "{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{7b831c5e-59e3-40ce-9097-a2ebc475df24}*SharedItemsImports = 13
 		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{9f064879-d8bc-40fa-bba6-c0f281aca98a}*SharedItemsImports = 13
+		Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.projitems*{cfec4807-3c0f-4a74-80be-622693ad8acd}*SharedItemsImports = 4
+		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{dbadf7a3-a9d5-4fa1-86a3-d8502ff93835}*SharedItemsImports = 4
 		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{6707c7ed-9c15-483e-bd23-2a5481dcaf80}*SharedItemsImports = 13
 		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{7b925ae2-f94f-4a94-b5a7-5009b2a6225c}*SharedItemsImports = 4
 		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{b167270f-a5fe-461e-8cf5-cd53e2db29ea}*SharedItemsImports = 4
@@ -61,6 +71,8 @@ Global
 		Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.Shared\Orc.CrashReporting.Providers.Email.Shared.projitems*{063e2020-a9f1-45a6-a3a6-526e4479d6ad}*SharedItemsImports = 4
 		Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems*{a226d12e-9802-4364-b4f3-2caaae059dd4}*SharedItemsImports = 4
 		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{31ce78ce-896e-43b5-ae7e-a6a4b9944aa4}*SharedItemsImports = 4
+		Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems*{29f2f0ab-a34c-42fa-803b-a3d64cf114d5}*SharedItemsImports = 4
+		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{b9fbc316-14ab-4463-9721-c8b3e8d7abe6}*SharedItemsImports = 4
 		Orc.CrashReporting\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems*{824073ff-5ed0-48c4-81e9-b2772b264d02}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +116,22 @@ Global
 		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEC4807-3C0F-4A74-80BE-622693AD8ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC4807-3C0F-4A74-80BE-622693AD8ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC4807-3C0F-4A74-80BE-622693AD8ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEC4807-3C0F-4A74-80BE-622693AD8ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,5 +155,9 @@ Global
 		{063E2020-A9F1-45A6-A3A6-526E4479D6AD} = {DCF291E5-D2F0-4C97-87DC-A120E0ED1315}
 		{7B925AE2-F94F-4A94-B5A7-5009B2A6225C} = {6D330950-790C-473F-AD8D-65C532B55EBE}
 		{B167270F-A5FE-461E-8CF5-CD53E2DB29EA} = {832C935D-D23A-4C38-9B52-CAC0F508F875}
+		{B9FBC316-14AB-4463-9721-C8B3E8D7ABE6} = {29A3E85A-AD9A-4F3A-9B6A-288B2D64455D}
+		{CFEC4807-3C0F-4A74-80BE-622693AD8ACD} = {DCF291E5-D2F0-4C97-87DC-A120E0ED1315}
+		{29F2F0AB-A34C-42FA-803B-A3D64CF114D5} = {6D330950-790C-473F-AD8D-65C532B55EBE}
+		{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835} = {832C935D-D23A-4C38-9B52-CAC0F508F875}
 	EndGlobalSection
 EndGlobal

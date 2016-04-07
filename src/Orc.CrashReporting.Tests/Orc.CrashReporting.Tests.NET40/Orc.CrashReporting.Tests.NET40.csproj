@@ -25,7 +25,8 @@
     <DefineConstants>TRACE;DEBUG;NET;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\output\debug\NET40\Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -36,7 +37,8 @@
     <DefineConstants>TRACE;NET;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\output\release\NET40\Orc.CrashReporting.Tests\Orc.CrashReporting.Tests.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -73,6 +75,9 @@
       <Project>{31ce78ce-896e-43b5-ae7e-a6a4b9944aa4}</Project>
       <Name>Orc.CrashReporting.NET40</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ModuleInitializer.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

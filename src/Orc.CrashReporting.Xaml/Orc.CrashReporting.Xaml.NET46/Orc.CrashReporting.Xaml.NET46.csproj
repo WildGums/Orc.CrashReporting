@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{824073FF-5ED0-48C4-81E9-B2772B264D02}</ProjectGuid>
+    <ProjectGuid>{29F2F0AB-A34C-42FA-803B-A3D64CF114D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orc.CrashReporting</RootNamespace>
-    <AssemblyName>Orc.CrashReporting</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AssemblyName>Orc.CrashReporting.Xaml</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -18,110 +18,129 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\output\debug\NET45\Orc.CrashReporting\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET;NET45</DefineConstants>
+    <OutputPath>..\..\..\output\debug\NET46\Orc.CrashReporting.Xaml\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET;NET46</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>..\..\..\output\debug\NET45\Orc.CrashReporting\Orc.CrashReporting.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\output\debug\NET46\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\output\release\NET45\Orc.CrashReporting\</OutputPath>
-    <DefineConstants>TRACE;NET;NET45</DefineConstants>
+    <OutputPath>..\..\..\output\release\NET46\Orc.CrashReporting.Xaml\</OutputPath>
+    <DefineConstants>TRACE;NET;NET46</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>..\..\..\output\release\NET45\Orc.CrashReporting\Orc.CrashReporting.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\output\release\NET46\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Catel.Core, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Catel.Core.4.5.0-unstable0246\lib\net45\Catel.Core.dll</HintPath>
+    <Reference Include="Catel.Core">
+      <HintPath>..\..\..\lib\Catel.Core.4.5.0-unstable0246\lib\net46\Catel.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catel.Extensions.Controls">
+      <HintPath>..\..\..\lib\Catel.Extensions.Controls.4.5.0-unstable0246\lib\net46\Catel.Extensions.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Catel.Fody.Attributes">
       <HintPath>..\..\..\lib\Catel.Fody.2.14.0\lib\portable-net4+sl4+wp7+win8+wpa81+MonoAndroid14+MonoTouch40\Catel.Fody.Attributes.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Catel.MVVM, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Catel.MVVM.4.5.0-unstable0246\lib\net45\Catel.MVVM.dll</HintPath>
+    <Reference Include="Catel.MVVM">
+      <HintPath>..\..\..\lib\Catel.MVVM.4.5.0-unstable0246\lib\net46\Catel.MVVM.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Orc.SupportPackage, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SupportPackage.1.3.0-unstable0005\lib\net45\Orc.SupportPackage.dll</HintPath>
+    <Reference Include="Orc.Controls">
+      <HintPath>..\..\..\lib\Orc.Controls.1.3.0-unstable0082\lib\net46\Orc.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Orc.SystemInfo, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Orc.SystemInfo.1.2.0-unstable0006\lib\net45\Orc.SystemInfo.dll</HintPath>
+    <Reference Include="Orc.SupportPackage">
+      <HintPath>..\..\..\lib\Orc.SupportPackage.1.3.0-unstable0005\lib\net46\Orc.SupportPackage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Orc.SupportPackage.Xaml">
+      <HintPath>..\..\..\lib\Orc.SupportPackage.Xaml.1.3.0-unstable0005\lib\net46\Orc.SupportPackage.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\lib\Catel.MVVM.4.5.0-unstable0246\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\..\lib\Catel.MVVM.4.5.0-unstable0246\lib\net46\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\Orc.CrashReporting.Shared\Properties\Resources.NET45.Designer.cs">
-      <Link>Properties\Resources.NET45.Designer.cs</Link>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.NET46.Designer.cs">
+      <Link>Properties\Resources.NET46.Designer.cs</Link>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ModuleInitializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\Orc.CrashReporting.Xaml.Shared\Resources\Images\error.png">
+      <Link>Resources\Images\error.png</Link>
+    </Resource>
+    <Resource Include="..\Orc.CrashReporting.Xaml.Shared\Resources\Images\error1.png">
+      <Link>Resources\Images\error1.png</Link>
+    </Resource>
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.de.resx">
+    <ProjectReference Include="..\..\Orc.CrashReporting\Orc.CrashReporting.NET46\Orc.CrashReporting.NET46.csproj">
+      <Project>{b9fbc316-14ab-4463-9721-c8b3e8d7abe6}</Project>
+      <Name>Orc.CrashReporting.NET46</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.de.resx">
       <Link>Properties\Resources.de.resx</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.es.resx">
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.es.resx">
       <Link>Properties\Resources.es.resx</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.fr.resx">
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.fr.resx">
       <Link>Properties\Resources.fr.resx</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.nl.resx">
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.nl.resx">
       <Link>Properties\Resources.nl.resx</Link>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.resx">
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.resx">
       <Link>Properties\Resources.resx</Link>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.NET45.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.NET46.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\Orc.CrashReporting.Shared\Properties\Resources.ru.resx">
+    <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.ru.resx">
       <Link>Properties\Resources.ru.resx</Link>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.CrashReporting.Shared\Orc.CrashReporting.Shared.projitems')" />
+  <Import Project="..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets'))" />
   </Target>
-  <Import Project="..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\..\..\lib\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

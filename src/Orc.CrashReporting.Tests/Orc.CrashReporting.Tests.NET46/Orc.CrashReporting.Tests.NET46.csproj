@@ -1,45 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B167270F-A5FE-461E-8CF5-CD53E2DB29EA}</ProjectGuid>
+    <ProjectGuid>{DBADF7A3-A9D5-4FA1-86A3-D8502FF93835}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Orc.CrashReporting.Tests</RootNamespace>
     <AssemblyName>Orc.CrashReporting.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\output\debug\NET45\Orc.CrashReporting.Tests\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET;NET45</DefineConstants>
+    <OutputPath>..\..\..\output\debug\NET46\Orc.CrashReporting.Tests\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET;NET46</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\output\release\NET45\Orc.CrashReporting.Tests\</OutputPath>
-    <DefineConstants>TRACE;NET;NET45</DefineConstants>
+    <OutputPath>..\..\..\output\release\NET46\Orc.CrashReporting.Tests\</OutputPath>
+    <DefineConstants>TRACE;NET;NET46</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591;1998</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,20 +45,25 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET45\Orc.CrashReporting.Providers.Email.NET45.csproj">
-      <Project>{063e2020-a9f1-45a6-a3a6-526e4479d6ad}</Project>
-      <Name>Orc.CrashReporting.Providers.Email.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Orc.CrashReporting\Orc.CrashReporting.NET45\Orc.CrashReporting.NET45.csproj">
-      <Project>{824073ff-5ed0-48c4-81e9-b2772b264d02}</Project>
-      <Name>Orc.CrashReporting.NET45</Name>
-    </ProjectReference>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <ProjectReference Include="..\..\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET46\Orc.CrashReporting.Providers.Email.NET46.csproj">
+      <Project>{cfec4807-3c0f-4a74-80be-622693ad8acd}</Project>
+      <Name>Orc.CrashReporting.Providers.Email.NET46</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.NET46\Orc.CrashReporting.Xaml.NET46.csproj">
+      <Project>{29f2f0ab-a34c-42fa-803b-a3d64cf114d5}</Project>
+      <Name>Orc.CrashReporting.Xaml.NET46</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orc.CrashReporting\Orc.CrashReporting.NET46\Orc.CrashReporting.NET46.csproj">
+      <Project>{b9fbc316-14ab-4463-9721-c8b3e8d7abe6}</Project>
+      <Name>Orc.CrashReporting.NET46</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -68,7 +71,7 @@
   <ItemGroup>
     <Compile Include="ModuleInitializer.cs" />
   </ItemGroup>
-  <Import Project="..\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems')" />
+  <Import Project="..\Orc.CrashReporting.Tests.Shared\Orc.CrashReporting.Tests.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
