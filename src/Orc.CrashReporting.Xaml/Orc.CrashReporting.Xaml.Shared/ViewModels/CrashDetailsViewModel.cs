@@ -24,7 +24,7 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Properties
-        [Model]
+        [Model(SupportIEditableObject = false)]
         [Expose("CrashDetailsToDisplay")]
         public CrashReport CrashReport { get; private set; }
 

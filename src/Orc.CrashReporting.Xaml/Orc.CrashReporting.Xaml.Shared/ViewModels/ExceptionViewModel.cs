@@ -23,7 +23,7 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Properties
-        [Model]
+        [Model(SupportIEditableObject = false)]
         [Expose("FullExceptionText")]
         public ExceptionInfo ExceptionInfo { get; private set; }
         #endregion

@@ -49,11 +49,11 @@ namespace Orc.CrashReporting.ViewModels
 
         public IEnumerable<CrashReportProviderMenuItem> CrashReportProviders { get; set; }
 
-        [Model]
+        [Model(SupportIEditableObject = false)]
         [Expose("DefaultProviderHeader", "Title")]
         public CrashReportProviderMenuItem DefaultCrashReportProvider { get; set; }
 
-        [Model]
+        [Model(SupportIEditableObject = false)]
         [Expose("Message")]
         public CrashReport CrashReport { get; set; }
         #endregion
@@ -63,7 +63,7 @@ namespace Orc.CrashReporting.ViewModels
 
         private void OnDefaultProviderActionExecute()
         {
-            if (DefaultCrashReportProvider == null || DefaultCrashReportProvider.Command == null)
+            if (DefaultCrashReportProvider?.Command == null)
             {
                 return;
             }
@@ -73,7 +73,7 @@ namespace Orc.CrashReporting.ViewModels
 
         private bool OnDefaultProviderActionCanExecute()
         {
-            if (DefaultCrashReportProvider == null || DefaultCrashReportProvider.Command == null)
+            if (DefaultCrashReportProvider?.Command == null)
             {
                 return false;
             }

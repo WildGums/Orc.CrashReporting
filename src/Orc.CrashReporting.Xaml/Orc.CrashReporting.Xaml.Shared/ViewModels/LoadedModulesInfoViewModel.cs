@@ -27,7 +27,7 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Properties
-        [Model]
+        [Model(SupportIEditableObject = false)]
         [Expose("LoadedModules")]
         public LoadedModulesInfo LoadedModulesInfo { get; private set; }
         #endregion
