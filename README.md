@@ -13,7 +13,7 @@ This library is used to:
 - Prepare a support package (optional)
 - Send the crash report to the support team (optional)
 
-This library is available on NuGet.
+This library is available on NuGet. 
 
 Features
 ----------
