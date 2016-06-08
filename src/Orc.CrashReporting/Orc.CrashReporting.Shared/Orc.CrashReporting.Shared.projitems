@@ -36,7 +36,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICrashReporterService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICrashReportProvidersService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IExceptionHandlerService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\PleaseWaitService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SupportPackage\Providers\CrashReportSupportPackageProvider.cs" />
   </ItemGroup>
 </Project>

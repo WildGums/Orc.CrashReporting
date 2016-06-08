@@ -19,20 +19,17 @@ namespace Orc.CrashReporting.Services
         #region Fields
         private readonly IServiceLocator _serviceLocator;
         private readonly ISupportPackageService _supportPackageService;
-        private readonly IPleaseWaitService _pleaseWaitService;
         private ICrashReporterService _crashReporterService;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService, IPleaseWaitService pleaseWaitService)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService)
         {
             Argument.IsNotNull("serviceLocator", serviceLocator);
             Argument.IsNotNull("supportPackageService", supportPackageService);
-            Argument.IsNotNull(() => pleaseWaitService);
 
             _serviceLocator = serviceLocator;
             _supportPackageService = supportPackageService;
-            _pleaseWaitService = pleaseWaitService;
         }
         #endregion
 
@@ -55,7 +52,6 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleExceptionAsync(Exception exception)
         {
-            _pleaseWaitService.Show();
             using (var disposableToken = exception.UseInReportingContext())
             {
                 var context = disposableToken.Instance;
@@ -63,8 +59,6 @@ namespace Orc.CrashReporting.Services
                 var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
 
                 await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
-
-                _pleaseWaitService.Hide();
 
                 CrashReporterService.ShowCrashReport(exception);
             }
