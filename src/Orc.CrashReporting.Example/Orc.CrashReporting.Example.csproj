@@ -117,15 +117,15 @@
   <ItemGroup>
     <ProjectReference Include="..\Orc.CrashReporting.Providers.Email\Orc.CrashReporting.Providers.Email.NET40\Orc.CrashReporting.Providers.Email.NET40.csproj">
       <Project>{d69fe6f6-d5e6-46bc-a9a1-ed13450e0755}</Project>
-      <Name>Orc.CrashReporting.Providers.Email</Name>
+      <Name>Orc.CrashReporting.Providers.Email.NET40</Name>
     </ProjectReference>
     <ProjectReference Include="..\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.NET40\Orc.CrashReporting.Xaml.NET40.csproj">
       <Project>{9cd38a5c-9656-4f67-aad0-f9629b4bfe99}</Project>
-      <Name>Orc.CrashReporting.Xaml</Name>
+      <Name>Orc.CrashReporting.Xaml.NET40</Name>
     </ProjectReference>
     <ProjectReference Include="..\Orc.CrashReporting\Orc.CrashReporting.NET40\Orc.CrashReporting.NET40.csproj">
       <Project>{31ce78ce-896e-43b5-ae7e-a6a4b9944aa4}</Project>
-      <Name>Orc.CrashReporting</Name>
+      <Name>Orc.CrashReporting.NET40</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
