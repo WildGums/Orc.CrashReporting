@@ -31,10 +31,12 @@ namespace Orc.CrashReporting
 
         #region Properties
         public IList<ICrashInfo> CrashDetails { get; private set; }
+
         public IEnumerable<ICrashInfo> CrashDetailsToDisplay
         {
             get { return CrashDetails.Where(x => x.GetType() != typeof(AdditionalInfo)); }
         }
+
         public string Message { get; private set; }
         #endregion
     }

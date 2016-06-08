@@ -48,13 +48,13 @@ namespace Orc.CrashReporting
 
             var email = new Email();
 
-            var emailTo = _configurationService.GetValue(EmailSettings.Recipient, EmailSettings.RecipientDefaultValue);
+            var emailTo = _configurationService.GetRoamingValue(EmailSettings.Recipient, EmailSettings.RecipientDefaultValue);
             var exceptionInfo = crashReport.CrashDetails.OfType<ExceptionInfo>().FirstOrDefault();
             var emailBody = exceptionInfo == null ? string.Empty : exceptionInfo.FullExceptionText;
 
             email.RecipientsTo.Add(emailTo);
             email.Body = emailBody;
-            email.Subject = _configurationService.GetValue(EmailSettings.Subject, EmailSettings.SubjectDefaultValue);
+            email.Subject = _configurationService.GetRoamingValue(EmailSettings.Subject, EmailSettings.SubjectDefaultValue);
 
             email.Attachments.Add(fileToAttach);
 

@@ -7,12 +7,12 @@
 
 namespace Orc.CrashReporting
 {
-    using System;
+    using System.Threading.Tasks;
 
     public interface ICrashReporterService
     {
         #region Methods
-        void ShowCrashReport(Exception exception);
+        Task ShowCrashReportAsync(ICrashReportingContext crashReportingContext);
         #endregion
     }
 }

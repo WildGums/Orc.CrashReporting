@@ -52,15 +52,29 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleExceptionAsync(Exception exception)
         {
-            using (var disposableToken = exception.UseInReportingContext())
+            var typeFactory = this.GetTypeFactory();
+
+            using (var context = typeFactory.CreateInstance<CrashReportingContext>())
             {
-                var context = disposableToken.Instance;
+                try
+                {
+                    _serviceLocator.RegisterInstance<ICrashReportingContext>(context);
 
-                var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
+                    if (exception != null)
+                    {
+                        context.RegisterException(exception);
+                    }
 
-                await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
+                    var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
 
-                CrashReporterService.ShowCrashReport(exception);
+                    await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
+
+                    await CrashReporterService.ShowCrashReportAsync(context);
+                }
+                finally
+                {
+                    _serviceLocator.RemoveType<ICrashReportingContext>();
+                }
             }
         }
         #endregion

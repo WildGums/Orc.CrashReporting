@@ -10,7 +10,6 @@ namespace Orc.CrashReporting
     using System;
     using System.Text;
     using Catel;
-    using Catel.IoC;
 
     public static class ExceptionExtensions
     {
@@ -72,25 +71,7 @@ namespace Orc.CrashReporting
             }
 
             message.AppendLine(stackLevelToString(exception));
-            return (message.ToString());
-        }
-
-        public static DisposableToken<ICrashReportingContext> UseInReportingContext(this Exception exception)
-        {
-            Argument.IsNotNull("exception", exception);
-
-            var crashReportingContext = TypeFactory.Default.CreateInstance<CrashReportingContext>();
-            return new DisposableToken<ICrashReportingContext>(crashReportingContext,
-                context =>
-                {
-                    ServiceLocator.Default.RegisterInstance(typeof (ICrashReportingContext), context.Instance);
-                    context.Instance.RegisterException(exception);
-                },
-                context =>
-                {
-                    context.Instance.Dispose();
-                    ServiceLocator.Default.RemoveType<ICrashReportingContext>();
-                });
+            return message.ToString();
         }
         #endregion
     }

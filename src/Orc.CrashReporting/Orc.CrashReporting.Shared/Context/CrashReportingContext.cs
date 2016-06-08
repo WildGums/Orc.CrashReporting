@@ -31,7 +31,7 @@ namespace Orc.CrashReporting
             var assembly = AssemblyHelper.GetEntryAssembly();
 
             _rootDirectory = Path.Combine(Path.GetTempPath(), assembly.Company(), assembly.Title(),
-                "supportPackage", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+                "CrashReports", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
 
             Directory.CreateDirectory(_rootDirectory);
         }
