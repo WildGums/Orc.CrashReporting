@@ -11,25 +11,30 @@ namespace Orc.CrashReporting.Services
     using System.Threading.Tasks;
     using Catel;
     using Catel.IoC;
-    using Catel.Services;
+    using Catel.Logging;
     using Orc.SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
         #region Fields
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private readonly IServiceLocator _serviceLocator;
         private readonly ISupportPackageService _supportPackageService;
+        private readonly ITypeFactory _typeFactory;
         private ICrashReporterService _crashReporterService;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService,
+            ITypeFactory typeFactory)
         {
-            Argument.IsNotNull("serviceLocator", serviceLocator);
-            Argument.IsNotNull("supportPackageService", supportPackageService);
+            Argument.IsNotNull(nameof(serviceLocator), serviceLocator);
+            Argument.IsNotNull(nameof(supportPackageService), supportPackageService);
+            Argument.IsNotNull(nameof(typeFactory), typeFactory);
 
             _serviceLocator = serviceLocator;
             _supportPackageService = supportPackageService;
+            _typeFactory = typeFactory;
         }
         #endregion
 
@@ -52,9 +57,8 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleExceptionAsync(Exception exception)
         {
-            var typeFactory = this.GetTypeFactory();
 
-            using (var context = typeFactory.CreateInstance<CrashReportingContext>())
+            using (var context = _typeFactory.CreateInstance<CrashReportingContext>())
             {
                 try
                 {
@@ -70,6 +74,10 @@ namespace Orc.CrashReporting.Services
                     await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
 
                     await CrashReporterService.ShowCrashReportAsync(context);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, $"Failed to handle exception:{Environment.NewLine}{exception.GetExceptionInfo()}");
                 }
                 finally
                 {

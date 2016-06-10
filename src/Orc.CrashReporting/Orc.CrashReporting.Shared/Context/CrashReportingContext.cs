@@ -80,8 +80,15 @@ namespace Orc.CrashReporting
 
         public void RegisterException(Exception exception)
         {
-            Exception = exception;
-            CrashReport = _crashReportFactory.CreateCrashReport(exception);
+            try
+            {
+                Exception = exception;
+                CrashReport = _crashReportFactory.CreateCrashReport(exception);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Failed to register exception in CrashReportingContext. The exception is:{Environment.NewLine}{exception?.GetExceptionInfo()}");
+            }            
         }
         #endregion
     }

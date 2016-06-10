@@ -18,17 +18,26 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull("exception", exception);
 
-            var exceptionInfo = new StringBuilder();
+            try
+            {
+                var exceptionInfo = new StringBuilder();
 
-            exceptionInfo
-                .AppendLine("Exception classes:")
-                .AppendLine(exception.GetExceptionTypeStack())
-                .AppendLine("Exception messages:")
-                .AppendLine(exception.GetExceptionMessageStack())
-                .AppendLine("Stack Traces:")
-                .AppendLine(exception.GetExceptionCallStack());
+                exceptionInfo
+                    .AppendLine("Exception classes:")
+                    .AppendLine(exception.GetExceptionTypeStack())
+                    .AppendLine("Exception messages:")
+                    .AppendLine(exception.GetExceptionMessageStack())
+                    .AppendLine("Stack Traces:")
+                    .AppendLine(exception.GetExceptionCallStack());
 
-            return exceptionInfo.ToString();
+                return exceptionInfo.ToString();
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+
+            return exception?.ToString() ?? string.Empty;
         }
 
         public static string GetExceptionCallStack(this Exception exception)
