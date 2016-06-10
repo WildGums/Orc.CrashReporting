@@ -24,8 +24,7 @@ namespace Orc.CrashReporting
 
             Message = exception.Message;
 
-            var infos = crashInfoService.GetAllCrashInfos();
-            CrashDetails = new List<ICrashInfo>(infos);
+            CrashDetails = crashInfoService.GetAllCrashInfos().ToList();
         }
         #endregion
 

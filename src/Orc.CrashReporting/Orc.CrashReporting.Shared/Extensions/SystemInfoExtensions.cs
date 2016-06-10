@@ -22,9 +22,9 @@ namespace Orc.CrashReporting
 
             var currentProcess = Process.GetCurrentProcess();
 
-            return (from ProcessModule module in currentProcess.Modules
-                    select string.Format("{0} {1}", module.FileName, module.FileVersionInfo.FileVersion));
+            return from ProcessModule module in currentProcess.Modules
+                   select $"{module.FileName} {module.GetFileVersion()}";
         }
-        #endregion
+        #endregion        
     }
 }

@@ -12,7 +12,6 @@ namespace Orc.CrashReporting
     using System.Windows.Threading;
     using Catel;
     using Catel.Logging;
-    using Catel.Threading;
     using Services;
 
     public class UnhandledExceptionWatcher
@@ -71,7 +70,7 @@ namespace Orc.CrashReporting
             }
         }
 
-        private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
             {
@@ -87,11 +86,11 @@ namespace Orc.CrashReporting
             }
         }
 
-        private async Task HandleExceptionAsync(Exception exception)
+        private Task HandleExceptionAsync(Exception exception)
         {
             Log.Error(exception);
 
-            await _exceptionHandlerService.HandleExceptionAsync(exception);
+            return _exceptionHandlerService.HandleExceptionAsync(exception);
         }
         #endregion
     }

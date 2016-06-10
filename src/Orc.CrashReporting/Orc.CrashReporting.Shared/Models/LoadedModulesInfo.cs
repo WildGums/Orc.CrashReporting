@@ -46,7 +46,7 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
-            var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += string.Format("{0}\n", assembly));
+            var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += $"{assembly}\n");
 
             if (string.IsNullOrWhiteSpace(loadedModules))
             {

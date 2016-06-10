@@ -17,7 +17,7 @@ namespace Orc.CrashReporting.Services
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
-        private IList<ICrashReportProvider> _crashReportProviders;
+        private List<ICrashReportProvider> _crashReportProviders;
         #endregion
 
         #region Constructors
