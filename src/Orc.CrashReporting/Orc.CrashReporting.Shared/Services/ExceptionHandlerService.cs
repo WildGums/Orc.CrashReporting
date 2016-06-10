@@ -77,7 +77,7 @@ namespace Orc.CrashReporting.Services
                 }
                 catch (Exception ex)
                 {
-                    Log.Error(ex, $"Failed to handle exception:{Environment.NewLine}{exception.GetExceptionInfo()}");
+                    Log.Error(ex, $"Failed to handle exception:{Environment.NewLine}{exception?.GetExceptionInfo() ?? "no exception"}");
                 }
                 finally
                 {
