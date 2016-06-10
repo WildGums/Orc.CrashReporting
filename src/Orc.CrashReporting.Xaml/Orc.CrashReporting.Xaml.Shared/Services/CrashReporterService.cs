@@ -7,7 +7,6 @@
 
 namespace Orc.CrashReporting
 {
-    using System;
     using System.Threading.Tasks;
     using Catel;
     using Catel.Services;
@@ -17,14 +16,17 @@ namespace Orc.CrashReporting
     {
         #region Fields
         private readonly IUIVisualizerService _uiVisualizerService;
+        private readonly IDispatcherService _dispatcherService;
         #endregion
 
         #region Constructors
-        public CrashReporterService(IUIVisualizerService uiVisualizerService)
+        public CrashReporterService(IUIVisualizerService uiVisualizerService, IDispatcherService dispatcherService)
         {
             Argument.IsNotNull(() => uiVisualizerService);
+            Argument.IsNotNull(() => dispatcherService);
 
             _uiVisualizerService = uiVisualizerService;
+            _dispatcherService = dispatcherService;
         }
         #endregion
 
@@ -33,7 +35,7 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull(() => crashReportingContext);
 
-            return _uiVisualizerService.ShowDialogAsync<CrashReportViewModel>(crashReportingContext);
+            return _dispatcherService.InvokeAsync(() => _uiVisualizerService.ShowDialogAsync<CrashReportViewModel>(crashReportingContext));
         }
         #endregion
     }

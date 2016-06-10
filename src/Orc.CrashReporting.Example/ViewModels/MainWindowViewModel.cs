@@ -8,7 +8,9 @@
 namespace Orc.CrashReporting.Example.ViewModels
 {
     using System;
+    using System.Threading;
     using Catel.MVVM;
+    using Catel.Threading;
 
     public class MainWindowViewModel : ViewModelBase
     {
@@ -22,16 +24,20 @@ namespace Orc.CrashReporting.Example.ViewModels
         #region Commands
         public Command ThrowException { get; private set; }
 
-        private async void OnThrowExceptionExecute()
+        private void OnThrowExceptionExecute()
         {
-            try
+            TaskHelper.Run(() =>
             {
-                throw new NotImplementedException("Inner exception message");
-            }
-            catch (Exception exception)
-            {
-                throw new InvalidOperationException("Exception message", exception);
-            }
+                try
+                {
+                    throw new NotImplementedException("Inner exception message");
+                }
+                catch (Exception exception)
+                {
+                    throw new InvalidOperationException("Exception message", exception);
+                }
+            }, false, CancellationToken.None);
+            
         }
         #endregion
     }
