@@ -26,6 +26,7 @@ namespace Orc.CrashReporting.Example.ViewModels
 
         private void OnThrowExceptionExecute()
         {
+            // Note: Use a separate thread to test exceptions from a non-ui thread
             TaskHelper.Run(() =>
             {
                 try
@@ -37,7 +38,6 @@ namespace Orc.CrashReporting.Example.ViewModels
                     throw new InvalidOperationException("Exception message", exception);
                 }
             }, false, CancellationToken.None);
-            
         }
         #endregion
     }
