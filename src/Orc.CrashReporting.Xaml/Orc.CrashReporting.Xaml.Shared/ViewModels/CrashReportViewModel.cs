@@ -16,7 +16,7 @@ namespace Orc.CrashReporting.ViewModels
     using Models;
     using Services;
 
-    internal class CrashReportViewModel : ViewModelBase
+    public class CrashReportViewModel : ViewModelBase
     {
         #region Fields
         private readonly IDefaultCrashReportProviderService _defaultCrashReportProviderService;

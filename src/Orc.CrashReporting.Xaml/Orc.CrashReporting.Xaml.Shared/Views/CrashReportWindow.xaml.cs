@@ -13,7 +13,7 @@ namespace Orc.CrashReporting.Xaml.Views
     /// <summary>
     /// Interaction logic for CrashReportWindow.xaml
     /// </summary>
-    internal partial class CrashReportWindow
+    public partial class CrashReportWindow
     {
         #region Constructors
         public CrashReportWindow()

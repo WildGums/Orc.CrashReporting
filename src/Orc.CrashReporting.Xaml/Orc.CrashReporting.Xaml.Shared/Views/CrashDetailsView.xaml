@@ -6,19 +6,18 @@
              xmlns:catel="http://catel.codeplex.com"
              xmlns:templateSelectors="clr-namespace:Orc.CrashReporting.TemplateSelectors"
              xmlns:views="clr-namespace:Orc.CrashReporting.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-                   x:ClassModifier="internal">
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
     <catel:UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        
+
             <DataTemplate x:Key="ExceptionTemplate">
                 <views:ExceptionView />
             </DataTemplate>
-        
+
             <DataTemplate x:Key="SystemInfoTemplate">
                 <views:SystemInfoView />
             </DataTemplate>
@@ -33,31 +32,34 @@
                                                             LoadedModulesTemplate="{StaticResource LoadedModulesTemplate}"/>
         </ResourceDictionary>
     </catel:UserControl.Resources>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="86" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="300"/>
-            </Grid.RowDefinitions>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="86" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.Column="1" Name="listBox" ItemsSource="{Binding CrashDetailsToDisplay}" 
+                 SelectedIndex="{Binding SelectedIndex}" Style="{DynamicResource CrashDetilsListBoxStyle}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
             
-            <ListBox Grid.Column="1" Name="listBox" ItemsSource="{Binding CrashDetailsToDisplay}"
-                     SelectedIndex="{Binding SelectedIndex}" Style="{DynamicResource CrashDetilsListBoxStyle}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Title}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            
-            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding SelectedItem, ElementName=listBox}"
-                            MinWidth="300" ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
-        </Grid>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding SelectedItem, ElementName=listBox}" 
+                        MinWidth="300" ContentTemplateSelector="{StaticResource CrashDetailsTemplateSelector}"/>
+    </Grid>
 </catel:UserControl>
