@@ -7,10 +7,7 @@
 
 namespace Orc.CrashReporting.Views
 {
-    /// <summary>
-    /// Interaction logic for ExceptionView.xaml
-    /// </summary>
-    internal partial class ExceptionView
+    public partial class ExceptionView
     {
         #region Constructors
         public ExceptionView()

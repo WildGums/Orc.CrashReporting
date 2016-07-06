@@ -38,11 +38,18 @@ namespace Orc.CrashReporting
         #region Methods
         private async void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
+            if (e.Observed)
+            {
+                return;
+            }
+
             try
             {
                 var exception = e.Exception;
 
                 await HandleExceptionAsync(exception);
+
+                e.SetObserved();
             }
             catch (Exception ex)
             {
@@ -52,6 +59,11 @@ namespace Orc.CrashReporting
 
         private async void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            if (e.Handled)
+            {
+                return;
+            }
+
             // Don't exit yet
             e.Handled = true;
 

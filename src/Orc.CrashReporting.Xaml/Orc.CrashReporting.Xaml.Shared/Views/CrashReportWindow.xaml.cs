@@ -7,6 +7,7 @@
 
 namespace Orc.CrashReporting.Xaml.Views
 {
+    using System.Windows;
     using Catel.Windows;
     using ViewModels;
 
@@ -26,7 +27,43 @@ namespace Orc.CrashReporting.Xaml.Views
             : base(viewModel, DataWindowMode.Custom)
         {
             InitializeComponent();
+
+            expander.Collapsed += OnExpanderCollapsed;
+            expander.Expanded += OnExpanderExpanded;
+
+            UpdateSize();
         }
         #endregion
+
+        private void OnExpanderCollapsed(object sender, RoutedEventArgs e)
+        {
+            UpdateSize();
+        }
+
+        private void OnExpanderExpanded(object sender, RoutedEventArgs e)
+        {
+            UpdateSize();
+        }
+
+        private void UpdateSize()
+        {
+            if (expander.IsExpanded)
+            {
+                ResizeMode = ResizeMode.CanResize;
+
+                MinWidth = 550;
+                MinHeight = 350;
+            }
+            else
+            {
+                ResizeMode = ResizeMode.NoResize;
+
+                MinWidth = 550;
+                MinHeight = 230;
+
+                Width = 550;
+                Height = 230;
+            }
+        }
     }
 }

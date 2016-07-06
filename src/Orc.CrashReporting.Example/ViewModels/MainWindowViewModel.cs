@@ -9,6 +9,7 @@ namespace Orc.CrashReporting.Example.ViewModels
 {
     using System;
     using System.Threading;
+    using System.Threading.Tasks;
     using Catel.MVVM;
     using Catel.Threading;
 
@@ -18,6 +19,7 @@ namespace Orc.CrashReporting.Example.ViewModels
         public MainWindowViewModel()
         {
             ThrowException = new Command(OnThrowExceptionExecute);
+            ThrowExceptionInTask = new TaskCommand(OnThrowExceptionInTaskExecuteAsync);
         }
         #endregion
 
@@ -26,18 +28,32 @@ namespace Orc.CrashReporting.Example.ViewModels
 
         private void OnThrowExceptionExecute()
         {
+            BrokenMethod();
+        }
+
+        public TaskCommand ThrowExceptionInTask { get; private set; }
+
+        private async Task OnThrowExceptionInTaskExecuteAsync()
+        {
             // Note: Use a separate thread to test exceptions from a non-ui thread
-            TaskHelper.Run(() =>
+            await TaskHelper.Run(() =>
             {
-                try
-                {
-                    throw new NotImplementedException("Inner exception message");
-                }
-                catch (Exception exception)
-                {
-                    throw new InvalidOperationException("Exception message", exception);
-                }
+                BrokenMethod();
             }, false, CancellationToken.None);
+        }
+        #endregion
+
+        #region Methods
+        private void BrokenMethod()
+        {
+            try
+            {
+                throw new NotImplementedException("Inner exception message");
+            }
+            catch (Exception exception)
+            {
+                throw new InvalidOperationException("Exception message", exception);
+            }
         }
         #endregion
     }

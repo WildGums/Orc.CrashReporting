@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:catel="http://catel.codeplex.com"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-                   x:ClassModifier="internal">
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    
     <Grid>
         <TextBox IsReadOnly="True" Text="{Binding Details, Mode=OneWay}"
                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
     </Grid>
+    
 </catel:UserControl>

@@ -5,16 +5,23 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:catel="http://catel.codeplex.com"
                    xmlns:orc="http://www.wildgums.net.au/orc"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    
     <Grid>
         <orc:WatermarkTextBox VerticalContentAlignment="Top" VerticalScrollBarVisibility="Auto"
                               Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
                               TextWrapping="Wrap" AcceptsReturn="True">
+            <i:Interaction.Behaviors>
+                <catel:Focus />
+            </i:Interaction.Behaviors>
+
             <orc:WatermarkTextBox.Watermark>
-                <TextBlock Grid.Row="0" TextWrapping="Wrap">
+                <TextBlock TextWrapping="Wrap">
                     Please tell us briefly what you were doing
                 </TextBlock>
             </orc:WatermarkTextBox.Watermark>
         </orc:WatermarkTextBox>
     </Grid>
+    
 </catel:UserControl>
