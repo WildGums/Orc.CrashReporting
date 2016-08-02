@@ -19,7 +19,7 @@ namespace Orc.CrashReporting.Example.ViewModels
         public MainWindowViewModel()
         {
             ThrowException = new Command(OnThrowExceptionExecute);
-            ThrowExceptionInTask = new TaskCommand(OnThrowExceptionInTaskExecuteAsync);
+            ThrowExceptionInTask = new Command(OnThrowExceptionInTaskExecute);
         }
         #endregion
 
@@ -31,15 +31,19 @@ namespace Orc.CrashReporting.Example.ViewModels
             BrokenMethod();
         }
 
-        public TaskCommand ThrowExceptionInTask { get; private set; }
+        public Command ThrowExceptionInTask { get; private set; }
 
-        private async Task OnThrowExceptionInTaskExecuteAsync()
+        private async void OnThrowExceptionInTaskExecute()
         {
-            // Note: Use a separate thread to test exceptions from a non-ui thread
-            await TaskHelper.Run(() =>
-            {
-                BrokenMethod();
-            }, false, CancellationToken.None);
+            // Note: Use a separate thread to test exceptions from a non-ui thread. This is *not*
+            // a TaskCommand because that catches exceptions for us
+
+            //await TaskHelper.Run(() =>
+            //{
+            //    BrokenMethod();
+            //}, true, CancellationToken.None);
+
+            await Task.Factory.StartNew(() => BrokenMethod());
         }
         #endregion
 
