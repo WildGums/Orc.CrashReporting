@@ -1,13 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReporterService.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="CrashReporterService.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
 namespace Orc.CrashReporting
 {
-    using System;
+    using System.Threading.Tasks;
     using Catel;
     using Catel.Services;
     using ViewModels;
@@ -16,21 +16,26 @@ namespace Orc.CrashReporting
     {
         #region Fields
         private readonly IUIVisualizerService _uiVisualizerService;
+        private readonly IDispatcherService _dispatcherService;
         #endregion
 
         #region Constructors
-        public CrashReporterService(IUIVisualizerService uiVisualizerService)
+        public CrashReporterService(IUIVisualizerService uiVisualizerService, IDispatcherService dispatcherService)
         {
             Argument.IsNotNull(() => uiVisualizerService);
+            Argument.IsNotNull(() => dispatcherService);
 
             _uiVisualizerService = uiVisualizerService;
+            _dispatcherService = dispatcherService;
         }
         #endregion
 
         #region Methods
-        public void ShowCrashReport(Exception exception)
+        public Task ShowCrashReportAsync(ICrashReportingContext crashReportingContext)
         {
-            _uiVisualizerService.ShowDialog<CrashReportViewModel>();
+            Argument.IsNotNull(() => crashReportingContext);
+
+            return _dispatcherService.InvokeAsync(() => _uiVisualizerService.ShowDialogAsync<CrashReportViewModel>(crashReportingContext));
         }
         #endregion
     }

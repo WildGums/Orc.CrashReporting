@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExceptionHandlerService.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="ExceptionHandlerService.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -11,28 +11,30 @@ namespace Orc.CrashReporting.Services
     using System.Threading.Tasks;
     using Catel;
     using Catel.IoC;
-    using Catel.Services;
+    using Catel.Logging;
     using Orc.SupportPackage;
 
     public class ExceptionHandlerService : IExceptionHandlerService
     {
         #region Fields
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
         private readonly IServiceLocator _serviceLocator;
         private readonly ISupportPackageService _supportPackageService;
-        private readonly IPleaseWaitService _pleaseWaitService;
+        private readonly ITypeFactory _typeFactory;
         private ICrashReporterService _crashReporterService;
         #endregion
 
         #region Constructors
-        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService, IPleaseWaitService pleaseWaitService)
+        public ExceptionHandlerService(IServiceLocator serviceLocator, ISupportPackageService supportPackageService,
+            ITypeFactory typeFactory)
         {
-            Argument.IsNotNull("serviceLocator", serviceLocator);
-            Argument.IsNotNull("supportPackageService", supportPackageService);
-            Argument.IsNotNull(() => pleaseWaitService);
+            Argument.IsNotNull(nameof(serviceLocator), serviceLocator);
+            Argument.IsNotNull(nameof(supportPackageService), supportPackageService);
+            Argument.IsNotNull(nameof(typeFactory), typeFactory);
 
             _serviceLocator = serviceLocator;
             _supportPackageService = supportPackageService;
-            _pleaseWaitService = pleaseWaitService;
+            _typeFactory = typeFactory;
         }
         #endregion
 
@@ -55,18 +57,32 @@ namespace Orc.CrashReporting.Services
         #region Methods
         public async Task HandleExceptionAsync(Exception exception)
         {
-            _pleaseWaitService.Show();
-            using (var disposableToken = exception.UseInReportingContext())
+
+            using (var context = _typeFactory.CreateInstance<CrashReportingContext>())
             {
-                var context = disposableToken.Instance;
+                try
+                {
+                    _serviceLocator.RegisterInstance<ICrashReportingContext>(context);
 
-                var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
+                    if (exception != null)
+                    {
+                        context.RegisterException(exception);
+                    }
 
-                await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
+                    var supportPackageFile = context.RegisterSupportPackageFile("SupportPackage.zip");
 
-                _pleaseWaitService.Hide();
+                    await _supportPackageService.CreateSupportPackageAsync(supportPackageFile);
 
-                CrashReporterService.ShowCrashReport(exception);
+                    await CrashReporterService.ShowCrashReportAsync(context);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, $"Failed to handle exception:{Environment.NewLine}{exception?.GetExceptionInfo() ?? "no exception"}");
+                }
+                finally
+                {
+                    _serviceLocator.RemoveType<ICrashReportingContext>();
+                }
             }
         }
         #endregion

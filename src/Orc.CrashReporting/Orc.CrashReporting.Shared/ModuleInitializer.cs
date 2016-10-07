@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ModuleInitializer.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="ModuleInitializer.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -28,7 +28,6 @@ public static class ModuleInitializer
         serviceLocator.RegisterType<ICrashInfoService, CrashInfoService>();
         serviceLocator.RegisterType<IExceptionHandlerService, ExceptionHandlerService>();
         serviceLocator.RegisterType<ICrashReportProvidersService, CrashReportProvidersService>();
-        serviceLocator.RegisterType<IPleaseWaitService, Orc.CrashReporting.Services.PleaseWaitService>();
 
         var languageService = serviceLocator.ResolveType<ILanguageService>();
         languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.CrashReporting", "Orc.CrashReporting.Properties", "Resources"));

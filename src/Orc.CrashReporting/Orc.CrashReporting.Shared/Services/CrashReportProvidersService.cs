@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportProvidersService.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="CrashReportProvidersService.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace Orc.CrashReporting.Services
     {
         #region Fields
         private readonly ITypeFactory _typeFactory;
-        private IList<ICrashReportProvider> _crashReportProviders;
+        private List<ICrashReportProvider> _crashReportProviders;
         #endregion
 
         #region Constructors
@@ -35,13 +35,13 @@ namespace Orc.CrashReporting.Services
             if (_crashReportProviders == null)
             {
                 _crashReportProviders = new List<ICrashReportProvider>();
-                var crashLoggerTypes = (from type in TypeCache.GetTypes()
-                                        where !type.IsAbstractEx() && type.IsClassEx() && type.ImplementsInterfaceEx<ICrashReportProvider>()
-                                        select type).ToList();
+                var crashReportProviders = (from type in TypeCache.GetTypes()
+                                            where !type.IsAbstractEx() && type.IsClassEx() && type.ImplementsInterfaceEx<ICrashReportProvider>()
+                                            select type).ToList();
 
-                foreach (var crashLoggerType in crashLoggerTypes)
+                foreach (var crashReportProvider in crashReportProviders)
                 {
-                    _crashReportProviders.Add((ICrashReportProvider)_typeFactory.CreateInstance(crashLoggerType));
+                    _crashReportProviders.Add((ICrashReportProvider)_typeFactory.CreateInstance(crashReportProvider));
                 }
             }
 

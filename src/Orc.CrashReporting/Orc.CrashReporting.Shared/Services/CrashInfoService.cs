@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashInfoService.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="CrashInfoService.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -9,6 +9,7 @@ namespace Orc.CrashReporting.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Catel;
     using Catel.IoC;
 
@@ -40,10 +41,7 @@ namespace Orc.CrashReporting.Services
 
         public IEnumerable<ICrashInfo> GetAllCrashInfos()
         {
-            foreach (var type in _types)
-            {
-                yield return (ICrashInfo) _typeFactory.CreateInstance(type);
-            }
+            return _types.Select(type => (ICrashInfo) _typeFactory.CreateInstance(type));
         }
         #endregion
     }

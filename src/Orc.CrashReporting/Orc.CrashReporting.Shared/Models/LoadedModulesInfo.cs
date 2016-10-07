@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LoadedModulesInfo.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="LoadedModulesInfo.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull("supportPackageContext", supportPackageContext);
 
-            var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += string.Format("{0}\n", assembly));
+            var loadedModules = LoadedModules.Aggregate(string.Empty, (s, assembly) => s += $"{assembly}\n");
 
             if (string.IsNullOrWhiteSpace(loadedModules))
             {

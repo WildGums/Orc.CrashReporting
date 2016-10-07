@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReport.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="CrashReport.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -24,17 +24,18 @@ namespace Orc.CrashReporting
 
             Message = exception.Message;
 
-            var infos = crashInfoService.GetAllCrashInfos();
-            CrashDetails = new List<ICrashInfo>(infos);
+            CrashDetails = crashInfoService.GetAllCrashInfos().ToList();
         }
         #endregion
 
         #region Properties
         public IList<ICrashInfo> CrashDetails { get; private set; }
+
         public IEnumerable<ICrashInfo> CrashDetailsToDisplay
         {
             get { return CrashDetails.Where(x => x.GetType() != typeof(AdditionalInfo)); }
         }
+
         public string Message { get; private set; }
         #endregion
     }

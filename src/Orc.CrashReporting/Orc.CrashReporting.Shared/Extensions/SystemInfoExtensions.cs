@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SystemInfoExtensions.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="SystemInfoExtensions.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -22,9 +22,9 @@ namespace Orc.CrashReporting
 
             var currentProcess = Process.GetCurrentProcess();
 
-            return (from ProcessModule module in currentProcess.Modules
-                    select string.Format("{0} {1}", module.FileName, module.FileVersionInfo.FileVersion));
+            return from ProcessModule module in currentProcess.Modules
+                   select $"{module.FileName} {module.GetFileVersion()}";
         }
-        #endregion
+        #endregion        
     }
 }

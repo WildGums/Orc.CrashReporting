@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="CrashReportingContext.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="CrashReportingContext.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ namespace Orc.CrashReporting
             var assembly = AssemblyHelper.GetEntryAssembly();
 
             _rootDirectory = Path.Combine(Path.GetTempPath(), assembly.Company(), assembly.Title(),
-                "supportPackage", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
+                "CrashReports", DateTime.Now.ToString("yyyyMMdd_HHmmss"));
 
             Directory.CreateDirectory(_rootDirectory);
         }
@@ -80,8 +80,15 @@ namespace Orc.CrashReporting
 
         public void RegisterException(Exception exception)
         {
-            Exception = exception;
-            CrashReport = _crashReportFactory.CreateCrashReport(exception);
+            try
+            {
+                Exception = exception;
+                CrashReport = _crashReportFactory.CreateCrashReport(exception);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Failed to register exception in CrashReportingContext. The exception is:{Environment.NewLine}{exception?.GetExceptionInfo()}");
+            }            
         }
         #endregion
     }

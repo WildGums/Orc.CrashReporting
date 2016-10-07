@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ExceptionExtensions.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="ExceptionExtensions.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -10,7 +10,6 @@ namespace Orc.CrashReporting
     using System;
     using System.Text;
     using Catel;
-    using Catel.IoC;
 
     public static class ExceptionExtensions
     {
@@ -19,17 +18,26 @@ namespace Orc.CrashReporting
         {
             Argument.IsNotNull("exception", exception);
 
-            var exceptionInfo = new StringBuilder();
+            try
+            {
+                var exceptionInfo = new StringBuilder();
 
-            exceptionInfo
-                .AppendLine("Exception classes:")
-                .AppendLine(exception.GetExceptionTypeStack())
-                .AppendLine("Exception messages:")
-                .AppendLine(exception.GetExceptionMessageStack())
-                .AppendLine("Stack Traces:")
-                .AppendLine(exception.GetExceptionCallStack());
+                exceptionInfo
+                    .AppendLine("Exception classes:")
+                    .AppendLine(exception.GetExceptionTypeStack())
+                    .AppendLine("Exception messages:")
+                    .AppendLine(exception.GetExceptionMessageStack())
+                    .AppendLine("Stack Traces:")
+                    .AppendLine(exception.GetExceptionCallStack());
 
-            return exceptionInfo.ToString();
+                return exceptionInfo.ToString();
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+
+            return exception?.ToString() ?? string.Empty;
         }
 
         public static string GetExceptionCallStack(this Exception exception)
@@ -72,25 +80,7 @@ namespace Orc.CrashReporting
             }
 
             message.AppendLine(stackLevelToString(exception));
-            return (message.ToString());
-        }
-
-        public static DisposableToken<ICrashReportingContext> UseInReportingContext(this Exception exception)
-        {
-            Argument.IsNotNull("exception", exception);
-
-            var crashReportingContext = TypeFactory.Default.CreateInstance<CrashReportingContext>();
-            return new DisposableToken<ICrashReportingContext>(crashReportingContext,
-                context =>
-                {
-                    ServiceLocator.Default.RegisterInstance(typeof (ICrashReportingContext), context.Instance);
-                    context.Instance.RegisterException(exception);
-                },
-                context =>
-                {
-                    context.Instance.Dispose();
-                    ServiceLocator.Default.RemoveType<ICrashReportingContext>();
-                });
+            return message.ToString();
         }
         #endregion
     }

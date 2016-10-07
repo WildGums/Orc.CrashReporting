@@ -1,18 +1,18 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ICrashReporterService.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="ICrashReporterService.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
 namespace Orc.CrashReporting
 {
-    using System;
+    using System.Threading.Tasks;
 
     public interface ICrashReporterService
     {
         #region Methods
-        void ShowCrashReport(Exception exception);
+        Task ShowCrashReportAsync(ICrashReportingContext crashReportingContext);
         #endregion
     }
 }

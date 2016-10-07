@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UnhandledExceptionWatcher.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="UnhandledExceptionWatcher.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -12,7 +12,6 @@ namespace Orc.CrashReporting
     using System.Windows.Threading;
     using Catel;
     using Catel.Logging;
-    using Catel.Threading;
     using Services;
 
     public class UnhandledExceptionWatcher
@@ -39,11 +38,18 @@ namespace Orc.CrashReporting
         #region Methods
         private async void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
         {
+            if (e.Observed)
+            {
+                return;
+            }
+
             try
             {
                 var exception = e.Exception;
 
                 await HandleExceptionAsync(exception);
+
+                e.SetObserved();
             }
             catch (Exception ex)
             {
@@ -53,6 +59,11 @@ namespace Orc.CrashReporting
 
         private async void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+            if (e.Handled)
+            {
+                return;
+            }
+
             // Don't exit yet
             e.Handled = true;
 
@@ -71,7 +82,7 @@ namespace Orc.CrashReporting
             }
         }
 
-        private async void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             try
             {
@@ -87,11 +98,11 @@ namespace Orc.CrashReporting
             }
         }
 
-        private async Task HandleExceptionAsync(Exception exception)
+        private Task HandleExceptionAsync(Exception exception)
         {
             Log.Error(exception);
 
-            await _exceptionHandlerService.HandleExceptionAsync(exception);
+            return _exceptionHandlerService.HandleExceptionAsync(exception);
         }
         #endregion
     }

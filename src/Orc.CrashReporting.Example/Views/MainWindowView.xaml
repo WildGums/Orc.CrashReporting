@@ -4,13 +4,10 @@
         xmlns:catel="http://catel.codeplex.com"
         Title="Orc.CrashLogCrashReporting Example"
         Height="120" Width="560">
-    <catel:Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Orc.CrashReporting.Xaml;component/Themes/Generic.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </catel:Window.Resources>
-    <Button Content="Throw Exception" Command="{Binding ThrowException}" VerticalAlignment="Center"
-            HorizontalAlignment="Center" Width="200"/>
+
+    <StackPanel HorizontalAlignment="Center">
+        <Button Content="Throw Exception" Command="{Binding ThrowException}" VerticalAlignment="Center" Width="200" Margin="6"/>
+        <Button Content="Throw Exception in Task" Command="{Binding ThrowExceptionInTask}" VerticalAlignment="Center" Width="200" Margin="6"/>
+    </StackPanel>
+
 </catel:Window>

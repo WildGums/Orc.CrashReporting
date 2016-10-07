@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EmailReportProvider.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="EmailReportProvider.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -48,13 +48,13 @@ namespace Orc.CrashReporting
 
             var email = new Email();
 
-            var emailTo = _configurationService.GetValue(EmailLoggerSettings.EmailTo, EmailLoggerSettings.EmailToDefaultValue);
+            var emailTo = _configurationService.GetRoamingValue(EmailSettings.Recipient, EmailSettings.RecipientDefaultValue);
             var exceptionInfo = crashReport.CrashDetails.OfType<ExceptionInfo>().FirstOrDefault();
             var emailBody = exceptionInfo == null ? string.Empty : exceptionInfo.FullExceptionText;
 
             email.RecipientsTo.Add(emailTo);
             email.Body = emailBody;
-            email.Subject = _configurationService.GetValue(EmailLoggerSettings.EmailSubject, EmailLoggerSettings.EmailSubjectDefaultValue);
+            email.Subject = _configurationService.GetRoamingValue(EmailSettings.Subject, EmailSettings.SubjectDefaultValue);
 
             email.Attachments.Add(fileToAttach);
 

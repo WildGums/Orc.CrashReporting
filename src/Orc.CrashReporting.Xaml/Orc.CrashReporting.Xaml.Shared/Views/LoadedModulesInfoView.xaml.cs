@@ -1,16 +1,13 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LoadedModulesInfoView.xaml.cs" company="Wild Gums">
-//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// <copyright file="LoadedModulesInfoView.xaml.cs" company="WildGums">
+//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 
 namespace Orc.CrashReporting.Views
 {
-    /// <summary>
-    /// Interaction logic for LoadedModulesInfoView.xaml
-    /// </summary>
-    internal partial class LoadedModulesInfoView
+    public partial class LoadedModulesInfoView
     {
         #region Constructors
         public LoadedModulesInfoView()

@@ -5,10 +5,9 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:catel="http://catel.codeplex.com"
                   xmlns:views="clr-namespace:Orc.CrashReporting.Views"
-                  mc:Ignorable="d"
-                  d:DesignHeight="650"
-                  d:DesignWidth="550" 
-                  x:ClassModifier="internal">
+                  mc:Ignorable="d" d:DesignHeight="650" d:DesignWidth="550"
+                  SizeToContent="Manual">
+
     <catel:DataWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,33 +15,39 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </catel:DataWindow.Resources>
-    <Grid>
+
+    <Grid Margin="6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="550"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="4" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0 4 10 0">
+
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="86"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Image Grid.Column="0" Source="/Orc.CrashReporting.Xaml;component\Resources\Images\error1.png"
-                   Height="50" Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                   Height="50" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,6,0" />
+
             <StackPanel Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding AppName}" FontWeight="Medium" FontSize="13"/>
                     <TextBlock Text=" encountered a problem" FontWeight="Medium" FontSize="13"/>
                 </StackPanel>
-                <TextBlock Margin="0 8 0 10" TextWrapping="Wrap">
+
+                <TextBlock Margin="0,8,0,10" TextWrapping="Wrap">
                     In order for us to fix this issue please provide some details about what you were doing and report us using button below.
                 </TextBlock>
+
                 <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
-                <ContentControl Margin="0 2 4 4" MinHeight="56" MaxHeight="56">
+
+                <ContentControl Margin="0,2,4,4" MinHeight="56" MaxHeight="56">
                     <ContentControl.ContentTemplate>
                         <DataTemplate>
                             <views:AdditionalInfoView />
@@ -50,11 +55,11 @@
                     </ContentControl.ContentTemplate>
                 </ContentControl>
             </StackPanel>
-            
         </Grid>
-        
-        <Expander Grid.Row="1" ExpandDirection="Down" IsExpanded="False" Margin="0 0 10 10" Header="Show details">
-            <views:CrashDetailsView  DataContext="{Binding CrashReport}" />
+
+        <Expander x:Name="expander" Grid.Row="1" ExpandDirection="Down" IsExpanded="False" Header="Show details"
+                  HorizontalAlignment="Stretch" Style="{StaticResource CrashReportingExpander}">
+            <views:CrashDetailsView DataContext="{Binding CrashReport}" />
         </Expander>
     </Grid>
 </catel:DataWindow>

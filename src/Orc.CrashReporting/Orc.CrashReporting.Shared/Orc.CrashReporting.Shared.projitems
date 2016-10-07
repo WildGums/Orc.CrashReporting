@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Context\CrashReportingContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Context\Interfaces\ICrashReportingContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ExceptionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ProcessModuleExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\SystemInfoExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\CrashReportFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Factories\Interfaces\ICrashReportFactory.cs" />
@@ -36,7 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICrashReporterService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\ICrashReportProvidersService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Interfaces\IExceptionHandlerService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\PleaseWaitService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SupportPackage\Providers\CrashReportSupportPackageProvider.cs" />
   </ItemGroup>
 </Project>
