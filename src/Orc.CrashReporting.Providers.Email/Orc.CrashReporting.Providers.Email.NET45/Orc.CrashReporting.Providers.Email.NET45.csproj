@@ -55,7 +55,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Analyzer Include="..\..\..\lib\AsyncUsageAnalyzers.1.0.0-alpha003\analyzers\dotnet\AsyncUsageAnalyzers.dll" />
+    <Analyzer Include="..\..\..\lib\PublicApiAnalyzer.1.0.0-alpha001\analyzers\dotnet\cs\PublicApiAnalyzer.CodeFixes.dll" />
+    <Analyzer Include="..\..\..\lib\PublicApiAnalyzer.1.0.0-alpha001\analyzers\dotnet\cs\PublicApiAnalyzer.dll" />
+    <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.3.2-dev\analyzers\dotnet\cs\WpfAnalyzers.Analyzers.dll" />
+    <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.3.2-dev\analyzers\dotnet\cs\WpfAnalyzers.CodeFixes.dll" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Orc.CrashReporting\Orc.CrashReporting.NET45\Orc.CrashReporting.NET45.csproj">
       <Project>{824073ff-5ed0-48c4-81e9-b2772b264d02}</Project>

@@ -47,7 +47,9 @@ namespace Orc.CrashReporting.ViewModels
         #endregion
 
         #region Methods
+#pragma warning disable AvoidAsyncVoid
         private async void OnSelectedReportProviderChanged()
+#pragma warning restore AvoidAsyncVoid
         {
             if (SelectedReportProvider == null)
             {

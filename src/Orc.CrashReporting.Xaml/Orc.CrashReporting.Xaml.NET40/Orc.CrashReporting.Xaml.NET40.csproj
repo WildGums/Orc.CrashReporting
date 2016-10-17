@@ -25,6 +25,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\..\output\debug\NET40\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591;1998</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +36,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\..\output\release\NET40\Orc.CrashReporting.Xaml\Orc.CrashReporting.Xaml.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591;1998</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Catel.Core, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -159,6 +163,13 @@
     <EmbeddedResource Include="..\Orc.CrashReporting.Xaml.Shared\Properties\Resources.ru.resx">
       <Link>Properties\Resources.ru.resx</Link>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\..\lib\AsyncUsageAnalyzers.1.0.0-alpha003\analyzers\dotnet\AsyncUsageAnalyzers.dll" />
+    <Analyzer Include="..\..\..\lib\PublicApiAnalyzer.1.0.0-alpha001\analyzers\dotnet\cs\PublicApiAnalyzer.CodeFixes.dll" />
+    <Analyzer Include="..\..\..\lib\PublicApiAnalyzer.1.0.0-alpha001\analyzers\dotnet\cs\PublicApiAnalyzer.dll" />
+    <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.3.2-dev\analyzers\dotnet\cs\WpfAnalyzers.Analyzers.dll" />
+    <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.3.2-dev\analyzers\dotnet\cs\WpfAnalyzers.CodeFixes.dll" />
   </ItemGroup>
   <Import Project="..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.CrashReporting.Xaml.Shared\Orc.CrashReporting.Xaml.Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

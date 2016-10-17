@@ -36,7 +36,9 @@ namespace Orc.CrashReporting
         #endregion
 
         #region Methods
+#pragma warning disable AvoidAsyncVoid
         private async void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+#pragma warning restore AvoidAsyncVoid
         {
             if (e.Observed)
             {
@@ -57,7 +59,9 @@ namespace Orc.CrashReporting
             }
         }
 
+#pragma warning disable AvoidAsyncVoid
         private async void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+#pragma warning restore AvoidAsyncVoid
         {
             if (e.Handled)
             {

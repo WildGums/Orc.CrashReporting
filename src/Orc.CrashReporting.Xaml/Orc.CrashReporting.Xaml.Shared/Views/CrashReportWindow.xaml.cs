@@ -49,20 +49,20 @@ namespace Orc.CrashReporting.Xaml.Views
         {
             if (expander.IsExpanded)
             {
-                ResizeMode = ResizeMode.CanResize;
+                SetCurrentValue(ResizeModeProperty, ResizeMode.CanResize);
 
-                MinWidth = 550;
-                MinHeight = 350;
+                SetCurrentValue(MinWidthProperty, (double)550);
+                SetCurrentValue(MinHeightProperty, (double)350);
             }
             else
             {
-                ResizeMode = ResizeMode.NoResize;
+                SetCurrentValue(ResizeModeProperty, ResizeMode.NoResize);
 
-                MinWidth = 550;
-                MinHeight = 230;
+                SetCurrentValue(MinWidthProperty, (double)550);
+                SetCurrentValue(MinHeightProperty, (double)230);
 
-                Width = 550;
-                Height = 230;
+                SetCurrentValue(WidthProperty, (double)550);
+                SetCurrentValue(HeightProperty, (double)230);
             }
         }
     }
