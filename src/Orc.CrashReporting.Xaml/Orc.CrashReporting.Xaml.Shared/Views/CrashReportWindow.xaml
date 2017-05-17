@@ -1,4 +1,4 @@
-﻿<catel:DataWindow x:Class="Orc.CrashReporting.Xaml.Views.CrashReportWindow"
+<catel:DataWindow x:Class="Orc.CrashReporting.Xaml.Views.CrashReportWindow"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -41,11 +41,9 @@
                     <TextBlock Text=" encountered a problem" FontWeight="Medium" FontSize="13"/>
                 </StackPanel>
 
-                <TextBlock Margin="0,8,0,10" TextWrapping="Wrap">
-                    In order for us to fix this issue please provide some details about what you were doing and report us using button below.
-                </TextBlock>
+                <TextBlock Margin="0,8,0,10" TextWrapping="Wrap" Text="{catel:LanguageBinding CrashReporting_CrashReportWindow_TextBlock_Text_InOrderForUsToFixThisIssuePleaseProvideSomeDetailsAboutWhatYouWereDoingAndReportUsUsingButtonBelow}"/>
 
-                <TextBlock Text="Comments" FontWeight="Medium" FontSize="13"/>
+                <TextBlock Text="{catel:LanguageBinding CrashReporting_CrashReportWindow_TextBlock_Text_Comments}" FontWeight="Medium" FontSize="13"/>
 
                 <ContentControl Margin="0,2,4,4" MinHeight="56" MaxHeight="56">
                     <ContentControl.ContentTemplate>
@@ -57,7 +55,7 @@
             </StackPanel>
         </Grid>
 
-        <Expander x:Name="expander" Grid.Row="1" ExpandDirection="Down" IsExpanded="False" Header="Show details"
+        <Expander x:Name="expander" Grid.Row="1" ExpandDirection="Down" IsExpanded="False" Header="{catel:LanguageBinding CrashReporting_CrashReportWindow_Expander_Header_ShowDetails}"
                   HorizontalAlignment="Stretch" Style="{StaticResource CrashReportingExpander}">
             <views:CrashDetailsView DataContext="{Binding CrashReport}" />
         </Expander>
