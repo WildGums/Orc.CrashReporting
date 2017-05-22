@@ -1,4 +1,4 @@
-﻿<catel:UserControl x:Class="Orc.CrashReporting.Views.AdditionalInfoView"
+<catel:UserControl x:Class="Orc.CrashReporting.Views.AdditionalInfoView"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -17,9 +17,7 @@
             </i:Interaction.Behaviors>
 
             <orc:WatermarkTextBox.Watermark>
-                <TextBlock TextWrapping="Wrap">
-                    Please tell us briefly what you were doing
-                </TextBlock>
+                <TextBlock TextWrapping="Wrap" Text="{catel:LanguageBinding CrashReporting_AdditionalInfoView_TextBlock_Text_PleaseTellUsBrieflyWhatYouWereDoing}"/>
             </orc:WatermarkTextBox.Watermark>
         </orc:WatermarkTextBox>
     </Grid>
